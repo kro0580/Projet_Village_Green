@@ -1,0 +1,9 @@
+<form method="post" name="delete_profil" action="{{ path('client_delete', {'cliId': client.cliId}) }}" onsubmit="confirmDeleteUser()">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.cliId) }}">
+    <div class="col-12">
+        <button id="btn_supprimer_client" class="btn btn-danger">SUPPRIMER</button>
+    </div>
+</form>
+
+<script src="{{ asset('js/script.js') }}"></script>

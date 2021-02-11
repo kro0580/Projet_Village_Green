@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout de produit(s){% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center">Ajouter un nouveau produit</h1>
+
+        {{ include('produit/_form.html.twig') }}
+
+    </div>
+{% endblock %}

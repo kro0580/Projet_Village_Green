@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mb-5">Fiche client</h1>
+    <h2 id="fiche_client" class="text-center mb-5">{{ client.cliPrenom }} {{ client.cliNom }}</h2>
+
+    <div class="container">
+
+        <table class="table table-striped">
+            <tbody>
+            {#<tr>
+                <th>CliId</th>
+                <td>{{ client.cliId }}</td>
+            </tr>#}
+            <tr>
+                <th>Nom</th>
+                <td class="col-lg">{{ client.cliNom }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td class="col-lg">{{ client.cliPrenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td class="col-lg">{{ client.cliEmail }}</td>
+            </tr>
+            {#<tr>
+                <th>CliPassword</th>
+                <td>{{ client.cliPassword }}</td>
+            </tr>#}
+            <tr>
+                <th>Adresse</th>
+                <td class="col-lg">{{ client.cliAdresse }}</td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td class="col-lg">{{ client.cliCp }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td class="col-lg">{{ client.cliVille }}</td>
+            </tr>
+            <tr>
+                <th>Règlement</th>
+                <td class="col-lg">{{ client.cliRegl }}</td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td class="col-lg">{{ client.cliCateg }}</td>
+            </tr>
+            <tr>
+                <th>Coefficient</th>
+                <td class="col-lg">{{ client.cliCoeff }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-secondary" id="btn_retour3" href="{{ path('client_index') }}">RETOUR</a>
+
+        <a class="btn btn-primary" id="btn_modification2" href="{{ path('client_edit', {'cliId': client.cliId}) }}">MODIFICATION</a>
+
+        <div id="btn_suppr" class="container text-right">
+            {{ include('client/_delete_form.html.twig') }}
+        </div>
+
+    </div>
+{% endblock %}

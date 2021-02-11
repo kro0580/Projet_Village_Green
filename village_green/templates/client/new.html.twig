@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mb-5">Inscription</h1>
+
+    <a class="btn btn-secondary" id="btn_retour4" href="{{ path('home') }}">RETOUR</a>
+
+    {{ form_start(form, {'attr' : { 'novalidate': 'novalidate'}}) }}
+    <div class="col-12">
+        <div class="col-12">
+            <div class="form-group row">
+                <div class="col-2 pl-0">
+                    {{ form_label(form.cliEmail, 'Votre e-mail') }}
+                </div>
+                <div class="col-4 pl-0">
+                    {{ form_widget(form.cliEmail) }}
+                    {{ form_help(form.cliEmail) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mr-3">
+            <div class="form-group row">
+                <div id="cli_password" class="col-2 pl-0">
+                    {{ form_label(form.cliPassword, 'Créer votre mot de passe') }}
+                </div>
+                <div class="col-4 pl-0">
+                    {{ form_widget(form.cliPassword) }}
+                    {{ form_help(form.cliPassword) }}
+                </div>
+                <div id="cli_conf_password" class="col-2 pl-0">
+                    {{ form_label(form.cliConfPassword, 'Confirmez votre mot de passe') }}
+                </div>
+                <div class="col-4">
+                    {{ form_widget(form.cliConfPassword) }}
+                    {{ form_help(form.cliConfPassword) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 mt-5 mb-5" id="titre">
+        <h2>Vos identifiants</h2>
+    </div>
+
+    <div class="col-12 ml-3 pr-0">
+        <div class="form-group row">
+            <div class="col-6 pt-3 ">
+                <div class="row">
+                    <div class="col-4 pl-0">
+                        {{ form_label(form.cliNom, 'Votre nom') }}
+                    </div>
+                    <div class="col-8 pl-0 mb-2">
+                        {{ form_widget(form.cliNom) }}
+                        {{ form_help(form.cliNom) }}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4 pl-0">
+                        {{ form_label(form.cliPrenom, 'Votre prénom') }}
+                    </div>
+                    <div class="col-8 pl-0 mb-2">
+                        {{ form_widget(form.cliPrenom) }}
+                        {{ form_help(form.cliPrenom) }}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4 pl-0">
+                        {{ form_label(form.cliAdresse, 'Adresse') }}
+                    </div>
+                    <div class="col-8 pl-0 mb-2">
+                        {{ form_widget(form.cliAdresse) }}
+                        {{ form_help(form.cliAdresse) }}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4 pl-0">
+                        {{ form_label(form.cliCp, 'Code postal') }}
+                    </div>
+                    <div class="col-8 pl-0 mb-2">
+                        {{ form_widget(form.cliCp) }}
+                        {{ form_help(form.cliCp) }}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4 pl-0">
+                        {{ form_label(form.cliVille, 'Ville') }}
+                    </div>
+                    <div class="col-8 pl-0">
+                        {{ form_widget(form.cliVille) }}
+                        {{ form_help(form.cliVille) }}
+                    </div>
+                </div>
+                <div class="col-12 mt-3 pl-0 mb-3 text-right">
+                    <button class="btn btn-success">{{ button_label|default('Valider') }}</button>
+                </div>
+            </div>
+            <div class="col-6 mt-4 text-center">
+                <img id="commandes_sms" src=" {{ asset('img/BODY/ESPACE CLIENT/cadre_numero.png') }}" alt="commande_sms">
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

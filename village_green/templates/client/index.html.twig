@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mb-5">Liste des clients</h1>
+
+    <div class="container">
+
+        <table class="table table-striped">
+            <thead>
+            <tr class="text-center">
+                <!--<th>CliId</th>-->
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <!--<th>CliPassword</th>-->
+                <th>Adresse</th>
+                <th>CP</th>
+                <th>Ville</th>
+                <th>Règlement</th>
+                <th>Catégorie</th>
+                <!--<th>Coefficient</th>-->
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for client in clients %}
+                <tr class="text-center">
+                    {#<td>{{ client.cliId }}</td>#}
+                    <td>{{ client.cliNom }}</td>
+                    <td>{{ client.cliPrenom }}</td>
+                    <td>{{ client.cliEmail }}</td>
+                    {#<td>{{ client.cliPassword }}</td>#}
+                    <td>{{ client.cliAdresse }}</td>
+                    <td>{{ client.cliCp }}</td>
+                    <td>{{ client.cliVille }}</td>
+                    <td>{{ client.cliRegl }}</td>
+                    <td>{{ client.cliCateg }}</td>
+                    {#<td>{{ client.cliCoeff }}</td>#}
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('client_show', {'cliId': client.cliId}) }}">VOIR</a>
+                        <a class="btn btn-secondary" href="{{ path('client_edit', {'cliId': client.cliId}) }}">MODIFIER</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="12">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <a id="bouton_create" class="btn btn-success mb-3" href="{{ path('client_new') }}">AJOUTER UN NOUVEAU CLIENT</a>
+{% endblock %}

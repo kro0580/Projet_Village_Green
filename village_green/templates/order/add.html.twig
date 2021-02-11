@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payer ma commande{% endblock %}
+{% block javascript %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Recapitulatif</h1>
+        <p>Vérifiez vos informations avant le payement</p>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Mon adresse de livraison</strong></p>
+                {{ adresseLiv.adrNumRue }}<br>
+                {{ adresseLiv.adrCp }}, {{ adresseLiv.adrVille }} - {{ adresseLiv.adrPays }}<br>
+                <hr>
+                <p><strong>Mon transporteur</strong></p>
+                {{ livreur.livNom }}<br>
+                {{ livreur.livDescription }}<br>
+                {{ livreur.livPrix/100}} €
+
+            </div>
+            <div class="col-md-6">
+                <p><strong>Ma commande</strong></p>
+                <div class="table-responsive-md">
+                    <table class="table table-hover text-center">
+                        {% set sousTotal= null %}
+                        {% for produit in cart %}
+                            <tr >
+                                <th><img src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" height="20%"></th>
+                                <td>{{ produit.produit.proLib }} </td>
+                                <td>x {{ produit.quantite }}</td>
+                                <td>{{ produit.produit.proPrixAchat }}€</td>
+                                <td>{{ (produit.produit.proPrixAchat * produit.quantite)|number_format(2)}}€</td>
+                            </tr>
+                            {% set sousTotal= sousTotal +  (produit.produit.proPrixAchat * produit.quantite)%}
+                        {% endfor %}
+                    </table>
+                </div>
+                <div>
+                    <hr>
+                    <strong>Sous total:</strong> {{ (sousTotal)}} € <br>
+                    <strong>Livraison:</strong> {{ livreur.livPrix/100}} €<br>
+                    <hr>
+                    <strong>Total:</strong> {{ (sousTotal + livreur.livPrix/100)}} €<br>
+                </div>
+            </div>
+            <a id="checkout-button" class="btn btn-block btn-success" >Payer | {{ (sousTotal + livreur.livPrix/100)|number_format(2)}} €</a>
+        </div>
+    </div>
+{% endblock %}
+{% block strip %}
+    <script type="text/javascript">
+        var stripe = Stripe("pk_test_51I8F6OGTYhnXIhU2XSLKCr1Z8taJ1sAs6cG0MMhs6xXlFpVK74G4JTpi8GiAZQ1J4msjS2AScSWRP6mcSWAcsOCA00WRkL1Zzs");
+        var checkoutButton = document.getElementById("checkout-button");
+        checkoutButton.addEventListener("click", function () {
+            fetch("/commande/create-session/{{ reference }}", {
+                method: "POST",
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    if (session.error == 'commande'){
+                        window.location.replace('{{ path('order') }}')
+                    }else {
+                        return stripe.redirectToCheckout({ sessionId: session.id });
+                    }
+                })
+                .then(function (result) {
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
+{% endblock %}

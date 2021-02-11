@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur de payement{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h2>Erreur de payement</h2>
+        <p>Bonjour <strong>{{ app.user.cliPrenom }} {{ app.user.cliNom }}</strong><br>
+            Il semblerait que le payement de votre commande n°: <strong>{{ commande.cmdReference }}</strong> est échoué.<br>
+            Une confirmation de l'érreur vient de vous être envoyée par email à l'adresse {{ app.user.cliEmail }}
+        </p>
+        <hr>
+        <a href="{{ path('order') }}" class="btn btn-success">Réessayer le paiment</a>
+    </div>
+{% endblock %}

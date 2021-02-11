@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1 class="text-center">{{ produit.proLib }}</h1>
+
+        <img id="img_show" class="text-center" src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" alt="photo_detail">
+
+    <table class="table mt-3 table-bordered">
+        <tbody>
+{#            <tr>#}
+{#                <th>ProId</th>#}
+{#                <td>{{ produit.proId }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>ProLib</th>#}
+{#                <td>{{ produit.proLib }}</td>#}
+{#            </tr>#}
+            <tr>
+                <th>Description</th>
+                <td class="col-lg">{{ produit.proDescr }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td class="col-lg">{{ produit.proPrixAchat }}&nbsp;&euro;</td>
+            </tr>
+{#            <tr>#}
+{#                <th>ProPhoto</th>#}
+{#                <td>{{ produit.proPhoto }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>ProStock</th>#}
+{#                <td>{{ produit.proStock }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>ProActif</th>#}
+{#                <td>{{ produit.proActif ? 'Yes' : 'No' }}</td>#}
+{#            </tr>#}
+        </tbody>
+    </table>
+
+    <a type="button" class="btn btn-warning" id="btn_modif" href="{{ path('produit_edit', {'proId': produit.proId}) }}">Modifier</a>
+
+    <a type="button" class="btn btn-secondary" id="btn_retour2" href="{{ path('produit_index') }}">Retour</a>
+
+    {{ include('produit/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
