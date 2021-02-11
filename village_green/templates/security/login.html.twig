@@ -3,11 +3,18 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
+
+    <h1 class="text-center mb-5">Connexion</h1>
+
+    <div class="col-12 mt-4 text-center">
+        <img id="img_connexion" src=" {{ asset('img/BODY/ESPACE CLIENT/connexion2.jpg') }}" alt="img connexion">
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-sm-6 offset-sm-3">
                 <form action="{{ path('login') }}" method="post">
-                    {% if error %}
+                    {#{% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
 
@@ -15,18 +22,17 @@
                         <div class="mb-3">
                             You are logged in as {{ app.user.username }}, <a href="{{ path('logout') }}">Logout</a>
                         </div>
-                    {% endif %}
+                    {% endif %}#}
                     <label for="email">Adresse Mail</label>
-                    <input type="text" id="email" name="_username" class="form-control" value="{{ last_username }}">
+                        <input type="text" id="email" name="_username" class="form-control mb-4" value="{{ last_username }}">
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" id="mdp" name="_password" class="form-control">
-                    {% if is_granted('ROLE_USER') %}
-                    <a type="button" class="btn btn-danger mt-3" href="{{ path('logout') }}">Se déconnecter</a>
-                    {% else %}
-                    <input type="submit" class="btn btn-primary mt-3 mb-3" value="Se connecter">
+                        <input type="password" id="mdp" name="_password" class="form-control mb-2">
+                        <div id="mdp_oublie">
+                        <a href="#"><b>Mot de passe oublié ?</b></a>
+                        </div>
+                        <input type="submit" class="btn btn-primary mt-3 mb-3" value="SE CONNECTER">
                         <hr>
-                        <p class="text-center">Ou souhaitez-vous<a href="{{ path('client_new') }}">créer votre compte ?</a></p>
-                    {% endif %}
+                        <p class="text-center">Vous n'avez pas encore de compte, <a href="{{ path('client_new') }}">inscrivez-vous !</a></p>
                 </form>
             </div>
         </div>

@@ -61,7 +61,7 @@ class ClientController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Votre inscription est validée'
+                'Votre inscription est validée !!'
             );
 
             return $this->redirectToRoute('home');
@@ -103,7 +103,7 @@ class ClientController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash(
                 'success',
-                'Modification du profil validée'
+                'Modification du profil validée !!'
             );
             return $this->redirectToRoute('home');
         }
@@ -125,10 +125,17 @@ class ClientController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$client->getCliId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            session_destroy();
             $entityManager->remove($client);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('client_index');
+         // Message de succès de suppression du compte
+         $this->addFlash(
+            'success',
+            'Profil supprimé avec succès !!'
+        );
+
+        return $this->redirectToRoute('home');
     }
 }

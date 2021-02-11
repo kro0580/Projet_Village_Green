@@ -39,19 +39,30 @@
 
                                     <div class="collapse navbar-collapse text-right" id="menu">
 
-                                    <ul class="navbar-nav ">
+                                    <ul class="navbar-nav">
                                         <a class="nav-link text-dark" href="" title="Infos"><li class="nav-item">Infos</li></a>
+                                        <li class="nav-item dropdown">
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a class="nav-link dropdown-toggle text-dark" href="#" id="clientDropdown"
+                                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Espace Admin</a>
+                                            <div class="dropdown-menu" aria-labelledby="clientDropdown">
+                                                <a class="dropdown-item" href="{{ path('client_index') }}"><i class="fas fa-users" style="margin-right: 10px;"></i>Clients</a>
+                                                <a class="dropdown-item" href="{{ path('admin') }}"><i class="fas fa-user-circle" style="margin-right: 10px;"></i>Panneau Admin</a>
+                                            </div>
+                                        {% endif %}
+                                        </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle text-dark" href="#" id="clientDropdown"
                                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Espace Client {% if app.user %}<small>({{ app.user.cliPrenom }} {{ app.user.cliNom }})</small>{% endif %}</a>
                                             <div class="dropdown-menu" aria-labelledby="clientDropdown">
 
                                                 {% if app.user %}
-                                                    <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
-                                                    <a class="dropdown-item" href="{{ path('adresse') }}">Gerer mes adresses de livraison</a>
+                                                    <a class="dropdown-item" href="{{ path('client_show', {'cliId': app.user.cliId}) }}"><i class="fas fa-user" style="margin-right: 10px;"></i>Mon profil</a>
+                                                    <a class="dropdown-item" href="{{ path('adresse') }}"><i class="fas fa-address-card" style="margin-right: 10px;"></i>Gerer mes adresses de livraison</a>
+                                                    <a class="dropdown-item" href="{{ path('logout') }}"><i class="fas fa-sign-out-alt" style="margin-right: 10px;"></i>Déconnexion</a>
                                                 {% else %}
-                                                        <a class="dropdown-item" href="{{ path('client_new') }}">Inscription</a>
-                                                        <a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
+                                                        <a class="dropdown-item" href="{{ path('client_new') }}"><i class="fas fa-file-signature" style="margin-right: 10px;"></i>Inscription</a>
+                                                        <a class="dropdown-item" href="{{ path('login') }}"><i class="fas fa-sign-in-alt" style="margin-right: 10px;"></i>Connexion</a>
                                                 {% endif %}
                                             </div>
                                         </li>
@@ -70,7 +81,7 @@
                             <div class="col-12" id="nav2">
                                 <nav class="navbar navbar-expand-lg navbar-dark text-center m-0 p-0">
                                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu1">
-                                            <span class="navbar-toggler-icon"></span>
+                                            <!--<span class="navbar-toggler-icon"></span>-->
                                         </button>
 
                                     <div class="collapse navbar-collapse" id="menu1">
@@ -80,8 +91,12 @@
                                                 <a class="nav-link dropdown-toggle text-white mr-4" href="#" id="produitDropdown"
                                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produits</a>
                                                     <div class="dropdown-menu" aria-labelledby="produitDropdown">
+                                                    {% if is_granted('ROLE_ADMIN') %}
                                                         <a class="dropdown-item" href="{{ path('produit_index') }}">Liste</a>
                                                         <a class="dropdown-item" href="{{ path('produit_new') }}">Ajouter Produit(s)</a>
+                                                    {% else %}
+                                                        <a class="dropdown-item" href="{{ path('produit_index') }}">Liste</a>
+                                                    {% endif %}
                                                     </div>
                                             </li>
                                             <a class="nav-link text-white" href="" title="Service"><li class="nav-item ml-5 mr-5 mt-2">Service</li></a>
@@ -101,7 +116,7 @@
                                 <nav class="navbar navbar-expand-lg navbar-dark m-0 p-0">
 
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu2">
-                                        <span class="navbar-toggler-icon"></span>
+                                        <!--<span class="navbar-toggler-icon"></span>-->
                                     </button>
 
                                     <div class="collapse navbar-collapse" id="menu2">
@@ -216,7 +231,7 @@
                 </header>
 
             {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
+                <div class="alert alert-success ml-2 mr-2">
                     {{ message }}
                 </div>
             {% endfor %}

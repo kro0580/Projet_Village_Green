@@ -21,12 +21,11 @@
             <div class="form-group">
                 {{ form_widget(form.cliEmail) }}
                 {{ form_help(form.cliEmail) }}
-                
             </div>
         </div>
 
         <div class="col-12">
-            <div class="form-group" id="mdp">
+            <div class="form-group" id="mdpasse">
                 {{ form_label(form.cliPassword, 'Créer votre mot de passe :') }}
             </div>
         </div>
@@ -34,7 +33,7 @@
         <div class="col-12">
             <div class="form-group">
                 {{ form_widget(form.cliPassword, {'id':'password'}) }}
-                <button type="button" id="eye" title="Avez-vous entré votre mot de passe correctement ?" 
+                <button type="button" id="afficher_mdp" title="Avez-vous entré votre mot de passe correctement ?" 
                     onmousedown="password.type='text';" 
                     onmouseup="password.type='password';" 
                     onmouseout="password.type='password';">Afficher
@@ -50,14 +49,19 @@
         </div>
     
         <div class="col-12">
-            <div class="form-group" id="conf_mdp">
+            <div class="form-group" id="conf_mdpasse">
                 {{ form_label(form.cliConfPassword, 'Confirmez votre mot de passe :') }}
             </div>
         </div>
 
         <div class="col-12">
             <div class="form-group">
-                {{ form_widget(form.cliConfPassword) }}
+                {{ form_widget(form.cliConfPassword, {'id':'conf_password'}) }}
+                <button type="button" id="afficher_conf_mdp" title="Avez-vous entré votre mot de passe correctement ?" 
+                    onmousedown="conf_password.type='text';" 
+                    onmouseup="conf_password.type='password';" 
+                    onmouseout="conf_password.type='password';">Afficher
+                </button>
                 {{ form_help(form.cliConfPassword) }}
             </div>
         </div>

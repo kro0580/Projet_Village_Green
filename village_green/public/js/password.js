@@ -51,11 +51,21 @@ var pass = document.getElementById("password")
 // Pour dévoiler le mot de passe que l'on tape
 
 $(document).ready(function () {
-    $("#eye").click(function () {
+    $("#afficher_mdp").click(function () {
         if ($("#password").attr("type") === "password") {
             $("#password").attr("type", "text");
         } else {
             $("#password").attr("type", "password");
+        }
+    });
+});
+
+$(document).ready(function () {
+    $("#afficher_conf_mdp").click(function () {
+        if ($("#conf_password").attr("type") === "password") {
+            $("#conf_password").attr("type", "text");
+        } else {
+            $("#conf_password").attr("type", "password");
         }
     });
 });

@@ -126,7 +126,7 @@ h2
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd;}
 
-/* Show the dropdown menu on hover */
+/* Show the dropdown navbar-toggler-icon on hover */
 .dropdown:hover .dropdown-content {display: block;}
 
 .grid
@@ -191,7 +191,7 @@ h2
     margin-bottom: 20px;
 }
 
-#mail, #mdp, #conf_mdp, #nom, #prenom, #adresse, #cp, #ville
+#mail, #mdpasse, #conf_mdpasse, #nom, #prenom, #adresse, #cp, #ville
 {
     margin-left: -8px;
 }
@@ -208,30 +208,43 @@ padding-right: 30px;
     margin-bottom: 20px;
 }
 
-#eye 
+#afficher_mdp 
 {
+    background-color: #E8E9EA;
+    border: none;
     margin-top: 7px;
     float: right;
     font-size: 10px;
-
 }
 
-/****************************************************************** CLIENT/EDIT.HTML *************************************************/
-
-#btn_supprimer_client
+#afficher_conf_mdp
 {
-    margin-top: -25px;
+    background-color: #E8E9EA;
+    border: none;
+    margin-top: 7px;
+    float: right;
+    font-size: 10px;
+}
+
+/**** CLIENT/EDIT.HTML ****/
+
+#img_inscription2
+{
+    width: 100%;
     margin-bottom: 20px;
-    margin-left: 212px;
+}
+
+#mail2, #nom2, #prenom2, #adresse2, #cp2, #ville2
+{
+    margin-left: -8px;
 }
 
 #btn_retour5
 {
-    margin-top: -150px;
-    margin-left: 10px;
+    margin-left: -12px;
 }
 
-/****************************************************************** CLIENT/INDEX.HTML *************************************************/
+/**** CLIENT/INDEX.HTML ****/
 
 #bouton_create
 {
@@ -240,7 +253,14 @@ padding-right: 30px;
     margin-bottom: 20px;
 }
 
-/****************************************************************** CLIENT/SHOW.HTML *************************************************/
+#img_clients
+{
+    width: 250px;
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
+/**** CLIENT/SHOW.HTML ****/
 
 #btn_retour3
 {
@@ -254,7 +274,7 @@ padding-right: 30px;
 
 #btn_suppr
 {
-    margin-top: -35px;
+    margin-top: -59px;
     margin-bottom: 20px;
     margin-right: -30px;
 }
@@ -263,4 +283,25 @@ padding-right: 30px;
 {
     margin-top: -40px;
     padding-bottom: 40px;
+}
+
+#img_profil
+{
+    width: 300px;
+    margin-bottom: 70px;
+}
+
+/**** SECURITY/LOGIN.HTML ****/
+
+#img_connexion 
+{
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+#mdp_oublie
+{
+    font-size: 13px;
+    margin-bottom: 25px;
+    margin-top: -5px;
 }

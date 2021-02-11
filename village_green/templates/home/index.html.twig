@@ -5,8 +5,12 @@
 {% block body %}
 
     {% if app.user %}
-        <div class="alert alert-success">
+        <div class="alert alert-success ml-2 mr-2">
             Vous êtes connecté(e) en tant que <b>{{ app.user.username }}</b> <a type="button" class="btn btn-danger" id="bouton_deconnexion" href="{{ path('logout') }}">Déconnexion</a>
+        </div>
+    {% else %}
+        <div class="alert alert-secondary ml-2 mr-2">
+            Vous n'êtes pas connecté(e), bienvenue !
         </div>
     {% endif %}
 

@@ -1,94 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Client{% endblock %}
+{% block title %}Votre profil{% endblock %}
 
 {% block body %}
     <h1 class="text-center mb-5">Votre profil</h1>
 
-    <a class="btn btn-secondary" id="btn_retour5" href="{{ path('client_show', {'cliId': client.cliId}) }}">RETOUR</a>
-
+    <div class="col-12 mt-4 text-center">
+        <img id="img_inscription2" src=" {{ asset('img/BODY/ESPACE CLIENT/register2.jpg') }}" alt="img inscription">
+    </div>
+    
     {{ form_start(form, {'attr' : { 'novalidate': 'novalidate'}}) }}
-    <div class="col-12">
+    
         <div class="col-12">
-            <div class="form-group row">
-                <div class="col-2 pl-0">
-                    {{ form_label(form.cliEmail, 'Votre e-mail') }}
-                </div>
-                <div class="col-4 pl-0">
+            <div class="form-group id="mail2">
+                    {{ form_label(form.cliEmail, 'Votre e-mail :') }}
+            </div>
+
+        <div class="col-12">
+            <div class="form-group">
                     {{ form_widget(form.cliEmail) }}
                     {{ form_help(form.cliEmail) }}
-                </div>
             </div>
         </div>
+
                     {{ form_widget(form.cliPassword, {'value': recup, 'type': 'hidden'}) }}
                     {{ form_widget(form.cliConfPassword, {'value': recup, 'type': 'hidden'}) }}
-    </div>
-    <div class="col-12 mt-5 mb-5" id="titre">
-        <h2>Vos identifiants</h2>
+    
+    <div class="col-12 mt-5 mb-5">
+        <h2><i class="fas fa-users" id="identifiants"></i>Vos identifiants</h2>
     </div>
 
-    <div class="col-12 ml-3 pr-0">
-        <div class="form-group row">
-            <div class="col-6 pt-3 ">
-                <div class="row">
-                    <div class="col-4 pl-0">
-                        {{ form_label(form.cliNom, 'Votre nom') }}
-                    </div>
-                    <div class="col-8 pl-0 mb-2">
-                        {{ form_widget(form.cliNom) }}
-                        {{ form_help(form.cliNom) }}
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-4 pl-0">
-                        {{ form_label(form.cliPrenom, 'Votre prénom') }}
-                    </div>
-                    <div class="col-8 pl-0 mb-2">
-                        {{ form_widget(form.cliPrenom) }}
-                        {{ form_help(form.cliPrenom) }}
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-4 pl-0">
-                        {{ form_label(form.cliAdresse, 'Adresse') }}
-                    </div>
-                    <div class="col-8 pl-0 mb-2">
-                        {{ form_widget(form.cliAdresse) }}
-                        {{ form_help(form.cliAdresse) }}
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-4 pl-0">
-                        {{ form_label(form.cliCp, 'Code postal') }}
-                    </div>
-                    <div class="col-8 pl-0 mb-2">
-                        {{ form_widget(form.cliCp) }}
-                        {{ form_help(form.cliCp) }}
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-4 pl-0">
-                        {{ form_label(form.cliVille, 'Ville') }}
-                    </div>
-                    <div class="col-8 pl-0">
-                        {{ form_widget(form.cliVille) }}
-                        {{ form_help(form.cliVille) }}
-                    </div>
-                </div>
-                <div class="col-12 mt-3 pl-0 mb-3 text-right">
-                    <button class="btn btn-success mb-4">{{ button_label|default('Valider') }}</button>
-                </div>
-            </div>
-            <div class="col-6 mt-4 text-center">
-                <img id="commandes_sms" src=" {{ asset('img/BODY/ESPACE CLIENT/cadre_numero.png') }}" alt="commande_sms">
-            </div>
+    <div class="col-12">
+        <div class="form-group" id="nom2">
+            {{ form_label(form.cliNom, 'Votre nom :') }}
         </div>
-    </div>
+
+        <div class="form-group">
+            {{ form_widget(form.cliNom) }}
+            {{ form_help(form.cliNom) }}
+        </div>
+
+        <div class="form-group" id="prenom2">
+            {{ form_label(form.cliPrenom, 'Votre prénom :') }}
+        </div>
+
+        <div class="form-group">
+            {{ form_widget(form.cliPrenom) }}
+            {{ form_help(form.cliPrenom) }}
+        </div>
+
+        <div class="form-group" id="adresse2">
+            {{ form_label(form.cliAdresse, 'Adresse :') }}
+        </div>    
+
+        <div class="form-group">
+            {{ form_widget(form.cliAdresse) }}
+            {{ form_help(form.cliAdresse) }}
+        </div>  
+
+        <div class="form-group" id="cp2">
+            {{ form_label(form.cliCp, 'Code postal :') }}
+        </div> 
+
+        <div class="form-group">
+            {{ form_widget(form.cliCp) }}
+            {{ form_help(form.cliCp) }}
+        </div> 
+
+        <div class="form-group" id="ville2">
+            {{ form_label(form.cliVille, 'Ville :') }}
+        </div>  
+
+        <div class="form-group">
+            {{ form_widget(form.cliVille) }}
+            {{ form_help(form.cliVille) }}
+        </div> 
+
+        <div class="col-12 text-left">
+            <a id="btn_retour5" class="btn btn-secondary" href="{{ path('client_show', {'cliId': app.user.cliId}) }}">RETOUR</a>
+            <button class="btn btn-success">{{ button_label|default('VALIDER') }}</button>
+        </div>
 
     {{ form_end(form) }}
-
-    <div id="btn_supprimer_client" class="container">
-        {{ include('client/_delete_form.html.twig') }}
-    </div>
 
 {% endblock %}
