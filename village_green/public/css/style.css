@@ -129,7 +129,8 @@ h2
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
 
-.grid {
+.grid
+{
     position: relative;
     margin: 0 auto;
 }
@@ -182,17 +183,39 @@ h2
     margin-top: 10px;
 }
 
-/****************************************************************** CLIENT/FORM.HTML *************************************************/
+/***** CLIENT/NEW.HTML ****/
 
-#commandes_sms
+#img_inscription
 {
-    width: 50%;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-#cli_password, #cli_conf_password
+#mail, #mdp, #conf_mdp, #nom, #prenom, #adresse, #cp, #ville
 {
-    margin-top: -8px;
+    margin-left: -8px;
 }
+
+#identifiants
+{
+padding-right: 30px;
+}
+
+.progress
+{
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#eye 
+{
+    margin-top: 7px;
+    float: right;
+    font-size: 10px;
+
+}
+
 /****************************************************************** CLIENT/EDIT.HTML *************************************************/
 
 #btn_supprimer_client
@@ -240,12 +263,4 @@ h2
 {
     margin-top: -40px;
     padding-bottom: 40px;
-}
-
-/****************************************************************** CLIENT/NEW.HTML *************************************************/
-
-#btn_retour4
-{
-    margin-top: -150px;
-    margin-left: 10px;
 }

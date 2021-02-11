@@ -99,6 +99,13 @@ class ClientType extends AbstractType
                     'placeholder' => 'Confirmez votre mot de passe',
                     'class' => 'form-control form-control-sm',
                 ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez remplir ce champ']),
+                    new Regex([
+                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\w).{8,}$/',
+                        'message' => 'Caratère(s) non valide(s)'
+                    ]),
+                ]
             ])
             ->add('cliAdresse', TextType::class, [
                 'label' => 'Adresse',
