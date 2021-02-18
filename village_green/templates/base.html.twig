@@ -236,6 +236,18 @@
                 </div>
             {% endfor %}
 
+            {% for message in app.flashes('danger') %}
+                <div class="alert alert-danger ml-2 mr-2">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% for message in app.flashes('warning') %}
+                <div class="alert alert-warning ml-2 mr-2">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
     {% block body %}{% endblock %}
         </div>
         <div class= "container p-0" id="foot">

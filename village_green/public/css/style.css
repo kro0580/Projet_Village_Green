@@ -305,3 +305,16 @@ padding-right: 30px;
     margin-bottom: 25px;
     margin-top: -5px;
 }
+
+/**** SECURITY/FORGOTTEN_PASSWORD.HTML ****/
+
+#forgot_img
+{
+    width: 20%;
+}
+
+#bouton_envoi3
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

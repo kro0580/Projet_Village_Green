@@ -127,6 +127,10 @@ class Client implements UserInterface
      */
     private $cli_adresses;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cli_reset_token;
 
     /**
      * Constructor
@@ -370,6 +374,18 @@ class Client implements UserInterface
                 $cliAdress->setAdrCliId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCliResetToken(): ?string
+    {
+        return $this->cli_reset_token;
+    }
+
+    public function setCliResetToken(string $cli_reset_token): self
+    {
+        $this->cli_reset_token = $cli_reset_token;
 
         return $this;
     }
