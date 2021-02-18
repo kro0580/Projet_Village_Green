@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Route("/client")
@@ -36,7 +39,7 @@ class ClientController extends AbstractController
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      */
-    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder, MailerInterface $mailer): Response
     {
         $client = new Client();
         $form = $this->createForm(ClientType::class, $client);
@@ -59,9 +62,24 @@ class ClientController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
+            // Envoi mail
+            $mail = $client->getCliEmail();
+
+            $email = (new TemplatedEmail())
+                ->from('contact@village_green.org')
+                ->to($mail)
+                ->subject('Confirmation d\'inscription')
+                ->htmlTemplate('emails/conf_inscription.html.twig')
+                ->context([
+                    'username' => $client->getCliPrenom(),
+                ])
+                ;
+
+            $mailer->send($email);
+
             $this->addFlash(
                 'success',
-                'Votre inscription est validée !!'
+                'Un email de confirmation vous a été envoyé'
             );
 
             return $this->redirectToRoute('home');
@@ -129,6 +147,10 @@ class ClientController extends AbstractController
             $entityManager->remove($client);
             $entityManager->flush();
         }
+
+        // Destruction de la session
+        $session = new Session();
+        $session->invalidate();
 
          // Message de succès de suppression du compte
          $this->addFlash(
