@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block title %}
- Mes adresse
+ Mes adresses
 {% endblock %}
 {% block body %}
  <div class="container">
-  <a href="{{ path('add_adresse') }}" class="btn btn-info btn-sm float-right">Ajouter une adresse</a>
-  <h1>Mes adresses</h1>
+  <h1 style="margin-bottom: 20px; text-align: center;">Mes adresses</h1>
+  <a href="{{ path('cart') }}" style="margin-left: 10px;" class="btn btn-info btn-sm float-right">MON PANIER</a>
+  <a href="{{ path('add_adresse') }}" class="btn btn-info btn-sm float-right">AJOUTER UNE ADRESSE</a>
   {% if app.user.cliAdresses|length == 0 %}
-   <p class="text-center">Vous n'avez pas encore ajouté d'adresse. Pour en ajouter une, veillez <a href="{{ path('add_adresse') }}">cliquer ici</a> </p>
+   <p class="text-center">Vous n'avez pas encore ajouté d'adresse. Pour en ajouter une, veuillez <a href="{{ path('add_adresse') }}">cliquer ici</a> </p>
   {% else %}
-   <div class="row">
+   <div style="padding-bottom: 20px;" class="row">
     {% for adresse in app.user.cliAdresses %}
      <div class="col">
          {% set formHtml %}

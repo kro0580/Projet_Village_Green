@@ -260,6 +260,11 @@ padding-right: 30px;
     margin-bottom: 20px;
 }
 
+#table_client
+{
+    margin-left: 8px;
+}
+
 /**** CLIENT/SHOW.HTML ****/
 
 #btn_retour3
@@ -316,5 +321,26 @@ padding-right: 30px;
 #bouton_envoi3
 {
     margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/**** CART/INDEX.HTML ****/
+
+#button_panier
+{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#img_panier
+{
+    width: 100px;
+    padding-bottom: 20px;
+}
+
+/**** CLIENT/ADRESSE.HTML ****/
+
+#adresse_submit
+{
     margin-bottom: 20px;
 }

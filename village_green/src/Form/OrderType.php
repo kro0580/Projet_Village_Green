@@ -4,11 +4,11 @@ namespace App\Form;
 
 use App\Entity\Adresse;
 use App\Entity\Livreur;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class OrderType extends AbstractType
 {
@@ -25,7 +25,7 @@ class OrderType extends AbstractType
                 'choices'=>$user->getCliAdresses()
             ])
             ->add('adresseFact', EntityType::class, [
-                'label'=>'Veillez choisir votre adresse de facturation',
+                'label'=>'Mon adresse de facturation',
                 'required'=>true,
                 'multiple'=>false,
                 'class'=>Adresse::class,
@@ -33,14 +33,14 @@ class OrderType extends AbstractType
                 'choices'=>$user->getCliAdresses()
             ])
             ->add('livreur', EntityType::class, [
-                'label'=>'Veillez choisir votre livreur',
+                'label'=>'Choisir mon livreur',
                 'required'=>true,
                 'multiple'=>false,
                 'class'=>Livreur::class,
                 'expanded'=>true
             ])
             ->add('submit', SubmitType::class, [
-                'label'=>'Valider ma commande',
+                'label'=>'VALIDER MA COMMANDE',
                 'attr'=>[
                     'class'=>'btn btn-success btn-block'
                 ]
