@@ -98,6 +98,8 @@ class ClientController extends AbstractController
      */
     public function show(Client $client): Response
     {
+        //Pour empêcher l'accès à un autre profil que celui de la personne connectée
+        //$this->denyAccessUnlessGranted(' ', $client, 'non non non ... action non autorisée!');
         return $this->render('client/show.html.twig', [
             'client' => $client,
         ]);
@@ -112,6 +114,8 @@ class ClientController extends AbstractController
      */
     public function edit(Request $request, Client $client, UserPasswordEncoderInterface $passwordEncoder): Response
     {
+        //Pour empêcher la modification d'un autre profil que celui de la personne connectée
+        //$this->denyAccessUnlessGranted('edit', $client, 'non non non ... action non autorisée!');
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
