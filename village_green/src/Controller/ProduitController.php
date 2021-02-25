@@ -118,6 +118,9 @@ class ProduitController extends AbstractController
      */
     public function edit(Request $request, Produit $produit, SluggerInterface $slugger): Response
     {
+        //Pour empêcher la modification d'un produit
+        $this->denyAccessUnlessGranted('edit', $produit, 'Vous ne pouvez pas modfier ce produit !');
+
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
@@ -174,17 +177,15 @@ class ProduitController extends AbstractController
      */
     public function delete(Request $request, Produit $produit): Response
     {
+
+        //Pour empêcher la suppression d'un produit
+        $this->denyAccessUnlessGranted('delete', $produit, 'Vous ne pouvez pas supprimer ce produit !');
+
         if ($this->isCsrfTokenValid('delete'.$produit->getProId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($produit);
             $entityManager->flush();
         }
-
-        // Message de succès de suppression du produit
-        $this->addFlash(
-            'success',
-            'Produit supprimé avec succès !!'
-        );
 
         return $this->redirectToRoute('produit_index');
     }

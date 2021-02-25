@@ -1,3 +1,5 @@
+// Messages Sweet Alert pour suppression profil et produit
+
 function deleteForm() {
     event.preventDefault(); // Empêche la soumission du formulaire
     var form = document.forms["delete"];

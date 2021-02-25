@@ -344,3 +344,71 @@ padding-right: 30px;
 {
     margin-bottom: 20px;
 }
+
+/**** BUNDLE/ERROR403.HTML ****/
+
+#error403 a
+{
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 19.5%;
+    margin-right: 0.625%;
+    text-align: center;
+    line-height: 3;
+    color: white;
+}
+
+#error403 a:link, #error403 a:visited, #error403 a:focus 
+{
+    background: #2F3749;
+    border-radius: 5px;
+}
+
+#error403 a:hover
+{
+    background: orange;
+}
+
+#error403 a:active
+{
+    background: red;
+    color: white;
+}
+
+/**** BUNDLE/ERROR404.HTML ****/
+
+#error404 a
+{
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 19.5%;
+    margin-right: 0.625%;
+    text-align: center;
+    line-height: 3;
+    color: white;
+}
+
+#error404 a:link, #error404 a:visited, #error404 a:focus 
+{
+    background: #303241;
+    border-radius: 5px;
+}
+
+#error404 a:hover
+{
+    background: orange;
+}
+
+#error404 a:active
+{
+    background: red;
+    color: white;
+}
+
+#img_error404
+{
+    width:1000px; 
+    height:600px;
+}

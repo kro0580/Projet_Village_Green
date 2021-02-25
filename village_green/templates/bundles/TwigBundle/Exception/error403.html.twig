@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accès interdit{% endblock %}
+
+{% block body %}
+    
+    {# Page visible en tapant l'url https://127.0.0.1:8000/_error/403 #}
+
+    <div class="col-12 mt-4 mb-4 text-center">
+        <img src=" {{ asset('img/ERRORS/IMG_1879.PNG') }}" alt="img error403">
+    </div>
+
+    <div id="error403" class="error col-12 pt-4 pb-4 text-center">
+    <a href="{{ path('client_show', {'cliId': app.user.cliId}) }}">Revenir à mon profil
+    </div>
+
+{% endblock %}

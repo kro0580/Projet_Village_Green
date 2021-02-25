@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvée{% endblock %}
+
+{% block body %}
+
+    {# Page visible en tapant l'url https://127.0.0.1:8000/_error/404 #}
+    
+    <div class="col-12 mt-4 mb-4 text-center">
+        <img id="img_error404" src=" {{ asset('img/ERRORS/IMG_1880.jpg') }}" alt="img error404">
+    </div>
+
+    <div id="error404" class="col-12 pt-4 pb-4 text-center">
+    <a href="{{ path('home') }}">Revenir à l'accueil
+    </div>
+
+{% endblock %}

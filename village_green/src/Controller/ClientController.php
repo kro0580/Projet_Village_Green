@@ -99,7 +99,7 @@ class ClientController extends AbstractController
     public function show(Client $client): Response
     {
         //Pour empêcher l'accès à un autre profil que celui de la personne connectée
-        $this->denyAccessUnlessGranted('show', $client, 'non non non ... action non autorisée!');
+        $this->denyAccessUnlessGranted('show', $client, 'Vous ne pouvez pas accéder à ce profil !');
 
         return $this->render('client/show.html.twig', [
             'client' => $client,
@@ -116,7 +116,7 @@ class ClientController extends AbstractController
     public function edit(Request $request, Client $client, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         //Pour empêcher la modification d'un autre profil que celui de la personne connectée
-        $this->denyAccessUnlessGranted('edit', $client, 'non non non ... action non autorisée!');
+        $this->denyAccessUnlessGranted('edit', $client, 'Vous ne pouvez pas modifier ce profil !');
 
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
@@ -148,7 +148,7 @@ class ClientController extends AbstractController
     public function delete(Request $request, Client $client): Response
     {
         //Pour empêcher la suppression d'un autre profil que celui de la personne connectée
-        $this->denyAccessUnlessGranted('delete', $client, 'non non non ... action non autorisée!');
+        $this->denyAccessUnlessGranted('delete', $client, 'Vous ne pouvez pas supprimer ce profil !');
 
         if ($this->isCsrfTokenValid('delete'.$client->getCliId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -160,12 +160,6 @@ class ClientController extends AbstractController
         // Destruction de la session
         $session = new Session();
         $session->invalidate();
-
-         // Message de succès de suppression du compte
-         $this->addFlash(
-            'success',
-            'Profil supprimé avec succès !!'
-        );
 
         return $this->redirectToRoute('home');
     }

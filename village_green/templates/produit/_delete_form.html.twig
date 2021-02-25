@@ -1,7 +1,7 @@
-<form method="post" name="delete_product" action="{{ path('produit_delete', {'proId': produit.proId}) }}" onsubmit="confirmDeleteProduct()">
+<form method="post" name="delete2" action="{{ path('produit_delete', {'proId': produit.proId}) }}" onsubmit="deleteForm2()">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.proId) }}">
     <button class="btn btn-danger float-right" id="btn_supprimer">SUPPRIMER</button>
 </form>
 
-<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/sweet_alert.js') }}"></script>
