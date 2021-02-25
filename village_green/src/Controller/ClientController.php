@@ -99,7 +99,8 @@ class ClientController extends AbstractController
     public function show(Client $client): Response
     {
         //Pour empêcher l'accès à un autre profil que celui de la personne connectée
-        //$this->denyAccessUnlessGranted(' ', $client, 'non non non ... action non autorisée!');
+        $this->denyAccessUnlessGranted('show', $client, 'non non non ... action non autorisée!');
+
         return $this->render('client/show.html.twig', [
             'client' => $client,
         ]);
@@ -115,7 +116,8 @@ class ClientController extends AbstractController
     public function edit(Request $request, Client $client, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         //Pour empêcher la modification d'un autre profil que celui de la personne connectée
-        //$this->denyAccessUnlessGranted('edit', $client, 'non non non ... action non autorisée!');
+        $this->denyAccessUnlessGranted('edit', $client, 'non non non ... action non autorisée!');
+
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
@@ -145,6 +147,9 @@ class ClientController extends AbstractController
      */
     public function delete(Request $request, Client $client): Response
     {
+        //Pour empêcher la suppression d'un autre profil que celui de la personne connectée
+        $this->denyAccessUnlessGranted('delete', $client, 'non non non ... action non autorisée!');
+
         if ($this->isCsrfTokenValid('delete'.$client->getCliId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             session_destroy();
