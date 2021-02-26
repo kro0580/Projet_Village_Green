@@ -40,7 +40,7 @@
                                     <div class="collapse navbar-collapse text-right" id="menu">
 
                                     <ul class="navbar-nav">
-                                        <a class="nav-link text-dark" href="" title="Infos"><li class="nav-item">Infos</li></a>
+                                        <a class="nav-link text-dark" href="#" title="Infos"><li id="nav_infos" class="nav-item">Infos</li></a>
                                         <li class="nav-item dropdown">
                                         {% if is_granted('ROLE_ADMIN') %}
                                             <a class="nav-link dropdown-toggle text-dark" href="#" id="clientDropdown"
@@ -66,8 +66,8 @@
                                                 {% endif %}
                                             </div>
                                         </li>
-                                        <a class="nav-link text-dark" href="{{ path('cart') }}" title="Panier"><li class="nav-item mr-5"><img src="{{ asset('img/HEADER/picto_panier.png') }}" alt="panier"></li></a>
-                                        <a class="nav-link text-dark" href="" title="Pays"><li class="nav-item ml-5"><img src="{{ asset('img/HEADER/picto_pays.png') }}" alt="pays"></li></a>
+                                        <a class="nav-link text-dark" href="{{ path('cart') }}" title="Panier"><li class="nav-item mr-5"><img id="img_picto_panier" src="{{ asset('img/HEADER/picto_panier.png') }}" alt="panier"></li></a>
+                                        <a class="nav-link text-dark" href="#" title="Pays"><li class="nav-item ml-5"><img id="img_picto_drapeau" src="{{ asset('img/HEADER/picto_pays.png') }}" alt="pays"></li></a>
                                     </ul>
 
                                     </div>
@@ -99,9 +99,9 @@
                                                     {% endif %}
                                                     </div>
                                             </li>
-                                            <a class="nav-link text-white" href="" title="Service"><li class="nav-item ml-5 mr-5 mt-2">Service</li></a>
-                                            <a class="nav-link text-white" href="" title="Aide"><li class="nav-item ml-5 mr-5 mt-2 ">Aide</li></a>
-                                            <a class="nav-link text-white" href="" title="A propos"><li class="nav-item ml-5 mr-5 mt-2">A propos</li></a>
+                                            <a class="nav-link text-white" id="services" href="" title="Service"><li class="nav-item ml-5 mr-5 mt-2">Service</li></a>
+                                            <a class="nav-link text-white" id="aide" href="" title="Aide"><li class="nav-item ml-5 mr-5 mt-2 ">Aide</li></a>
+                                            <a class="nav-link text-white" id="propos" href="" title="A propos"><li class="nav-item ml-5 mr-5 mt-2">A propos</li></a>
                                         </ul>
 
                                     </div>
@@ -123,7 +123,7 @@
 
                                         <ul class="navbar-nav ">
                                             <div class="dropdown">
-                                            <a class="nav-link text-white" href="#" title="Guitares"><li class="nav-item mt-2 ml-1 dropbtn">Guit/Bass</li></a>
+                                            <a class="nav-link text-white" href="#" title="Guitares" id="nav_guitare"><li class="nav-item mt-2 ml-1 dropbtn">Guit/Bass</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Guitares, .Basses, .Ukulélés">Voir tout</a>
                                                     <a href="#" data-filter=".Guitares.Electriques">Guitares Electriques</a>
@@ -135,7 +135,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="#" title="Batteries"><li class="nav-item mt-2 ml-1 dropbtn">Batteries</li></a>
+                                                <a class="nav-link text-white" href="#" title="Batteries" id="nav_batterie"><li class="nav-item mt-2 ml-1 dropbtn">Batteries</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Batteries, .Cymbales, .Baguettes, .Percussions">Voir tout</a>
                                                     <a href="#" data-filter=".Batteries.Acoustiques">Batteries Acoustiques</a>
@@ -146,7 +146,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="#" title="Clavier"><li class="nav-item mt-2 ml-1 dropbtn">Claviers</li></a>
+                                                <a class="nav-link text-white" href="#" title="Clavier" id="nav_clavier"><li class="nav-item mt-2 ml-1 dropbtn">Claviers</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Claviers, .Synthétiseurs, .Pianos">Voir tout</a>
                                                     <a href="#" data-filter=".Claviers.Arrangeurs">Claviers Arrangeurs</a>
@@ -157,7 +157,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="#" title="Studio"><li class="nav-item mt-2 ml-1 dropbtn">Studio</li></a>
+                                                <a class="nav-link text-white" href="#" title="Studio" id="nav_studio"><li class="nav-item mt-2 ml-1 dropbtn">Studio</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Interfaces.Audio, .Enceinte.de.Monitoring, .Microphones, .Logiciels.Studio, .Préamplificateurs.Studio">Voir tout</a>
                                                     <a href="#" data-filter=".Interfaces.Audio">Interfaces Audio</a>
@@ -168,7 +168,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="#" title="Sono"><li class="nav-item mt-2 ml-1 dropbtn">Sono</li></a>
+                                                <a class="nav-link text-white" href="#" title="Sono" id="nav_sono"><li class="nav-item mt-2 ml-1 dropbtn">Sono</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Sonorisation, .Mixage, .Amplificateurs, .Processeurs">Voir tout</a>
                                                     <a href="#" data-filter=".Sets.de.Sonorisation.Complets">Sets de Sonorisation Complets</a>
@@ -179,7 +179,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="#" title="Eclairage"><li class="nav-item mt-2 ml-1 dropbtn">Eclairage</li></a>
+                                                <a class="nav-link text-white" href="#" title="Eclairage" id="nav_eclairage"><li class="nav-item mt-2 ml-1 dropbtn">Eclairage</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Projecteurs, .Eclairage, .Machine.à.Fumée, .Lasers, .Stroboscopes">Voir tout</a>
                                                     <a href="#" data-filter=".Projecteurs">Projecteurs</a>
@@ -190,7 +190,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="#" title="DJ"><li class="nav-item mt-2 ml-1 dropbtn">DJ</li></a>
+                                                <a class="nav-link text-white" href="#" title="DJ" id="nav_dj"><li class="nav-item mt-2 ml-1 dropbtn">DJ</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Contrôleurs.DJ, .Lecteurs, .Platines.Vinyles, .Tables.de.Mixage.DJ, .Casques.DJ">Voir tout</a>
                                                     <a href="#" data-filter=".Contrôleurs.DJ">Contrôleurs DJ</a>
@@ -201,7 +201,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="#" title="Cases"><li class="nav-item mt-2 ml-1 dropbtn">Cases</li></a>
+                                                <a class="nav-link text-white" href="#" title="Cases" id="nav_case"><li class="nav-item mt-2 ml-1 dropbtn">Cases</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Flight, .Housses, .Mobilier, .Housses, .Système">Voir tout</a>
                                                     <a href="#" data-filter=".Flight.Cases">Flight Cases</a>
@@ -212,7 +212,7 @@
                                                 </div>
                                             </div>
                                             <div class="dropdown">
-                                                <a class="nav-link text-white" href="#" title="Accessoires"><li class="nav-item mt-2 ml-1 dropbtn">Accessoires</li></a>
+                                                <a class="nav-link text-white" href="#" title="Accessoires" id="nav_accessoire"><li class="nav-item mt-2 ml-1 dropbtn">Accessoires</li></a>
                                                 <div class="dropdown-content instru">
                                                     <a href="#" data-filter=".Pieds, .Sièges, .Protections, .Supports, .Métronomes">Voir tout</a>
                                                     <a href="#" data-filter=".Pieds.et.Supports">Pieds et Supports</a>

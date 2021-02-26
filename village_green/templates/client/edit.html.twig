@@ -76,8 +76,9 @@
             {{ form_help(form.cliVille) }}
         </div> 
 
-        <div class="col-12 text-left">
-            <a id="btn_retour5" class="btn btn-secondary" href="{{ path('client_show', {'cliId': app.user.cliId}) }}">RETOUR</a>
+        <div class="col-12 text-right">
+            <input class="btn btn-danger" type="reset" value="ANNULER">
+            <a class="btn btn-secondary" href="{{ path('client_show', {'cliId': app.user.cliId}) }}">RETOUR</a>
             <button class="btn btn-success">{{ button_label|default('VALIDER') }}</button>
         </div>
 

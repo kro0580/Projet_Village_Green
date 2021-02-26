@@ -35,6 +35,7 @@ header{
 #nav3
 {
     font-size: 13pt;
+    margin-left: 15px;
 }
 
 #cliquez
@@ -88,6 +89,7 @@ header{
 #rowb
 {
     height: auto;
+    padding-left: 10px;
 }
 
 h2
@@ -237,11 +239,6 @@ padding-right: 30px;
 #mail2, #nom2, #prenom2, #adresse2, #cp2, #ville2
 {
     margin-left: -8px;
-}
-
-#btn_retour5
-{
-    margin-left: -12px;
 }
 
 /**** CLIENT/INDEX.HTML ****/
@@ -412,3 +409,203 @@ padding-right: 30px;
     width:1000px; 
     height:600px;
 }
+
+/**** MEDIA QUERIES INDEX.HTML ET BASE.HTML ****/
+
+@media screen and (max-width: 540px)
+{
+    #nav_infos
+    {
+      color: white !important;
+      padding-right: 10px;
+      padding-top: 25px;
+    }
+
+    #clientDropdown
+    {
+      color: white !important;
+      padding-right: 10px;
+      margin-top: 10px;
+    }
+
+    #img_picto_panier
+    {
+      padding-top: 10px;
+      margin-right: -40px;
+    }
+
+    #img_picto_drapeau
+    {
+      margin-right: 10px;
+    }
+
+    #titre_categories
+    {
+      padding-left: 8px;
+    }
+
+    #guitare
+    {
+      padding-bottom: 20px;
+      margin-left: -12px;
+    }
+
+    #banniere_droite
+    {
+      margin-left: 70px;
+    }
+
+    #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
+    {
+      width: 90%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #img9
+    {
+        padding-bottom: 10px;
+    }
+
+    #titre_partenaires
+    {
+        margin-top: 30px;
+    }
+
+    #img_meilleures_ventes
+    {
+        width: 95%;
+    }
+
+    #img9 
+    {
+        margin-left: 10px;
+        width: 90%;
+    }
+  }
+
+  @media screen and (min-width: 540px) and (max-width: 1000px)
+  {
+    #nav_infos
+    {
+      color: white !important;
+      padding-right: 10px;
+      padding-top: 25px;
+    }
+
+    #clientDropdown
+    {
+      color: white !important;
+      padding-right: 10px;
+      margin-top: 10px;
+    }
+
+    #img_picto_panier
+    {
+      padding-top: 10px;
+      margin-right: -40px;
+    }
+
+    #img_picto_drapeau
+    {
+      margin-right: 10px;
+    }
+
+    #titre_categories
+    {
+      padding-left: 10px;
+    }
+
+    #guitare
+    {
+      padding-bottom: 20px;
+      margin-left: -12px;
+    }
+
+    #banniere_droite
+    {
+      margin-left: 100px;
+    }
+
+    #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
+    {
+      width: 90%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    #titre_partenaires
+    {
+        margin-top: 30px;
+    }
+
+    #img_meilleures_ventes
+    {
+        width: 95%;
+    }
+
+    #img9 
+    {
+        margin-left: -5px;
+        width: 90%;
+    }
+  }
+
+  @media screen and (min-width: 900px) and (max-width: 1200px)
+  {
+    #produitDropdown, #services, #aide, #propos
+    {
+      font-size: 18px;
+      margin-left: 5px;
+      margin-right: -15px;
+      padding-top: 10px;
+    }
+
+    #nav_guitare, #nav_batterie, #nav_clavier, #nav_studio, #nav_sono, #nav_eclairage, #nav_dj, #nav_case, #nav_accessoire 
+    {
+      font-size: 15px;
+      margin-left: 4px;
+    }
+
+    #nav_infos
+    {
+      color: white !important;
+      padding-right: 10px;
+      padding-top: 25px;
+    }
+
+    #clientDropdown
+    {
+      color: white !important;
+      padding-right: 10px;
+      margin-top: 10px;
+    }
+
+    #img_picto_panier
+    {
+      padding-top: 10px;
+      margin-right: -40px;
+    }
+
+    #img_picto_drapeau
+    {
+      margin-right: 10px;
+    }
+
+    #titre_partenaires
+    {
+        margin-top: 4px;
+    }
+
+    #img_meilleures_ventes
+    {
+        width: 95%;
+    }
+
+    #img9 
+    {
+        margin-left: -30px;
+    }
+  }
