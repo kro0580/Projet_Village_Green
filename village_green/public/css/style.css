@@ -1,4 +1,5 @@
-/**************************************************** BASE.HTML *****************************************************/
+/***** BASE.HTML ****/
+
 body
 {
     background-size: 100%;
@@ -143,7 +144,7 @@ h2
     margin-top: -7px;
 }
 
-/*********************************************************** HOME/INDEX.HTML ********************************************************/
+/**** HOME/INDEX.HTML ****/
 
 #corps_index {
     background-color: #e8e9ea;
@@ -297,7 +298,8 @@ padding-right: 30px;
 
 #img_connexion 
 {
-    width: 30%;
+    width: 35%;
+    margin-top: -30px;
     margin-bottom: 30px;
 }
 
@@ -410,28 +412,36 @@ padding-right: 30px;
     height:600px;
 }
 
-/**** MEDIA QUERIES INDEX.HTML ET BASE.HTML ****/
+/**** MEDIA QUERIES INDEX.HTML ET BASE.HTML (Responsive à tester sur http://ami.responsivedesign.is/) ****/
+/*
+Desktop
+1600x992px scaled down to scale(0.3181)
+Laptop
+1280x802px scaled down to scale(0.277)
+Tablet
+768x1024px scaled down to scale(0.219)
+Mobile
+320x480px scaled down to scale(0.219)
+*/
 
-@media screen and (max-width: 540px)
+@media only screen and (min-width: 320px) and (max-width: 480px)
 {
     #nav_infos
     {
-      color: white !important;
+      color: black !important;
       padding-right: 10px;
-      padding-top: 25px;
+      padding-top: 130px;
     }
 
     #clientDropdown
     {
-      color: white !important;
+      color: black !important;
       padding-right: 10px;
-      margin-top: 10px;
     }
 
     #img_picto_panier
     {
-      padding-top: 10px;
-      margin-right: -40px;
+      margin-right: -30px;
     }
 
     #img_picto_drapeau
@@ -439,53 +449,55 @@ padding-right: 30px;
       margin-right: 10px;
     }
 
-    #titre_categories
-    {
-      padding-left: 8px;
-    }
-
     #guitare
     {
+      width: 150%;
       padding-bottom: 20px;
-      margin-left: -12px;
+      margin-left: -60px;
     }
 
     #banniere_droite
     {
-      margin-left: 70px;
+      margin-left: -10px;
     }
 
     #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
     {
-      width: 90%;
+      width: 100%;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    #img9
+    #titre_categories
     {
-        padding-bottom: 10px;
+      margin-left: 12px
+    }
+
+    #titre_meilleures_ventes
+    {
+      margin-left: -20px
     }
 
     #titre_partenaires
     {
-        margin-top: 30px;
+      margin-top: 30px;
+      margin-left: -20px;
     }
 
     #img_meilleures_ventes
     {
-        width: 95%;
+      width: 95%;
+      padding-right: 25px;
     }
 
-    #img9 
+    #img_partenaires
     {
-        margin-left: 10px;
-        width: 90%;
+      margin-left: -5px;
+      width: 90%;
+      padding-bottom: 10px;
     }
   }
 
-  @media screen and (min-width: 540px) and (max-width: 1000px)
+  @media screen and (min-width: 768px) and (max-width: 1024px)
   {
     #nav_infos
     {
@@ -514,7 +526,7 @@ padding-right: 30px;
 
     #titre_categories
     {
-      padding-left: 10px;
+      padding-left: 20px;
     }
 
     #guitare
@@ -525,7 +537,7 @@ padding-right: 30px;
 
     #banniere_droite
     {
-      margin-left: 100px;
+      display: none;
     }
 
     #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
@@ -538,74 +550,19 @@ padding-right: 30px;
 
     #titre_partenaires
     {
-        margin-top: 30px;
+      margin-top: 30px;
     }
 
     #img_meilleures_ventes
     {
-        width: 95%;
+      width: 95%;
+      padding-left: 20px;
     }
 
-    #img9 
+    #img_partenaires
     {
-        margin-left: -5px;
-        width: 90%;
-    }
-  }
-
-  @media screen and (min-width: 900px) and (max-width: 1200px)
-  {
-    #produitDropdown, #services, #aide, #propos
-    {
-      font-size: 18px;
-      margin-left: 5px;
-      margin-right: -15px;
-      padding-top: 10px;
-    }
-
-    #nav_guitare, #nav_batterie, #nav_clavier, #nav_studio, #nav_sono, #nav_eclairage, #nav_dj, #nav_case, #nav_accessoire 
-    {
-      font-size: 15px;
-      margin-left: 4px;
-    }
-
-    #nav_infos
-    {
-      color: white !important;
-      padding-right: 10px;
-      padding-top: 25px;
-    }
-
-    #clientDropdown
-    {
-      color: white !important;
-      padding-right: 10px;
-      margin-top: 10px;
-    }
-
-    #img_picto_panier
-    {
-      padding-top: 10px;
-      margin-right: -40px;
-    }
-
-    #img_picto_drapeau
-    {
-      margin-right: 10px;
-    }
-
-    #titre_partenaires
-    {
-        margin-top: 4px;
-    }
-
-    #img_meilleures_ventes
-    {
-        width: 95%;
-    }
-
-    #img9 
-    {
-        margin-left: -30px;
+      margin-left: 15px;
+      width: 90%;
+      padding-bottom: 10px;
     }
   }
