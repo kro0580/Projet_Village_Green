@@ -1,7 +1,9 @@
 <form method="post" name="delete2" action="{{ path('produit_delete', {'proId': produit.proId}) }}" onsubmit="deleteForm2()">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.proId) }}">
+    {% if is_granted('ROLE_ADMIN') %}
     <button class="btn btn-danger float-right" id="btn_supprimer">SUPPRIMER</button>
+    {% endif %}
 </form>
 
 <script src="{{ asset('js/sweet_alert.js') }}"></script>

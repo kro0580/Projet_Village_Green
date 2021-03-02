@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use DateInterval;
 use App\Classe\Cart;
+use App\Entity\Passe;
 use App\Entity\Client;
 use App\Entity\Commande;
 use App\Entity\Livraison;
-use App\Entity\Passe;
-use DateInterval;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ValiderCommandeController extends AbstractController
 {
@@ -22,7 +24,7 @@ class ValiderCommandeController extends AbstractController
     /**
      * @Route("/commande/merci/{stripSessionId}", name="commande_valider")
      */
-    public function index($stripSessionId, Cart $cart): Response
+    public function index($stripSessionId, Cart $cart, MailerInterface $mailer): Response
     {
         $commande= $this->entityManager->getRepository(Commande::class)->findOneBycmd_strip_id_session($stripSessionId);
         if (!$commande){
@@ -39,7 +41,7 @@ class ValiderCommandeController extends AbstractController
             $livraison->setLivCmd($commande);
             $diffHours = new DateInterval('PT24H');
             $livraison->setLivDate($commande->getCmdDate()->add($diffHours));
-            $livraison->setLivEtat("Encours de preparation");
+            $livraison->setLivEtat("En cours de preparation");
             $passe = new passe();
             $passe->setPasseCliId($this->getUser());
             $passe->setPasseCmdId($commande->getCmdId());
@@ -47,7 +49,25 @@ class ValiderCommandeController extends AbstractController
             $this->entityManager->persist($passe);
             $this->entityManager->flush();
 
-            //A revoir(Envoyer un mail de confirmation au client)
+            //Envoi mail de confirmation de commande
+            $client = $this->getUser();
+            $mail = $client->getCliEmail();
+
+            $email = (new TemplatedEmail())
+                ->from('contact@village_green.org')
+                ->to($mail)
+                ->subject('Confirmation de commande')
+                ->htmlTemplate('emails/conf_commande.html.twig')
+                ->context([
+                    'username' => $client->getCliPrenom(),
+                    'reference' => $commande->getCmdReference(),
+                    'adresse' => $commande->getCmdCliAdresseLiv(),
+                    'cp' => $commande->getCmdCliCpLiv(),
+                    'ville' => $commande->getCmdCliVilleLiv(),
+                ])
+                ;
+
+            $mailer->send($email);
         }
 
         return $this->render('commande_valider/index.html.twig', [

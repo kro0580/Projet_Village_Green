@@ -24,12 +24,12 @@ class ClientController extends AbstractController
      */
     public function index(): Response
     {
-        $clients = $this->getDoctrine()
+        $client = $this->getDoctrine()
             ->getRepository(Client::class)
             ->findAll();
 
         return $this->render('client/index.html.twig', [
-            'clients' => $clients,
+            'clients' => $client,
         ]);
     }
 
@@ -147,9 +147,6 @@ class ClientController extends AbstractController
      */
     public function delete(Request $request, Client $client): Response
     {
-        //Pour empêcher la suppression d'un autre profil que celui de la personne connectée
-        $this->denyAccessUnlessGranted('delete', $client, 'Vous ne pouvez pas supprimer ce profil !');
-
         if ($this->isCsrfTokenValid('delete'.$client->getCliId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             session_destroy();

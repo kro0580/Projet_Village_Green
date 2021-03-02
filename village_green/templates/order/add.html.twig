@@ -6,7 +6,7 @@
 {% endblock %}
 {% block body %}
     <div class="container">
-        <h1>Récapitulatif</h1>
+        <h1 id="titre_order">Récapitulatif de votre commande</h1>
         <p>Vérifiez vos informations avant le paiement</p>
         <hr>
         <div class="row">
@@ -18,7 +18,7 @@
                 <p><strong>Mon transporteur</strong></p>
                 {{ livreur.livNom }}<br>
                 {{ livreur.livDescription }}<br>
-                {{ livreur.livPrix/100}} €
+                {{ (livreur.livPrix/100)|number_format(2) }} €
 
             </div>
             <div class="col-md-6">
@@ -28,7 +28,7 @@
                         {% set sousTotal= null %}
                         {% for produit in cart %}
                             <tr >
-                                <th><img src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" height="20%"></th>
+                                <th><img style="height: 200px;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" height="20%"></th>
                                 <td>{{ produit.produit.proLib }} </td>
                                 <td>x {{ produit.quantite }}</td>
                                 <td>{{ produit.produit.proPrixAchat }}€</td>
@@ -40,10 +40,10 @@
                 </div>
                 <div>
                     <hr>
-                    <strong>Sous total:</strong> {{ (sousTotal)}} € <br>
-                    <strong>Livraison:</strong> {{ livreur.livPrix/100}} €<br>
+                    <strong>Sous total :</strong> {{ (sousTotal)|number_format(2) }} € <br>
+                    <strong>Livraison :</strong> {{ (livreur.livPrix/100)|number_format(2) }} €<br>
                     <hr>
-                    <strong>Total:</strong> {{ (sousTotal + livreur.livPrix/100)}} €<br>
+                    <strong>Total :</strong> {{ (sousTotal + livreur.livPrix/100)|number_format(2) }} €<br>
                 </div>
             </div>
             <a id="checkout-button" class="btn btn-block btn-success" >Payer | {{ (sousTotal + livreur.livPrix/100)|number_format(2)}} €</a>

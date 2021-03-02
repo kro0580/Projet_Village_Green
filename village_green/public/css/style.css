@@ -150,7 +150,7 @@ h2
     background-color: #e8e9ea;
 }
 
-/****************************************************************** PRODUIT/INDEX.HTML *************************************************/
+/**** PRODUIT/INDEX.HTML ****/
 
 .card{
     height: 515px;
@@ -163,7 +163,7 @@ h2
     object-fit: contain;
 }
 
-/****************************************************************** PRODUIT/_FORM.HTML *************************************************/
+/**** PRODUIT/_FORM.HTML ****/
 
 #btn_ajouter, #btn_retour{
     margin-bottom: 20px;
@@ -173,7 +173,7 @@ h2
     margin-top: -60px;
 }
 
-/****************************************************************** PRODUIT/SHOW.HTML *************************************************/
+/**** PRODUIT/SHOW.HTML ****/
 
 #btn_modif, #btn_retour2{
     margin-bottom: 20px;
@@ -184,6 +184,43 @@ h2
     height: 30vh;
     object-fit: contain;
     margin-top: 10px;
+}
+
+/***** CLIENT/INDEX.HTML ****/
+
+#admin_clients
+{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#btn_accueil a
+{
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 19.5%;
+    margin-right: 0.625%;
+    text-align: center;
+    line-height: 3;
+    color: white;
+}
+
+#btn_accueil a:link, #btn_accueil a:visited, #btn_accueil a:focus 
+{
+    background: #303241;
+    border-radius: 5px;
+}
+
+#btn_accueil a:hover
+{
+    background: orange;
+}
+
+#btn_accueil a:active
+{
+    background: red;
+    color: white;
 }
 
 /***** CLIENT/NEW.HTML ****/
@@ -201,7 +238,7 @@ h2
 
 #identifiants
 {
-padding-right: 30px;
+    padding-right: 30px;
 }
 
 .progress
@@ -339,10 +376,87 @@ padding-right: 30px;
 
 /**** CLIENT/ADRESSE.HTML ****/
 
+#adresse_client
+{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#adresse_panier
+{
+    margin-left: 10px;
+}
+
+#bloc_adresse
+{
+    padding-bottom: 50px;
+}
+
+#adresse_principale
+{
+    padding-top: 40px;
+}
+
+#img_adresse
+{
+    width: 8%;
+}
+
+#adresse_vide
+{
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+/**** CLIENT/AJOUT_ADRESSE.HTML ****/
+
 #adresse_submit
 {
     margin-bottom: 20px;
 }
+
+/**** COMMANDE/INDEX.HTML ****/
+
+#img_conf_commande
+{
+    width: 15%; 
+    float: right; 
+    margin-right: 100px;
+}
+
+#titre_conf_commande
+{
+    margin-bottom: 70px;
+}
+
+#p_conf_commande
+{
+    padding-bottom: 30px;
+}
+
+/**** ORDER/ADD.HTML ****/
+
+#titre_order
+{
+    margin-bottom: 40px;
+}
+
+#checkout-button
+{
+    margin-top: 20px;
+}
+
+/**** ORDER/INDEX.HTML ****/
+
+#lien_adresse
+  {
+      padding-bottom: 30px;
+  }
+
+legend
+  {
+    font-weight: bold;
+  }
 
 /**** BUNDLE/ERROR403.HTML ****/
 

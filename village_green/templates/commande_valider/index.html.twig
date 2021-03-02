@@ -3,15 +3,17 @@
 {% block title %}Confirmation de commande{% endblock %}
 
 {% block body %}
+  <img id="img_conf_commande" src=" {{ asset('img/BODY/ESPACE CLIENT/conf_commande.png') }}" id="conf_commande" alt="confirmation commande">
   <div class="container-fluid">
-    <h2>Confirmation de commande</h2>
+    <h2 id="titre_conf_commande">Confirmation de commande</h2>
     <p>Bonjour <strong>{{ app.user.cliPrenom }} {{ app.user.cliNom }}</strong><br>
-      Merci, nous avons bien réçue votre commande n°: <strong>{{ commande.cmdReference }}</strong><br>
-      Veillez consulter votre messagerie ({{ app.user.cliEmail }}) pour obtenir la confirmation et les détails de la livraison. <br>
+      Merci, nous avons bien reçu votre commande n° : <strong>{{ commande.cmdReference }}</strong><br>
+      Une email de confirmation de commande vous a été envoyé.<br>
+      Veuillez consulter votre messagerie ({{ app.user.cliEmail }}) pour obtenir les informations de votre commande et les détails de la livraison. <br>
     </p>
     <hr>
-    <p>
-      Votre commande vous sera livré par {{ commande.cmdLivNom}} à l'adresse suivante: <strong>{{ commande.cmdCliAdresseLiv }}, {{ commande.cmdCliCpLiv }} - {{ commande.cmdCliVilleLiv }}</strong>
+    <p id="p_conf_commande">
+      Votre commande vous sera livrée par {{ commande.cmdLivNom}} à l'adresse suivante : <strong>{{ commande.cmdCliAdresseLiv }}, {{ commande.cmdCliCpLiv }} - {{ commande.cmdCliVilleLiv }}</strong>
     </p>
   </div>
 {% endblock %}

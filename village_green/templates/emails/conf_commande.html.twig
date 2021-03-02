@@ -1,0 +1,20 @@
+<img src="{{ email.image('@images/logo_village.png') }}" alt="Logo">
+
+<h1>Bienvenue {{ username }} !</h1>
+
+<p>
+    Vous avez passé une commande avec l'adresse email suivante : <code>{{ email.to[0].address }}</code>
+</p>
+
+<p>
+    Nous vous remercions et vous confirmons qu'elle a été enregistrée sous le numéro {{ reference }}
+</p>
+
+<p>
+    Vous serez livré(e) sous 7 jours à l'adresse suivante :<br>
+    {{ adresse }}<br>
+    {{ cp }}<br>
+    {{ ville }}
+</p>
+
+<img style="width: 10%;"  src="{{ email.image('@images/merci.jpg') }}" alt="A bientôt">

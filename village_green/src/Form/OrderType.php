@@ -33,7 +33,7 @@ class OrderType extends AbstractType
                 'choices'=>$user->getCliAdresses()
             ])
             ->add('livreur', EntityType::class, [
-                'label'=>'Choisir mon livreur',
+                'label'=>'Choisir mon transporteur',
                 'required'=>true,
                 'multiple'=>false,
                 'class'=>Livreur::class,

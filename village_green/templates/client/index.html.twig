@@ -9,6 +9,8 @@
         <img id="img_clients" src=" {{ asset('img/BODY/ESPACE CLIENT/clients.png') }}" alt="img clients">
     </div>
 
+    {% if is_granted('ROLE_ADMIN') %}
+
     <div class="container">
 
         <table id="table_client" class="table table-striped table-hover table-responsive">
@@ -58,4 +60,14 @@
     </div>
 
     <a id="bouton_create" class="btn btn-success mb-3" href="{{ path('client_new') }}">AJOUTER UN NOUVEAU CLIENT</a>
+
+{% else %}
+
+    <p id="admin_clients">Il faut être administrateur du site pour accéder à cette page !</p>
+    <div id="btn_accueil" class="col-12 pt-4 pb-4 text-center">
+    <a href="{{ path('home') }}">REVENIR A L'ACCUEIL
+    </div>
+
+{% endif %}
+
 {% endblock %}

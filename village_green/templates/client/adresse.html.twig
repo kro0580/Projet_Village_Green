@@ -4,13 +4,15 @@
 {% endblock %}
 {% block body %}
  <div class="container">
-  <h1 style="margin-bottom: 20px; text-align: center;">Mes adresses</h1>
-  <a href="{{ path('cart') }}" style="margin-left: 10px;" class="btn btn-info btn-sm float-right">MON PANIER</a>
-  <a href="{{ path('add_adresse') }}" class="btn btn-info btn-sm float-right">AJOUTER UNE ADRESSE</a>
+  <h1 id="adresse_client">Mes adresses</h1>
+  <a href="{{ path('cart') }}" id="adresse_panier" class="btn btn-outline-primary float-right">MON PANIER</a>
+  <a href="{{ path('add_adresse') }}" class="btn btn-outline-primary float-right">AJOUTER UNE ADRESSE</a>
+  <img src=" {{ asset('img/BODY/ESPACE CLIENT/adresse.png') }}" id="img_adresse" alt="img adresse">
   {% if app.user.cliAdresses|length == 0 %}
-   <p class="text-center">Vous n'avez pas encore ajouté d'adresse. Pour en ajouter une, veuillez <a href="{{ path('add_adresse') }}">cliquer ici</a> </p>
+   <p id="adresse_vide" class="text-center">Vous n'avez pas encore renseigné d'adresse. Pour en ajouter une, <a href="{{ path('add_adresse') }}">cliquer ici ou sur le bouton "AJOUTER UNE ADRESSE"</a> </p>
   {% else %}
-   <div style="padding-bottom: 20px;" class="row">
+  <p id="adresse_principale"><strong>Mon adresse principale :</strong></p> 
+   <div id="bloc_adresse" class="row">
     {% for adresse in app.user.cliAdresses %}
      <div class="col">
          {% set formHtml %}

@@ -10,14 +10,13 @@ class ClientVoter extends Voter {
     //Définition d'un constante contenant la/les action(s) à surveiller
     const SHOW = 'show';
     const EDIT = 'edit';
-    const DELETE = 'delete';
 
     //$attribute = action définie
     //$client = ce sur quoi se fait le vote
     protected function supports($attribute, $client)
     {
         //L'attribut n'est pas dans la liste
-        if (!in_array($attribute, [self::SHOW, self::EDIT, self::DELETE])) {
+        if (!in_array($attribute, [self::SHOW, self::EDIT])) {
             return false;
         }
         //Si $client n'est pas une instance de Client => pas dans la liste des clients
@@ -49,8 +48,6 @@ class ClientVoter extends Voter {
             case self::SHOW:
                 return $client->getCliId() == $utilisateur->getCliId();
             case self::EDIT:
-                return $client->getCliId() == $utilisateur->getCliId();
-            case self::DELETE:
                 return $client->getCliId() == $utilisateur->getCliId();
         }
 
