@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 12 fév. 2021 à 16:27
+-- Généré le : mer. 03 mars 2021 à 15:14
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.4
 
@@ -59,6 +59,13 @@ CREATE TABLE `adresse` (
   `adr_cp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `adresse`
+--
+
+INSERT INTO `adresse` (`id`, `adr_cli_id`, `adr_num_rue`, `adr_ville`, `adr_pays`, `adr_cp`) VALUES
+(1, 32, '2 rue des Louvels', 'Amiens', 'FR', '80000');
+
 -- --------------------------------------------------------
 
 --
@@ -78,21 +85,23 @@ CREATE TABLE `client` (
   `cli_categ` varchar(50) DEFAULT NULL,
   `cli_coeff` decimal(5,2) DEFAULT NULL,
   `cli_com_id` int(11) DEFAULT NULL,
-  `cli_role` varchar(255) NOT NULL
+  `cli_role` varchar(255) NOT NULL,
+  `cli_reset_token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`cli_id`, `cli_nom`, `cli_prenom`, `cli_email`, `cli_password`, `cli_adresse`, `cli_cp`, `cli_ville`, `cli_regl`, `cli_categ`, `cli_coeff`, `cli_com_id`, `cli_role`) VALUES
-(1, 'Morel', 'Jacques', '', '', '12 rue de la République', '80000', 'Amiens', 'Immédiat', 'Particulier', '1.00', 1, ''),
-(2, 'Guérin', 'Charles', '', '', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', 'Immédiat', 'Particulier', '1.00', 5, ''),
-(3, 'Boyer', 'Caroline', '', '', 'Rue de l’Eglise', '80330', 'Longueau', 'Différé', 'Professionnel', '1.00', 3, ''),
-(4, 'Perrin', 'Clément', '', '', '56 rue Saint Fuscien', '80700', 'Roye', 'Différé', 'Professionnel', '1.00', 2, ''),
-(5, 'Duval', 'Pascal', '', '', '79 rue Delpech', '80450', 'Camon', 'Différé', 'Professionnel', '1.00', 4, ''),
-(31, 'Dumas', 'Clément', 'clement@afpa.fr', '$2y$12$M18mLPEayxzlxl2m/qfZAuUW3PYUWdMO.sxk1f4XKMoWH8MQTtbfO', '2 rue des Louvels', '80000', 'Amiens', 'A définir', 'A définir', '1.00', NULL, 'utilisateur'),
-(32, 'Potelle', 'Caroline', 'caro@afpa.fr', '$2y$12$RV6oOrSpQp7ptLBwdI/R8.fn/AIhCxC2RtxK8pRa7ryvueNw70ztu', '2 rue de la République', '80090', 'Amiens', 'A définir', 'A définir', '1.00', NULL, 'administrateur');
+INSERT INTO `client` (`cli_id`, `cli_nom`, `cli_prenom`, `cli_email`, `cli_password`, `cli_adresse`, `cli_cp`, `cli_ville`, `cli_regl`, `cli_categ`, `cli_coeff`, `cli_com_id`, `cli_role`, `cli_reset_token`) VALUES
+(1, 'Morel', 'Jacques', '', '', '12 rue de la République', '80000', 'Amiens', 'Immédiat', 'Particulier', '1.00', 1, '', NULL),
+(2, 'Guérin', 'Charles', '', '', '5 Impasse des Lilas', '80250', 'Ailly-sur-Noye', 'Immédiat', 'Particulier', '1.00', 5, '', NULL),
+(3, 'Boyer', 'Caroline', '', '', 'Rue de l’Eglise', '80330', 'Longueau', 'Différé', 'Professionnel', '1.00', 3, '', NULL),
+(4, 'Perrin', 'Clément', '', '', '56 rue Saint Fuscien', '80700', 'Roye', 'Différé', 'Professionnel', '1.00', 2, '', NULL),
+(5, 'Duval', 'Pascal', '', '', '79 rue Delpech', '80450', 'Camon', 'Différé', 'Professionnel', '1.00', 4, '', NULL),
+(32, 'Potelle', 'Caroline', 'caro@afpa.fr', '$2y$12$RV6oOrSpQp7ptLBwdI/R8.fn/AIhCxC2RtxK8pRa7ryvueNw70ztu', '2 rue de la République', '80090', 'Amiens', 'A définir', 'A définir', '1.00', NULL, 'administrateur', NULL),
+(39, 'Dumas', 'Clément', 'clement@afpa.fr', '$2y$12$7Uc4j2kwFWsbMx74ucYOpectd4SxcOpVi1z9lcmp9BTArXdXLiPju', '12 rue des Platanes', '80000', 'Amiens', 'A définir', 'A définir', '1.00', NULL, 'utilisateur', NULL),
+(42, 'Cousin', 'Cédric', 'cedric@afpa.fr', '$2y$12$ChfCxckJhgNsM833sFFg6uOJ7ZG2GzTYQ4UC2YWlyMXaKu2Fp1OEy', '1 rue Jules Barni', '80000', 'Amiens', 'A définir', 'A définir', '1.00', NULL, 'utilisateur', NULL);
 
 -- --------------------------------------------------------
 
@@ -309,7 +318,10 @@ CREATE TABLE `livreur` (
 --
 
 INSERT INTO `livreur` (`id`, `liv_nom`, `liv_description`, `liv_prix`) VALUES
-(2, 'DHL', 'Profitez de notre livraison expresse', 1230);
+(2, 'DHL', 'Profitez de notre livraison expresse', 1230),
+(3, 'UPS', 'Profitez de nos prix réduits', 950),
+(4, 'FEDEX', 'Profitez de nos délais de livraison rapide', 1550),
+(6, 'TNT', 'Profitez de nos tarifs intéressants', 1000);
 
 -- --------------------------------------------------------
 
@@ -360,36 +372,36 @@ CREATE TABLE `produit` (
 INSERT INTO `produit` (`pro_id`, `pro_lib`, `pro_descr`, `pro_prix_achat`, `pro_photo`, `pro_stock`, `pro_actif`, `pro_s_rub_id`) VALUES
 (1, 'Harley Benton S-620 TR', 'Série Rock - Corps en tilleul - Table bombée - Manche vissé en érable - Profil du manche: Modern C - Touche en Roseacer - Filet de touche blanc - Repères \"points\" - 24 frettes - Diapason: 648 mm', '158.00', '155044.jpg', 10, 0, 1),
 (2, 'Harley Benton ST-20 BK', 'Série Standard - Corps en tilleul - Manche en érable - Profil du manche: Modern C - Touche en Roseacer - Rayon de la touche: 350 mm - Repères \"points\" - 22 frettes - Diapason: 648 mm', '79.00', '135305.jpg', 25, 0, 1),
-(3, 'Startone CG-851', 'Taille: 1/8 - Corps en tilleul - Manche en nato - Touche en érable - Diapason: 465 mm - Largeur au sillet: 39 mm - Filet de corps noir - Longueur totale: 762 mm - Cordes en nylon - Couleur: Rose', '31.00', '394726.jpg', 12, 0, 2),
-(4, 'Harley Benton GL-2NT', 'Guitare classique 1/8 - Table en épicéa - Fond et éclisses en acajou (Entandrophragma cylindricum) - Manche en nato - Touche en blackwood (Pinus radiata) - Filet noir - 17 frettes - Diapason: 433 mm', '49.00', '371679.jpg', 56, 0, 2),
+(3, 'Startone CG-851', 'Taille: 1/8 - Corps en tilleul - Manche en nato - Touche en érable - Diapason: 465 mm - Largeur au sillet: 39 mm - Filet de corps noir - Longueur totale: 762 mm - Cordes en nylon - Couleur: Rose', '102.00', '394726.jpg', 12, 0, 2),
+(4, 'Harley Benton GL-2NT', 'Guitare classique 1/8 - Table en épicéa - Fond et éclisses en acajou (Entandrophragma cylindricum) - Manche en nato - Touche en blackwood (Pinus radiata) - Filet noir - 17 frettes - Diapason: 433 mm', '79.00', '371679.jpg', 56, 0, 2),
 (5, 'Harley Benton D-120CE', 'Dreadnought - Pan coupé - Table en épicéa - Fond et éclisses en acajou - Manche en acajou - Profil du manche en C - Touche en Roseacer - 20 frettes - Repères \"points\" - Diapason: 650 mm', '79.00', '157819.jpg', 150, 0, 3),
-(6, 'Takamine EF341SC', 'Modèle Bruce Springsteen -Dreadnought - Pan coupé - Table en cèdre massif - Fond et éclisses en érable - Touche et chevalet en palissandre - Repères \"flocons de neige\" en nacre', '1.11', '152211.jpg', 13, 0, 3),
+(6, 'Takamine EF341SC', 'Modèle Bruce Springsteen -Dreadnought - Pan coupé - Table en cèdre massif - Fond et éclisses en érable - Touche et chevalet en palissandre - Repères \"flocons de neige\" en nacre', '111.00', '152211.jpg', 13, 0, 3),
 (7, 'Harley Benton JB-75MN', '4 cordes - Série Vintage - Corps en frêne américain - Manche vissé en érable avec bande en Roseacer', '158.00', '224321.jpg', 450, 0, 4),
 (8, 'Marcus Miller V7 Swamp Ash-4', '4 cordes - Fabriquée par Sire - Corps en frêne des marais - Manche 1 pièce en érable', '499.00', '446264.jpg', 356, 0, 4),
 (9, 'Harley Benton Kahuna', 'Electro-acoustique - Série Custom Line Kahuna - Taille Traveller - Table en épicéa', '148.00', '11351477_800.jpg', 28, 0, 5),
 (10, 'Harley Benton B-30BK Acoustic', '4 cordes - Série Acoustic Bass - Super Jumbo - Pan coupé - Table en épicéa', '148.00', '165299.jpg', 178, 0, 5),
-(11, 'Harley Benton UK-12', 'Corps en tilleul - Manche en tilleul - Touche en Roseacer - 12 frettes - Diapason: 348 mm', '19.90', '14757106_800.jpg', 456, 0, 6),
-(12, 'Harley Benton Ukulele UK-11', 'Table laminée - Fond et éclisses en tilleul - Touche en Roseacer - Longueur totale: 520 mm - 12 frettes', '18.90', '15089265_800.jpg', 154, 0, 6),
+(11, 'Harley Benton UK-12', 'Corps en tilleul - Manche en tilleul - Touche en Roseacer - 12 frettes - Diapason: 348 mm', '89.90', '14757106_800.jpg', 456, 0, 6),
+(12, 'Harley Benton Ukulele UK-11', 'Table laminée - Fond et éclisses en tilleul - Touche en Roseacer - Longueur totale: 520 mm - 12 frettes', '120.80', '15089265_800.jpg', 154, 0, 6),
 (13, 'Millenium Youngster Drum Set', 'Idéale pour les enfants à partir de 3 ans - Grosse caisse 16\"x12\" - Tom 08\"x05\" - caisse claire 10\"x04\" - Fûts en bois dur', '99.00', '14593713_800.jpg', 190, 0, 7),
 (14, 'Millenium MX Jr. Junior Drumset', 'Pour enfants de 4 à 7 ans - Grosse caisse 16\"x10\"- Tom 08\"x05\" - Tom 10\"x06\"', '148.00', '7536758_800.jpg', 765, 0, 7),
 (15, 'Millenium HD-120 E-Drum Set', 'Pour débutants et enfants - Encombrement requis: 1000 x 600 mm - 12 kits de batterie - Métronome 40-240 bpm', '222.00', '14367118_800.jpg', 436, 0, 8),
 (16, 'Millenium MPS-150 E-Drum Set', 'Idéale pour les débutants - Batterie complète avec module de sons, rack/supports, pédale de grosse caisse et câblage - Poids total: 18,2 kg', '258.00', '10083900_800.jpg', 643, 0, 8),
 (17, 'Zildjian 06\" A-Custom Splash', 'Finition: Brillante - Cymbale martelée à la main', '95.00', '14013887_800.jpg', 763, 0, 9),
 (18, 'Zildjian 06\" A-Series Splash', 'Finition: Régulière - Cymbale martelée à la main', '105.00', '10389887_800.jpg', 409, 0, 9),
-(19, 'Millenium 7A Drum Sticks Maple -Wood', 'En érable - Olives en bois', '2.19', '1732818_800.jpg', 498, 0, 10),
-(20, 'Vic Firth 7AN American Classic Hickory', 'En hickory américain - Longueur: 394 mm - Diamètre: 13,7 mm - Olives en nylon', '11.00', '13297521_800.jpg', 27, 0, 10),
+(19, 'Millenium 7A Drum Sticks Maple -Wood', 'En érable - Olives en bois', '219.00', '1732818_800.jpg', 498, 0, 10),
+(20, 'Vic Firth 7AN American Classic Hickory', 'En hickory américain - Longueur: 394 mm - Diamètre: 13,7 mm - Olives en nylon', '110.60', '13297521_800.jpg', 27, 0, 10),
 (21, 'Millenium MC890NT Conga Set', 'En bois - Finition: Vernis - Couleur: Naturel/ambre', '219.00', '10805740_800.jpg', 245, 0, 11),
 (22, 'LP LPA647-SW 11+12 Conga Set I', 'Série Aspire - Fûts en noyer de Siam', '433.00', '11263498_800.jpg', 46, 0, 11),
 (23, 'Yamaha PSR-SX900', '61 touches sensibles à la vélocité - Nouveau clavier FSB', '1890.00', '14616988_800.jpg', 678, 0, 12),
-(24, 'Startone MKR 61', '61 touches - 128 sons - 128 rythmes', '49.00', '9980986_800.jpg', 298, 0, 12),
-(25, 'Moog Matriarch', 'Générateur de son analogique - Séquenceur 256 pas', '2.10', '14907405_800.jpg', 870, 0, 13),
+(24, 'Startone MKR 61', '61 touches - 128 sons - 128 rythmes', '89.50', '9980986_800.jpg', 298, 0, 12),
+(25, 'Moog Matriarch', 'Générateur de son analogique - Séquenceur 256 pas', '210.20', '14907405_800.jpg', 870, 0, 13),
 (26, 'Behringer Poly D', '37 touches sensibles à la vélocité', '718.00', '14923795_800.webp', 465, 0, 13),
 (27, 'AKAI Professional MPK mini MK2 white', '25 mini-touches synth-action - Arpégiateur', '89.00', '12313797_800.jpg', 321, 0, 14),
 (28, 'AKAI Professional MPK Mini MK3', '25 touches miniatures sensibles à la vélocité - Joystick 4 directions', '99.00', '15420811_800.jpg', 587, 0, 14),
 (29, 'Thomann DP-26', '88 touches lestées - Mécanique à marteaux', '309.00', '14120887_800.jpg', 276, 0, 15),
 (30, 'Roland FP-30 Bk', '88 touches - Clavier PHA-IV Action Ivory Feel', '622.00', '10722282_800.jpg', 123, 0, 15),
-(31, 'Kawai GL 10 E/P Grand Piano', 'Mécaniques ultra-réactives - Marteaux feutrés', '9.80', '10395977_800.jpg', 546, 0, 16),
-(32, 'Roth & Junius RJGP 186 WH/P Grand Piano', 'Cordes Röslau - Longueur: 185 cm - Hauteur: 102 cm - Largeur: 151 cm', '8.40', '4661757_800.jpg', 649, 0, 16),
+(31, 'Kawai GL 10 E/P Grand Piano', 'Mécaniques ultra-réactives - Marteaux feutrés', '480.00', '10395977_800.jpg', 546, 0, 16),
+(32, 'Roth & Junius RJGP 186 WH/P Grand Piano', 'Cordes Röslau - Longueur: 185 cm - Hauteur: 102 cm - Largeur: 151 cm', '840.00', '4661757_800.jpg', 649, 0, 16),
 (33, 'Focusrite Scarlett 2i2 3rd Gen', 'Connexion USB-C - Résolution Max 24 Bit / 192 kHz', '145.00', '14226632_800.jpg', 12, 0, 17),
 (34, 'Behringer UMC404HD', 'Avec pré-amplis micro MIDAS - Résolution: 24 bit / 192 kHz', '111.00', '13906311_800.jpg', 45, 0, 17),
 (35, 'KRK Rokit RP5 G4', 'Montage : haut-parleur en verre aramide de 5\" et tweeter en verre aramide de 1\"', '155.00', '14061542_800.jpg', 976, 0, 18),
@@ -402,7 +414,7 @@ INSERT INTO `produit` (`pro_id`, `pro_lib`, `pro_descr`, `pro_prix_achat`, `pro_
 (42, 'Behringer KM1700', 'Puissance RMS: 2x 800 Watt sous 4 Ohm - 2x 500 Watt sous 8 Ohm', '179.00', '11612204_800.jpg', 409, 0, 25),
 (43, 'Behringer CX3400 Super X Pro V2', 'Fonctionnement stéréo 2 voies ou mono 3 voies - Sortie caisson de basses supplémentaire', '85.00', '13526696_800.jpg', 254, 0, 26),
 (44, 'Stairville PAR 56 Active 300W DMX black', 'Convient pour lampes de PAR56 de 300 Watt et douille GX16D - Contrôle: DMX 512 (1 canal)', '59.00', '11855875_800.webp', 923, 0, 27),
-(45, 'Eurolite Rubberlight 1Channel 9 m Clear', 'Longueur: 9 m - Tension: 230V - Couleur: Transparent', '18.90', '11407721_800.jpg', 760, 0, 28),
+(45, 'Eurolite Rubberlight 1Channel 9 m Clear', 'Longueur: 9 m - Tension: 230V - Couleur: Transparent', '55.00', '11407721_800.jpg', 760, 0, 28),
 (46, 'Stairville AF-250 Fog Machine 1300W DMX', 'Interface DMX-512 intégrée - Télécommande inclus', '149.00', '9584365_800.jpg', 215, 0, 29),
 (47, 'Stairville LED BossFx-1 Pro Bundle Comple', 'Panneaux lumineux: 12x LEDs RVB de 9 Watt - Derby: total de 12 x LED', '355.00', '14799741_800.jpg', 76, 0, 30),
 (48, 'Stairville Wild Wash 132 LED RGB', '4 Effects in one: Floodlight, Wall Wash, Blinder and Strobe', '75.00', '11703403_800.jpg', 214, 0, 31),
@@ -415,11 +427,11 @@ INSERT INTO `produit` (`pro_id`, `pro_lib`, `pro_descr`, `pro_prix_achat`, `pro_
 (55, 'Thomann Elite Case 1335', 'Pour guitare Semi-Hollow - Série Elite', '69.00', '13950381_800.jpg', 32, 0, 38),
 (56, 'Millenium SD-180 B StudioDesk', 'Table de travail spacieuse pour les studios de production', '298.00', '13792401_800.jpg', 23, 0, 39),
 (57, 'Thomann Cover dB Technologies SUB 612', 'Convient pour dB Technologies SUB 612 - En nylon hydrofuge de haute qualité', '35.00', '15290748_800.jpg', 478, 0, 40),
-(58, 'Thomann Smartcart', 'Conçu pour transporter de DJ, de lumière, de sonorisation, de films et de télévision', '19.90', '13879781_800.jpg', 245, 0, 41),
-(59, 'Millenium MS 2003', 'Socle en fonte - Trépied pliable', '16.90', '13413261_800.jpg', 879, 0, 42),
+(58, 'Thomann Smartcart', 'Conçu pour transporter de DJ, de lumière, de sonorisation, de films et de télévision', '50.90', '13879781_800.jpg', 245, 0, 41),
+(59, 'Millenium MS 2003', 'Socle en fonte - Trépied pliable', '70.30', '13413261_800.jpg', 879, 0, 42),
 (60, 'Millenium MDT4 Drum Throne Round', 'Assise ronde - Diamètre assise: 280 mm - Trépied double embase', '44.00', '15190888_800.jpg', 78, 0, 43),
-(61, 'Alpine MusicSafe Pro - Black Edition', 'Édition black - Système avec 2 pièces', '24.90', '351479.jpg', 34, 0, 44),
-(62, 'Thomann SD Card 32 Gb Class 10', 'Capacité: 32 GB - Classe 10 - UHS-1', '13.40', '356476.jpg', 45, 0, 45),
+(61, 'Alpine MusicSafe Pro - Black Edition', 'Édition black - Système avec 2 pièces', '60.10', '351479.jpg', 34, 0, 44),
+(62, 'Thomann SD Card 32 Gb Class 10', 'Capacité: 32 GB - Classe 10 - UHS-1', '40.75', '356476.jpg', 45, 0, 45),
 (63, 'Seiko WPM1000BE Metronome', 'Seiko WPM1000BE pendulum metronome - color: brown', '98.00', '15265913_800.jpg', 57, 0, 46);
 
 -- --------------------------------------------------------
@@ -642,19 +654,19 @@ ALTER TABLE `sous_rubrique`
 -- AUTO_INCREMENT pour la table `adresse`
 --
 ALTER TABLE `adresse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `cmd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cmd_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `commercial`
@@ -666,7 +678,7 @@ ALTER TABLE `commercial`
 -- AUTO_INCREMENT pour la table `detail_commande`
 --
 ALTER TABLE `detail_commande`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `fournisseur`
@@ -678,13 +690,13 @@ ALTER TABLE `fournisseur`
 -- AUTO_INCREMENT pour la table `livraison`
 --
 ALTER TABLE `livraison`
-  MODIFY `liv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `liv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `livreur`
 --
 ALTER TABLE `livreur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `produit`

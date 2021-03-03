@@ -32,6 +32,8 @@
                         </div>
                         <input type="submit" class="btn btn-primary mt-3 mb-3" value="SE CONNECTER">
                         <hr>
+                        {# Protection CSRF dans les formulaires de connexion #}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         <p class="text-center">Vous n'avez pas encore de compte, <a href="{{ path('client_new') }}">inscrivez-vous !</a></p>
                 </form>
             </div>

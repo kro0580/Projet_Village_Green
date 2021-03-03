@@ -9,6 +9,7 @@
         <img id="img_inscription" src=" {{ asset('img/BODY/ESPACE CLIENT/register2.jpg') }}" alt="img inscription">
     </div>
 
+    {# Le novalidate est important pour permettrer l'affichage des messages d'erreur personnalisées (NotBlanck par exemple) #}
     {{ form_start(form, {'attr' : { 'novalidate': 'novalidate'}}) }}
     
         <div class="col-12">

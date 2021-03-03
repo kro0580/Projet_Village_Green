@@ -144,6 +144,11 @@ h2
     margin-top: -7px;
 }
 
+#nav_infos, #clientDropdown
+{
+    margin-top: 5px;
+}
+
 /**** HOME/INDEX.HTML ****/
 
 #corps_index {
@@ -412,6 +417,7 @@ h2
 
 #adresse_submit
 {
+    margin-left: 10px;
     margin-bottom: 20px;
 }
 

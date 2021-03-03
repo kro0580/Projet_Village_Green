@@ -156,7 +156,7 @@ class ClientType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
-                            'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
+                        'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
                         'message' => 'Caratère(s) non valide(s)'
                     ]),
                 ]

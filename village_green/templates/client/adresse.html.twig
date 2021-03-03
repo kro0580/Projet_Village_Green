@@ -21,6 +21,10 @@
          {{ adresse|replace({'[br]' : "<br/>"})|raw }}
      </div>
      <hr>
+
+     <div class="col">
+        <a href="{{ path('delete_adresse', {'id': adresse.id}) }}" class="btn btn-danger float-right">SUPPRIMER</a>
+    </div>
     {% endfor %}
 
    </div>

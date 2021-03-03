@@ -25,6 +25,7 @@ class ProduitController extends AbstractController
      */
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
+        // On instancie Doctrine et on récupère l'ensemble des produits
         $produits = $this->getDoctrine()
             ->getRepository(Produit::class)
             ->findAll();
@@ -35,6 +36,7 @@ class ProduitController extends AbstractController
 //            15 // Nombre de résultats par page
 //        );
 
+        // Affichage des produits
         return $this->render('produit/index.html.twig', [
             'produits' => $produits
         ]);
@@ -48,10 +50,13 @@ class ProduitController extends AbstractController
      */
     public function new(Request $request, SluggerInterface $slugger): Response
     {
+        // On instancie l'entité Produit
         $produit = new Produit();
+        // On créé l'objet formulaire qui prend comme paramètres le type et les données à envoyer
         $form = $this->createForm(ProduitType::class, $produit);
+        // On récupère les données saisies
         $form->handleRequest($request);
-
+        // On vérifie si le formulaire a été envoyé et si les données sont valides
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupération de la saisi sur l'upload
             $pictureFile = $form['proPhoto']->getData();
@@ -118,10 +123,13 @@ class ProduitController extends AbstractController
      */
     public function edit(Request $request, Produit $produit, SluggerInterface $slugger): Response
     {
+        // On créé l'objet formulaire qui prend comme paramètres le type et les données à envoyer
         $form = $this->createForm(ProduitType::class, $produit);
+        // On récupère les données saisies
         $form->handleRequest($request);
-
+        // On vérifie si le formulaire a été envoyé et si les données sont valides
         if ($form->isSubmitted() && $form->isValid()) {
+            // Si le champ photo n'est pas vide
             if(!empty($form['proPhoto'])){
                 // Récupération de la saisi sur l'upload
                 $pictureFile = $form['proPhoto']->getData();
@@ -174,9 +182,13 @@ class ProduitController extends AbstractController
      */
     public function delete(Request $request, Produit $produit): Response
     {
+        // On récupère l'ID du produit
         if ($this->isCsrfTokenValid('delete'.$produit->getProId(), $request->request->get('_token'))) {
+            // Nous allons utiliser l'objet EntityManager de Doctrine. Il nous permet d'envoyer et d'aller chercher des objets dans la base de données
             $entityManager = $this->getDoctrine()->getManager();
+            // Suppression du produit
             $entityManager->remove($produit);
+            // Mise à jour de la BDD
             $entityManager->flush();
         }
 

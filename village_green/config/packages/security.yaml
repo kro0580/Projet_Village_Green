@@ -1,11 +1,19 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    # La partie providers définit comment les utilisateurs vont être récupérés
+    # Dans un premier temps, on indique que l'utilisateur se trouve dans la base de données
+    # Nous devons indiquer également que l'utilisateur devra se connecter avec son adresse mail
     providers:
         users_in_memory: { memory: null }
         from_database:
             entity:
                 class: App\Entity\Client
                 property: cliEmail
+    # La partie firewalls permet de définir les composants qui vont permettre d'authentifier les utilisateurs
+    # Nous devons rappeler ce provider dans la partie main du firewalls
+    # Il nous faut également indiquer par quelle méthode l'utilisateur pourra se connecter dans la partie main (form_login). Dans notre cas, il se connectera avec un formulaire que nous avons créé
+    # Nous allons définir le chemin permettant la déconnexion dans la partie main (logout), ainsi que la redirection (target) suite à cette déconnexion de la même manière
+    # Protection CSRF dans les formulaires de connexion avec le csrf_token_generator. Cette protection permet d'éviter à un attaquant de soumettre une requête Web pouvant inclure une fuite de données, un changement d'état de session ou une manipulation du compte utilisateur final 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -18,6 +26,7 @@ security:
             form_login:
                 check_path: /login
                 login_path: /login
+                csrf_token_generator: security.csrf.token_manager
             provider: from_database
 
             # activate different ways to authenticate
@@ -28,7 +37,7 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
-    # Paramétrage de sécurité pour les accès aux pages du site
+    # La partie access-control permet de définir les niveaux d'accès au site
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/produit/new, roles: ROLE_ADMIN }
@@ -38,6 +47,7 @@ security:
     # Paramétrage des rôles pour que l'admin possède les mêmes droit que l'utilisateur, notamment pour valider le panier
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
+    # Il faut renseigner l'encoder utilisé pour le hash du mot de passe
     encoders:
         App\Entity\Client:
             algorithm: bcrypt

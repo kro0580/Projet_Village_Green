@@ -309,6 +309,7 @@ class Client implements UserInterface
         return $this;
     }
 
+    // Les fonctions getRoles(), getSalt(), getUsername() et eraseCredentials() sont indispensables pour l'interfacce de connexion
     // Méthode qui retourne un tableau des roles des différents utilisateurs
     public function getRoles()
     {
