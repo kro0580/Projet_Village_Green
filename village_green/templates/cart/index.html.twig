@@ -5,7 +5,7 @@
         <h1>Mon Panier</h1>
         <p>Retrouver l'ensemble des produits que vous avez ajoutés à votre panier</p>
         <hr>
-        {% if cart|length >0 %} <!-- Pour verifier le panier et l'afficher que si il n'est pas vide -->
+        {% if cart|length >0 %} <!-- Pour vérifier le panier et l'afficher que si il n'est pas vide -->
             <div class="table-responsive-md">
                 <table class="table table-hover text-center">
                     <thead>
@@ -20,9 +20,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% set total= null %}
+                    {% set total= null %} <!-- Je déclare une nouvelle variable pour le calcul du total et elle sera égales à nulle -->
                     {% set ligne= 1 %}
-                    {% for produit in cart %}
+                    {% for produit in cart %} <!-- produit est appelé dans la public function getFull() dans Cart.php -->
                         <tr>
                             <th scope="row">{{ ligne }}</th>
                             <th><img style="height: 200px;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}"></th>
@@ -44,15 +44,15 @@
                                 </a>
                             </td>
                         </tr>
-                        {% set total= total +  (produit.produit.proPrixAchat * produit.quantite)%}
+                        {% set total= total +  (produit.produit.proPrixAchat * produit.quantite)%} <!-- A chaque fois pour chaque ligne, on reprend le total et on ajoute le nouveau produit -->
                         {% set ligne= ligne + 1 %}
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
             <div class="text-right">
-                <b>Nombre de produits :</b> {{ cart|length}} <br>
-                <b>Total de mon Panier : </b>  {{ (total)|number_format(2)}} €
+                <b>Nombre de produits :</b> {{ cart|length}} <br> <!-- Pour compter le nombre de contenu dans un tableau - Cette fonction affiche donc le nombre de produits dans mon panier -->
+                <b>Total de mon Panier : </b>  {{ (total)|number_format(2)}} € <!-- J'appelle la variable total pour affichier le total de mes produits -->
             </div>
             <div id="button_panier">
                 <a type="button" class="btn btn-secondary" href="{{ path('produit_index') }}">RETOUR</a>

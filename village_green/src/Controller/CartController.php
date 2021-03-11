@@ -14,15 +14,19 @@ class CartController extends AbstractController
     private $entityManager;
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->entityManager=$entityManager;
+        $this->entityManager = $entityManager;
     }
+
     /**
      * @Route("/mon-panier", name="cart")
      * @param Cart $cart
      * @return Response
      */
+    // Affiche le récapitulatif du panier
+    // On embarque la classe Cart que l'on stocke dans la variable $cart
     public function index(Cart $cart): Response
     {
+        // Création d'un public function get() dans Cart.php
         return $this->render('cart/index.html.twig', [
             'cart'=>$cart->getFull()
         ]);
@@ -34,9 +38,12 @@ class CartController extends AbstractController
      * @param $id
      * @return Response
      */
+    // Ajouter un produit au panier
+    // On embarque la classe Cart que l'on stocke dans la variable $cart
     public function add(Cart $cart, $id): Response
     {
         $cart->add($id);
+        // On redirige vers le récapitulatif du panier
         return $this->redirectToRoute('cart');
     }
 
@@ -45,9 +52,13 @@ class CartController extends AbstractController
      * @param Cart $cart
      * @return Response
      */
+    // Supprimer l'ensemble du panier
+    // On embarque la classe Cart que l'on stocke dans la variable $cart
     public function remove(Cart $cart): Response
     {
+        // Création d'un public function remove() dans Cart.php
         $cart->remove();
+        // On redirige vers les produits
         return $this->redirectToRoute('produit_index');
     }
 
