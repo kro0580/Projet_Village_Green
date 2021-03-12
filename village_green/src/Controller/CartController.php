@@ -22,7 +22,7 @@ class CartController extends AbstractController
      * @param Cart $cart
      * @return Response
      */
-    // Affiche le récapitulatif du panier
+    // Afficher le récapitulatif du panier
     // On embarque la classe Cart que l'on stocke dans la variable $cart
     public function index(Cart $cart): Response
     {
