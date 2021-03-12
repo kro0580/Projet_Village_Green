@@ -10,15 +10,15 @@
                 <div class="card-header bg-white {{ produit.proSRub }}">
                 <img src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="photo_produit">
                 </div>
-            <div class="card-body {{ produit.proSRub }}">
-                <h5 class="card-title">{{ produit.proLib }}</h5>
-                    <p class="card-text">{{ produit.proPrixAchat }}&nbsp;&euro;</p>
-            </div>
+                <div class="card-body {{ produit.proSRub }}">
+                    <h5 class="card-title">{{ produit.proLib }}</h5>
+                        <p class="card-text">{{ produit.proPrixAchat }}&nbsp;&euro;</p>
+                </div>
                 <div class="card-footer {{ produit.proSRub }}">
                     <a href="{{ path('produit_show', {'proId' : produit.proId}) }}" type="button" class="btn btn-info">Détails</a>
                     <a href="{{ path('add_to_cart', {'id' : produit.proId}) }}" type="button" class="btn btn-success">Ajouter au panier</a>
                 </div>
-    </div>
+            </div>
         {% else %}
             <tr>
                 <td colspan="8">Aucun article trouvé</td>

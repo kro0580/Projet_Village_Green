@@ -1,36 +1,41 @@
 {% extends 'base.html.twig' %}
 {% block title %}
- Mes adresses
+Mes adresses
 {% endblock %}
 {% block body %}
- <div class="container">
+<div class="container">
   <h1 id="adresse_client">Mes adresses</h1>
   <a href="{{ path('cart') }}" id="adresse_panier" class="btn btn-outline-primary float-right">MON PANIER</a>
   <a href="{{ path('add_adresse') }}" class="btn btn-outline-primary float-right">AJOUTER UNE ADRESSE</a>
   <img src=" {{ asset('img/BODY/ESPACE CLIENT/adresse.png') }}" id="img_adresse" alt="img adresse">
-  {% if app.user.cliAdresses|length == 0 %}
-   <p id="adresse_vide" class="text-center">Vous n'avez pas encore renseigné d'adresse. Pour en ajouter une, <a href="{{ path('add_adresse') }}">cliquer ici ou sur le bouton "AJOUTER UNE ADRESSE"</a> </p>
-  {% else %}
-  <p id="adresse_principale"><strong>Mon adresse principale :</strong></p> 
-   <div id="bloc_adresse" class="row">
-    {% for adresse in app.user.cliAdresses %}
-     <div class="col">
-         {% set formHtml %}
-            {{ adresse }} <br>
-         {% endset %}
-         {{ adresse|replace({'[br]' : "<br/>"})|raw }}
-     </div>
-     <hr>
+  <hr>
+    {% if app.user.cliAdresses|length == 0 %}
+    <p id="adresse_vide" class="text-center">Vous n'avez pas encore renseigné d'adresse. Pour en ajouter une, <a href="{{ path('add_adresse') }}">cliquer ici ou sur le bouton "AJOUTER UNE ADRESSE"</a> </p>
 
-     <div class="col">
-        <a href="{{ path('delete_adresse', {'id': adresse.id}) }}" class="btn btn-danger float-right">SUPPRIMER</a>
+    {% else %}
+    <div class="row d-flex justify-content-center grid">
+        {% for adresse in app.user.cliAdresses %}
+        
+        <div id="card_panier" class="card text-center mb-2 ml-2 mr-2">
+            <div class="card-body">
+                <h5 class="card-title">Mon adresse :</h5>
+                <p class="card-text">
+                {% set formHtml %}
+                    {{ adresse }} <br>
+                {% endset %}
+                {{ adresse|replace({'[br]' : "<br/>"})|raw }}
+                </p>
+                <div id="liens">
+                <a href="{{ path('edit_adresse', {'id': adresse.id}) }}" class="btn btn-info">MODIFIER</a> | <a href="{{ path('delete_adresse', {'id': adresse.id}) }}" class="btn btn-danger">SUPPRIMER</a>
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+
     </div>
-    {% endfor %}
 
-   </div>
-  {% endif %}
- </div>
+    {% endif %}
+
+</div>
 {% endblock %}
-
-
-

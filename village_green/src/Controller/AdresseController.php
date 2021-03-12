@@ -49,12 +49,54 @@ class AdresseController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             // Ici le formulaire a été envoyé et les données sont valides
+            // Je récupère l'ID de l'utilisateur qui a saisi l'adresse
             $adresse->setAdrCliId($this->getUser());
             // On met en place toutes les données dans l'objet
+            // Pour pouvoir utiliser l'EntityManager, il faut créer le constructeur que l'on retrouve en haut du fichier
             $this->entityManager->persist($adresse);
             // On écrit dans la BDD
             $this->entityManager->flush();
-           return $this->redirectToRoute('adresse');
+            // Message flash
+            $this->addFlash(
+                'success',
+                'Votre adresse a bien été ajoutée'
+            );
+            return $this->redirectToRoute('adresse');
+        }
+        return $this->render('client/ajout_adresse.html.twig', [
+            'form'=>$form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("client/modifier-une-adresse/{id}", name="edit_adresse")
+     */
+    public function edit(Request $request, EntityManagerInterface $entityManager, $id)
+    {
+        // On recherche l'ID de l'adresse
+        $adresse= $entityManager->getRepository(Adresse::class)->find($id);
+
+        if (!$adresse) {
+            return $this->redirectToRoute('adresse');
+        }
+
+        // On créé l'objet formulaire qui prend comme paramètres le type et les données à envoyer
+        $form=$this->createForm(AdresseType::class, $adresse);
+
+        // On récupère les données saisies
+        $form->handleRequest($request);
+
+        // On vérifie si le formulaire a été envoyé et si les données sont valides
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            // On écrit dans la BDD
+            $this->entityManager->flush();
+            // Message flash
+            $this->addFlash(
+            'success',
+            'Votre adresse a bien été modifiée'
+        );
+            return $this->redirectToRoute('adresse');
         }
         return $this->render('client/ajout_adresse.html.twig', [
             'form'=>$form->createView()
@@ -63,8 +105,6 @@ class AdresseController extends AbstractController
 
     /**
      * @Route("client/suprimer-adresse{id}", name="delete_adresse")
-     * @param Request $request
-     * @param $id
      */
     public function delete(Request $request, $id)
     {

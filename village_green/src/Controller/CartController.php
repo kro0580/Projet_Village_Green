@@ -68,6 +68,8 @@ class CartController extends AbstractController
      * @param $id
      * @return Response
      */
+    // Supprimer un élément du panier
+    // On embarque la classe Cart que l'on stocke dans la variable $cart
     public function delete(Cart $cart, $id): Response
     {
         $cart->delete($id);

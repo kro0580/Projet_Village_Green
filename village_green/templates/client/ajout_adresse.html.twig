@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    Mes adresse
+Mes adresses
 {% endblock %}
 {% block body %}
     <div class="container">
@@ -10,7 +10,9 @@
         <hr>
     {{ form(form, {'attr' : { 'novalidate': 'novalidate'}}) }}
     </div>
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success ml-2 mr-2">
+        {{ message }}
+    </div>
+{% endfor %}
 {% endblock %}
-
-
-

@@ -182,6 +182,7 @@ class ClientController extends AbstractController
         } else {
             // Si il y a une adresse, on récupère les données
             $adresses=$client->getCliAdresses()->getValues();
+            // On parcours les adresses
             foreach ($adresses as $adresse){
                 // On récupère l'ID de l'adresse
                 $adresse= $entityManager->getRepository(Adresse::class)->find($adresse->getId());

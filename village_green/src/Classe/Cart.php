@@ -10,7 +10,7 @@ class Cart
     private $session;
     private $entityManager;
 
-    // Dès que la classe est appelée, cette fonction constructeur va s'initialiser, on lui injecte SessionInterface et on lui donne la variable $session
+    // Dès que la classe est appelée, cette fonction constructeur va s'initialiser, on lui injecte SessionInterface et on lui donne la variable $session ainsi que l'EntityManagerInterface et on lui donne la variabe $entityManager
     public function __construct(EntityManagerInterface $entityManager, SessionInterface $session)
     {
         $this->session = $session;
@@ -34,16 +34,19 @@ class Cart
         $this->session->set('cart', $cart);
     }
 
+    // Fonction pour retourner le panier
     public function get()
     {
         return $this->session->get('cart');
     }
 
+    // Fonction pour supprimer le panier
     public function remove()
     {
         return $this->session->remove('cart');
     }
 
+    // Fonction pour supprimer un produit du panier
     public function delete($id)
     {
         $cart=$this->session->get("cart", []);
@@ -51,22 +54,24 @@ class Cart
         return $this->session->set('cart', $cart);
     }
 
+    // Fonction pour diminuer la quantité d'un produit dans le panier
     public function reduir($id)
     {
         $cart=$this->session->get("cart", []);
-        if ($cart[$id]>1)
+        if ($cart[$id]>1) // On regarde si le produit à une quantité supérieure à 1
         {
-            $cart[$id]--; // Reduire si la quantité dans le panier est superieur à 1.
+            $cart[$id]--; // S c'est le cas, je souhaite retirer une quantité
         }else{
-            unset($cart[$id]); // Retirer l'article dans le panier s'il est égal à 1.
+            unset($cart[$id]); // Si ce n'est pas le cas, je souhaite supprimer mon produit
         }
-        return $this->session->set('cart', $cart); // Nouveau $cart après les opérations
+        return $this->session->set('cart', $cart); // Nouveau panier après les opérations
     }
 
+    // Fonction qui permet de récupérér l'objet produit associé à ce qui est dans le panier
     public function getFull()
     {
         $cartComplete=[];
-        if ($this->get()) // Pour ne pas faire le foreach lorsque le panier est vide
+        if ($this->get()) // On récupère la fonction get() initialisée plus haut
         {
             foreach ($this->get() as $id=>$quantite)
             {
@@ -74,8 +79,8 @@ class Cart
                 $product_object= $this->entityManager->getRepository(Produit::class)->find($id);
                 if (!$product_object) // Pour éviter qu'un utilisateur puisse ajouter via url un id qui n'existe pas
                 {
-                   $this->delete($id);
-                   continue;
+                   $this->delete($id); // Si l'id du produit tapé par l'utilisateur dans l'url n'existe pas, alors on le supprime du panier
+                   continue; // Ensuite on sort de la boucle et on passe au produit suivant
                 }
                 $cartComplete[]=[
                     'produit'=> $product_object,

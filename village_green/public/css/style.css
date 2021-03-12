@@ -392,14 +392,10 @@ h2
     margin-left: 10px;
 }
 
-#bloc_adresse
+#card_panier
 {
-    padding-bottom: 50px;
-}
-
-#adresse_principale
-{
-    padding-top: 40px;
+    width: 350px; 
+    height: 200px;
 }
 
 #img_adresse
