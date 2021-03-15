@@ -7,7 +7,8 @@ body
     background-image: url('../img/BACKGROUND/background_village.png') !important;
 }
 
-header{
+header
+{
     background-image: url('../img/HEADER/3_bandes.png');
 }
 
@@ -98,18 +99,26 @@ h2
     text-align: center;
 }
 
-#produitDropdown{
+#produitDropdown
+{
     margin-top: 8px;
 }
 
+#produitDropdown2
+{
+    display: none;
+}
+
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+.dropdown
+{
     position: relative;
     display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.dropdown-content
+{
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -119,7 +128,8 @@ h2
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content a
+{
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -151,18 +161,21 @@ h2
 
 /**** HOME/INDEX.HTML ****/
 
-#corps_index {
+#corps_index
+{
     background-color: #e8e9ea;
 }
 
 /**** PRODUIT/INDEX.HTML ****/
 
-.card{
+.card
+{
     height: 515px;
     width: 350px;
 }
 
-.card-img-top{
+.card-img-top
+{
     width: 100%;
     height: 30vh;
     object-fit: contain;
@@ -170,21 +183,25 @@ h2
 
 /**** PRODUIT/_FORM.HTML ****/
 
-#btn_ajouter, #btn_retour{
+#btn_ajouter, #btn_retour
+{
     margin-bottom: 20px;
 }
 
-#btn_supprimer{
+#btn_supprimer
+{
     margin-top: -60px;
 }
 
 /**** PRODUIT/SHOW.HTML ****/
 
-#btn_modif, #btn_retour2{
+#btn_modif, #btn_retour2
+{
     margin-bottom: 20px;
 }
 
-#img_show{
+#img_show
+{
     width: 100%;
     height: 30vh;
     object-fit: contain;
@@ -227,6 +244,11 @@ h2
     background: red;
     color: white;
 }
+
+#btn_voir
+    {
+        margin-top: -20px;
+    }
 
 /***** CLIENT/NEW.HTML ****/
 
@@ -540,7 +562,7 @@ Mobile
 320x480px scaled down to scale(0.219)
 */
 
-@media only screen and (min-width: 320px) and (max-width: 480px)
+/* @media only screen and (min-width: 320px) and (max-width: 480px)
 {
     #nav_infos
     {
@@ -680,5 +702,610 @@ Mobile
       margin-left: 15px;
       width: 90%;
       padding-bottom: 10px;
+    }
+  }*/
+
+  @media only screen and (min-width: 320px) and (max-width: 374px)
+  {
+    /**** ACCUEIL ****/
+    #nav_infos
+    {
+      color: black !important;
+      padding-right: 30px;
+      padding-top: 130px;
+    }
+
+    #clientDropdown
+    {
+      color: black !important;
+      padding-right: 10px;
+    }
+
+    #img_picto_panier
+    {
+      margin-right: -10px;
+    }
+
+    #img_picto_drapeau
+    {
+      margin-right: 30px;
+    }
+
+    #guitare
+    {
+      width: 143%;
+      padding-bottom: 20px;
+      margin-left: -60px;
+    }
+
+    #banniere_droite
+    {
+      margin-left: -9px;
+    }
+
+    #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
+    {
+      width: 100%;
+      display: block;
+    }
+
+    #titre_categories
+    {
+      margin-left: 12px
+    }
+
+    #titre_meilleures_ventes
+    {
+      margin-left: -20px
+    }
+
+    #titre_partenaires
+    {
+      margin-top: 30px;
+      margin-left: -20px;
+    }
+
+    #img_meilleures_ventes
+    {
+      width: 95%;
+      padding-right: 25px;
+    }
+
+    #img_partenaires
+    {
+      margin-left: -5px;
+      width: 90%;
+      padding-bottom: 10px;
+    }
+
+    #img8
+    {
+        margin-left: -2px;
+        width: 100%;
+    }
+
+    #produitDropdown2
+    {
+        padding-right: 10px;
+        display: inline-block;
+    }
+
+    #bouton_deconnexion
+    {
+        display: none;
+    }
+
+    /**** CLIENT/ADRESSE.HTML ****/
+    hr
+    {
+        margin-top: 70px;
+    }
+
+    #adresse_panier
+    {
+        margin-bottom: 10px;
+    }
+
+    #img_adresse
+    {
+        width: 50px;
+    }
+
+    /**** CLIENT/SHOW.HTML ****/
+    #btn_modification2
+    {
+        margin-left: -4px;
+    }
+
+    /**** ORDER/INDEX.HTML ****/
+    #recap_panier
+    {
+        padding-left: 50px;
+    }
+
+    #order_submit
+    {
+        margin-left: 0 auto;
+    }
+
+    /**** CART/INDEX.HTML ****/
+    #supprimer_mon_panier
+    {
+        margin-top: 10px;
+    }
+
+    /**** COMMANDE_VALIDER/INDEX.HTML ****/
+    #img_conf_commande
+    {
+        width: 50%;
+        padding-left: 35px;
+        padding-bottom: 30px;
+    }
+  }
+
+  @media only screen and (min-width: 375px) and (max-width: 424px)
+  {
+    /**** ACCUEIL ****/
+    #alerte1
+    {
+        margin-left: 3px !important;
+    }
+
+    #nav_infos
+    {
+      color: black !important;
+      padding-right: 30px;
+      padding-top: 130px;
+    }
+
+    #clientDropdown
+    {
+      color: black !important;
+      padding-right: 10px;
+    }
+
+    #img_picto_panier
+    {
+      margin-right: -10px;
+    }
+
+    #img_picto_drapeau
+    {
+      margin-right: 30px;
+    }
+
+    #guitare
+    {
+      width: 134%;
+      padding-bottom: 20px;
+      margin-left: -60px;
+    }
+
+    #banniere_droite
+    {
+      margin-left: 10px;
+    }
+
+    #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
+    {
+      width: 100%;
+      display: block;
+    }
+
+    #titre_categories
+    {
+      margin-left: 12px
+    }
+
+    #titre_meilleures_ventes
+    {
+      margin-left: -20px
+    }
+
+    #titre_partenaires
+    {
+      margin-top: 30px;
+      margin-left: -20px;
+    }
+
+    #img_meilleures_ventes
+    {
+      width: 95%;
+      padding-right: 25px;
+    }
+
+    #img_partenaires
+    {
+      margin-left: -5px;
+      width: 90%;
+      padding-bottom: 10px;
+    }
+
+    #img8
+    {
+        margin-left: -5px;
+        width: 100%;
+    }
+
+    #produitDropdown2
+    {
+        padding-right: 10px;
+        display: inline-block;
+    }
+
+    #bouton_deconnexion
+    {
+        display: none;
+    }
+
+    /**** CLIENT/ADRESSE.HTML ****/
+    hr
+    {
+        margin-top: 70px;
+    }
+
+    #adresse_panier
+    {
+        margin-bottom: 10px;
+    }
+
+    #img_adresse
+    {
+        margin-top: 20px;
+        margin-left: 30px;
+        width: 70px;
+    }
+
+    /**** ORDER/INDEX.HTML ****/
+    #recap_panier
+    {
+        padding-left: 50px;
+    }
+
+    #order_submit
+    {
+        margin-left: 0 auto;
+    }
+
+    /**** CART/INDEX.HTML ****/
+    #supprimer_mon_panier
+    {
+        margin-top: 10px;
+    }
+  }
+
+  @media only screen and (min-width: 425px) and (max-width: 767px)
+  {
+    /**** ACCUEIL ****/
+    #alerte1
+    {
+        margin-left: 5px !important;
+    }
+
+    #nav_infos
+    {
+      color: black !important;
+      padding-right: 30px;
+      padding-top: 130px;
+    }
+
+    #clientDropdown
+    {
+      color: black !important;
+      padding-right: 10px;
+    }
+
+    #img_picto_panier
+    {
+      margin-right: -10px;
+    }
+
+    #img_picto_drapeau
+    {
+      margin-right: 30px;
+    }
+
+    #guitare
+    {
+      width: 129%;
+      padding-bottom: 20px;
+      margin-left: -60px;
+    }
+
+    #banniere_droite
+    {
+      margin-left: 40px;
+    }
+
+    #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
+    {
+      width: 100%;
+      display: block;
+    }
+
+    #titre_categories
+    {
+      margin-left: 12px
+    }
+
+    #titre_meilleures_ventes
+    {
+      margin-left: -20px
+    }
+
+    #titre_partenaires
+    {
+      margin-top: 30px;
+      margin-left: -20px;
+    }
+
+    #img_meilleures_ventes
+    {
+      width: 95%;
+      padding-right: 25px;
+    }
+
+    #img_partenaires
+    {
+      margin-left: -5px;
+      width: 90%;
+      padding-bottom: 10px;
+    }
+
+    #img8
+    {
+        margin-left: -2px;
+        width: 100%;
+    }
+
+    #produitDropdown2
+    {
+        padding-right: 10px;
+        display: inline-block;
+    }
+
+    #bouton_deconnexion
+    {
+        display: none;
+    }
+
+    /**** CLIENT/ADRESSE.HTML ****/
+    hr
+    {
+        margin-top: 70px;
+    }
+
+    #adresse_panier
+    {
+        margin-bottom: 10px;
+    }
+
+    #img_adresse
+    {
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 90px;
+    }
+
+    /**** ORDER/INDEX.HTML ****/
+    #recap_panier
+    {
+        padding-left: 50px;
+    }
+
+    #order_submit
+    {
+        margin-left: 0 auto;
+    }
+
+    /**** CART/INDEX.HTML ****/
+    #supprimer_mon_panier
+    {
+        margin-top: 10px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1023px)
+  {
+    /**** ACCUEIL ****/
+    #alerte1
+    {
+        margin-left: 7px !important;
+    }
+
+    #nav_infos
+    {
+      color: black !important;
+      padding-right: 30px;
+      padding-top: 120px;
+    }
+
+    #clientDropdown
+    {
+      color: black !important;
+      padding-right: 10px;
+    }
+
+    #img_picto_panier
+    {
+      margin-right: -30px;
+    }
+
+    #img_picto_drapeau
+    {
+      margin-right: 25px;
+    }
+
+    #guitare
+    {
+      width: 106%;
+      padding-bottom: 20px;
+      margin-left: -30px;
+    }
+
+    #banniere_droite
+    {
+      padding-left: 190px;
+    }
+
+    #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
+    {
+      margin: 0 auto;
+      width: 80%;
+      display: block;
+    }
+
+    #titre_categories
+    {
+      margin-left: 12px
+    }
+
+    #titre_meilleures_ventes
+    {
+      margin-left: -20px
+    }
+
+    #titre_partenaires
+    {
+      margin-top: 30px;
+      margin-left: -20px;
+    }
+
+    #img_meilleures_ventes
+    {
+      width: 95%;
+      padding-left: 20px;
+    }
+
+    #img_partenaires
+    {
+      margin-left: 15px;
+      width: 90%;
+      padding-bottom: 10px;
+    }
+
+    #img8
+    {
+        margin-left: -2px;
+        width: 100%;
+    }
+
+    #produitDropdown2
+    {
+        padding-right: 10px;
+        display: inline-block;
+    }
+
+    /**** CLIENT/ADRESSE.HTML ****/
+    hr
+    {
+        margin-top: 70px;
+    }
+
+    #adresse_panier
+    {
+        margin-bottom: 10px;
+    }
+
+    #img_adresse
+    {
+        margin-top: 40px;
+        margin-left: 20px;
+        width: 90px;
+    }
+
+    /***** ORDER/ADD.HTML ****/
+    #recap_commande
+    {
+        padding-right: 80px;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) and (max-width: 1439px)
+  {
+    /**** ACCUEIL ****/
+    #nav2
+    {
+        font-size: 14pt;
+    }
+
+    #nav2 li
+    {
+        margin-left: 15px;
+    }
+
+    #nav2 a
+    {
+        padding-right: 2px;
+        padding-left: 2px;
+    }
+
+    #nav3
+    {
+        font-size: 12pt;
+        margin-left: 5px;
+    }  
+
+    #img_picto_panier
+    {
+      margin-right: -80px;
+    }
+
+    #icone_list, #icone_plus
+    {
+        margin-left: 10px;
+    }
+
+    #liste_produits
+    {
+        margin-right: 5px;
+    }
+
+    #guitare
+    {
+      padding-bottom: 20px;
+      margin-left: -30px;
+    }
+
+    #banniere_droite
+    {
+      margin-left: -20px;
+    }
+
+    #titre_partenaires
+    {
+      margin-left: 40px;
+    }
+
+    #img_partenaires
+    {
+      margin-left: 45px;
+      width: 80%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    #img8
+    {
+        margin-left: -5px;
+        width: 100%;
+    }
+
+    /***** CLIENT/SHOW.HTML ****/
+    #btn_suppr
+    {
+        margin-right: -15px;
+    }
+
+    /***** CLIENT/INDEX.HTML ****/
+    #btn_voir
+    {
+        margin-top: -2px;
+        margin-bottom: 5px;
+    }
+
+    #btn_modif
+    {
+        margin-bottom: -3px;
     }
   }

@@ -57,11 +57,12 @@
             <div id="button_panier">
                 <a type="button" class="btn btn-secondary" href="{{ path('produit_index') }}">RETOUR</a>
                 <a href="{{ path('order') }}" class="btn btn-success">VALIDER MON PANIER</a>
-                <a href="{{ path('remove_to_cart') }}" class="btn btn-danger">SUPPRIMER MON PANIER</a>
+                <a id="supprimer_mon_panier" href="{{ path('remove_to_cart') }}" class="btn btn-danger">SUPPRIMER MON PANIER</a>
             </div>
         {% else %}
             <p><b>Votre panier est vide</b></p>
             <img id="img_panier" src="{{ asset('img/ICONS/panier_vide.png') }}" alt="Panier vide">
+            <div style="padding-bottom: 20px;"><a href="{{ path('produit_index') }}" class="btn btn-primary">AJOUTER DES PRODUITS</a></div>
         {% endif %}
     </div>
 

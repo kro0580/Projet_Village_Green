@@ -45,8 +45,8 @@
                     <td>{{ client.cliCateg }}</td>
                     {#<td>{{ client.cliCoeff }}</td>#}
                     <td>
-                        <a class="btn btn-primary" href="{{ path('client_show', {'cliId': client.cliId}) }}">VOIR</a>
-                        <a class="btn btn-secondary" href="{{ path('client_edit', {'cliId': client.cliId}) }}">MODIFIER</a>
+                        <a id="btn_voir" class="btn btn-primary" href="{{ path('client_show', {'cliId': client.cliId}) }}">VOIR</a>
+                        <a id="btn_modif" class="btn btn-secondary" href="{{ path('client_edit', {'cliId': client.cliId}) }}">MODIFIER</a>
                     </td>
                 </tr>
             {% else %}

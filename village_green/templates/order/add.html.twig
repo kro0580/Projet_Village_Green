@@ -5,7 +5,7 @@
     <script src="https://js.stripe.com/v3/"></script>
 {% endblock %}
 {% block body %}
-    <div class="container">
+    <div id="recap_commande" class="container">
         <h1 id="titre_order">Récapitulatif de votre commande</h1>
         <p>Vérifiez vos informations avant le paiement</p>
         <hr>
@@ -46,9 +46,9 @@
                     <strong>Total :</strong> {{ (sousTotal + livreur.livPrix/100)|number_format(2) }} €<br>
                 </div>
             </div>
-            <a id="checkout-button" class="btn btn-block btn-success" >Payer | {{ (sousTotal + livreur.livPrix/100)|number_format(2)}} €</a>
         </div>
     </div>
+    <a id="checkout-button" class="btn btn-block btn-success" >Payer | {{ (sousTotal + livreur.livPrix/100)|number_format(2)}} €</a>
 {% endblock %}
 {% block strip %}
     <script type="text/javascript">

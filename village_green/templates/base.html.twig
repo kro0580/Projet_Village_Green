@@ -42,6 +42,19 @@
 
                                     <ul class="navbar-nav">
                                         <a class="nav-link text-dark" href="#" title="Infos"><li id="nav_infos" class="nav-item">Infos</li></a>
+                                        <!-- Bloc rajouté pour mode portable (non apparent en mode desktop) -->
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle text-dark" href="#" id="produitDropdown2"
+                                              role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produits</a>
+                                            <div class="dropdown-menu" aria-labelledby="produitDropdown2">
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <a class="dropdown-item" href="{{ path('produit_index') }}"><i class="fas fa-list-alt" style="margin-right: 10px;"></i>Liste</a>
+                                                    <a class="dropdown-item" href="{{ path('produit_new') }}"><i class="fas fa-plus" style="margin-right: 10px;"></i>Ajouter Produit(s)</a>
+                                                {% else %}
+                                                    <a class="dropdown-item" href="{{ path('produit_index') }}"><i class="fas fa-list-alt" style="margin-right: 10px;"></i>Liste</a>
+                                                {% endif %}
+                                            </div>
+                                        </li>
                                         <li class="nav-item dropdown">
                                         {% if is_granted('ROLE_ADMIN') %}
                                             <a class="nav-link dropdown-toggle text-dark" href="#" id="clientDropdown"
@@ -93,10 +106,10 @@
                                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produits</a>
                                                     <div class="dropdown-menu" aria-labelledby="produitDropdown">
                                                     {% if is_granted('ROLE_ADMIN') %}
-                                                        <a class="dropdown-item" href="{{ path('produit_index') }}">Liste</a>
-                                                        <a class="dropdown-item" href="{{ path('produit_new') }}">Ajouter Produit(s)</a>
+                                                        <a class="dropdown-item" href="{{ path('produit_index') }}"><i id="icone_list" class="fas fa-list-alt" style="margin-right: 10px;"></i>Liste</a>
+                                                        <a id="liste_produits" class="dropdown-item" href="{{ path('produit_new') }}"><i id="icone_plus" class="fas fa-plus" style="margin-right: 10px;"></i>Ajouter Produit(s)</a>
                                                     {% else %}
-                                                        <a class="dropdown-item" href="{{ path('produit_index') }}">Liste</a>
+                                                        <a class="dropdown-item" href="{{ path('produit_index') }}"><i class="fas fa-list-alt" style="margin-right: 10px;"></i>Liste</a>
                                                     {% endif %}
                                                     </div>
                                             </li>
@@ -244,7 +257,7 @@
             {% endfor %}
 
             {% for message in app.flashes('warning') %}
-                <div class="alert alert-warning ml-2 mr-2">
+                <div  class="alert alert-warning ml-2 mr-2">
                     {{ message }}
                 </div>
             {% endfor %}
