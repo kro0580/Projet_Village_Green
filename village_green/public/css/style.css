@@ -208,6 +208,14 @@ h2
     margin-top: 10px;
 }
 
+/**** PRODUIT/NEW.HTML ****/
+
+#new_product
+{
+  width: 25%;
+  margin-bottom: 40px;
+}
+
 /***** CLIENT/INDEX.HTML ****/
 
 #admin_clients
@@ -355,7 +363,8 @@ h2
 #img_profil
 {
     width: 300px;
-    margin-bottom: 70px;
+    margin-top: -50px;
+    margin-bottom: 50px;
 }
 
 /**** SECURITY/LOGIN.HTML ****/
@@ -385,6 +394,30 @@ h2
 {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+/**** SECURITY/RESET_PASSWORD.HTML ****/
+
+#label_reset_mdp
+{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#reset_img
+{
+    width: 50%;
+}
+
+#btn_reset
+{
+  margin-top: 10px; 
+  margin-bottom: 20px;
+}
+
+#inputPassword
+{
+  margin-bottom: 5px;
 }
 
 /**** CART/INDEX.HTML ****/
@@ -841,6 +874,29 @@ Mobile
         padding-left: 35px;
         padding-bottom: 30px;
     }
+
+    /**** PRODUIT/NEW.HTML ****/
+    #new_product
+    {
+      width: 50%;
+    }
+
+    /**** PRODUIT/INDEX.HTML ****/
+    .card
+    {
+      height: 600px;
+    }
+
+    #btn_modif
+    {
+      margin-right: 105px;
+    }
+
+    /**** PRODUIT/EDIT.HTML ****/
+    #btn_ajouter
+    {
+      margin-right: 80px;
+    }
   }
 
   @media only screen and (min-width: 375px) and (max-width: 424px)
@@ -971,6 +1027,25 @@ Mobile
     #supprimer_mon_panier
     {
         margin-top: 10px;
+    }
+
+    /**** COMMANDE_VALIDER/INDEX.HTML ****/
+    #img_conf_commande
+    {
+      width: 40%;
+      margin-bottom: 20px;
+    }
+
+    /**** PRODUIT/NEW.HTML ****/
+    #new_product
+    {
+      width: 50%;
+    }
+
+    /**** PRODUIT/INDEX.HTML ****/
+    .card
+    {
+      height: 600px;
     }
   }
 
@@ -1103,6 +1178,25 @@ Mobile
     {
         margin-top: 10px;
     }
+
+    /**** COMMANDE_VALIDER/INDEX.HTML ****/
+    #img_conf_commande
+    {
+      width: 50%;
+      margin-bottom: 20px;
+    }
+
+    /**** PRODUIT/NEW.HTML ****/
+    #new_product
+    {
+      width: 50%;
+    }
+
+    /**** PRODUIT/INDEX.HTML ****/
+    .card
+    {
+      height: 600px;
+    }
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1023px)
@@ -1219,6 +1313,19 @@ Mobile
     {
         padding-right: 80px;
     }
+
+    /**** COMMANDE_VALIDER/INDEX.HTML ****/
+    #img_conf_commande
+    {
+      width: 20%;
+      margin-right: 20px;
+    }
+
+    /**** PRODUIT/INDEX.HTML ****/
+    .card
+    {
+      height: 600px;
+    }
   }
 
   @media only screen and (min-width: 1024px) and (max-width: 1439px)
@@ -1307,5 +1414,29 @@ Mobile
     #btn_modif
     {
         margin-bottom: -3px;
+    }
+
+    /**** PRODUIT/INDEX.HTML ****/
+    .card
+    {
+      height: 600px;
+    }
+  }
+
+  @media only screen and (min-width: 1440px) and (max-width: 2559px)
+  {
+    /**** PRODUIT/INDEX.HTML ****/
+    .card
+    {
+      height: 600px;
+    }
+  }
+
+  @media only screen and (min-width: 2560px)
+  {
+    /**** PRODUIT/INDEX.HTML ****/
+    .card
+    {
+      height: 600px;
     }
   }

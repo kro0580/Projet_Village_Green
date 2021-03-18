@@ -1,11 +1,21 @@
 <?php
+
 namespace App\Security;
 
 use App\Entity\Client;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
+use Symfony\Component\Security\Core\Security;
 
 class ClientVoter extends Voter {
+
+    // Pour donner les pleins pouvoirs à l'administrateur, il faut définir une fonction de sécurité
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
 
     // Définition d'un constante contenant la/les action(s) à surveiller
     const SHOW = 'show';
@@ -33,6 +43,11 @@ class ClientVoter extends Voter {
     {
         // Récupérer l'utilisateur courant :
         $client = $token->getUser();
+
+        // Pour donner tous les pouvoirs à l'administrateur (affichage et modification du profil d'un utilisateur)
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            return true;
+        }
 
         // Vérifier si l'utilisateur passé en paramètre de la fonction est bien une instance de la classe User :
         if (!$client instanceof Client) {
