@@ -1,0 +1,9 @@
+<form method="post" name="delete3" action="{{ path('delete_adresse', {'id': adresse.id}) }}" onsubmit="deleteForm3()">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ adresse.id) }}">
+    <div>
+        <button class="btn btn-danger">SUPPRIMER</button>
+    </div>
+</form>
+
+<script src="{{ asset('js/sweet_alert.js') }}"></script>

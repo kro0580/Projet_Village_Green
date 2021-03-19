@@ -258,6 +258,25 @@ h2
         margin-top: -20px;
     }
 
+#bouton_create
+{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#img_clients
+{
+    width: 250px;
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
+#table_client
+{
+    margin-left: 8px;
+}
+
 /***** CLIENT/NEW.HTML ****/
 
 #img_inscription
@@ -312,27 +331,6 @@ h2
 #mail2, #nom2, #prenom2, #adresse2, #cp2, #ville2
 {
     margin-left: -8px;
-}
-
-/**** CLIENT/INDEX.HTML ****/
-
-#bouton_create
-{
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-
-#img_clients
-{
-    width: 250px;
-    margin-top: -30px;
-    margin-bottom: 20px;
-}
-
-#table_client
-{
-    margin-left: 8px;
 }
 
 /**** CLIENT/SHOW.HTML ****/
@@ -462,6 +460,11 @@ h2
 {
     margin-top: 30px;
     padding-bottom: 30px;
+}
+
+#liens1, #liens2
+{
+  display: inline-block;
 }
 
 /**** CLIENT/AJOUT_ADRESSE.HTML ****/

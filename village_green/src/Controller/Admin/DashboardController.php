@@ -31,6 +31,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        // On définit les paramètres du menu du Dashboard d'Easy Admin
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Livreurs', 'fas fa-truck', Livreur::class);
         yield MenuItem::linkToCrud('Commandes', 'fas fa-shopping-cart', Commande::class);

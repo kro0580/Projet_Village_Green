@@ -78,6 +78,7 @@ class AdresseType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        // Se référe au fichier AdresseType.php pour l'affichage des données dans le formulaire
         $resolver->setDefaults([
             'data_class' => Adresse::class,
         ]);

@@ -30,7 +30,7 @@ class ClientType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
-                            'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
+                        'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
                         'message' => 'Caratère(s) non valide(s)'
                     ]),
                 ]
@@ -48,7 +48,7 @@ class ClientType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
-                            'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
+                        'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
                         'message' => 'Caratère(s) non valide(s)'
                     ]),
                 ]
@@ -171,6 +171,7 @@ class ClientType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        // Se référe au fichier ClientType.php pour l'affichage des données dans le formulaire
         $resolver->setDefaults([
             'data_class' => Client::class,
         ]);

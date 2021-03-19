@@ -57,10 +57,8 @@ class AdresseController extends AbstractController
             // On écrit dans la BDD
             $this->entityManager->flush();
             // Message flash
-            $this->addFlash(
-                'success',
-                'Votre adresse a bien été ajoutée'
-            );
+            $this->addFlash('success','Votre adresse a bien été ajoutée');
+
             return $this->redirectToRoute('adresse');
         }
         return $this->render('client/ajout_adresse.html.twig', [
@@ -73,10 +71,11 @@ class AdresseController extends AbstractController
      */
     public function edit(Request $request, EntityManagerInterface $entityManager, $id)
     {
-        // On recherche l'ID de l'adresse
+        // On recherche l'ID de l'adresse que l'on souhaite modifier
         $adresse= $entityManager->getRepository(Adresse::class)->find($id);
 
-        if (!$adresse) {
+        // Si l'adresse n'existe pas et si l'utilisateur cherche à accéder à une adresse qui n'est pas la sienne, on le redirige vers l'affichage de ses adresses
+        if (!$adresse || $adresse->getAdrCliId() != $this->getUser()) {
             return $this->redirectToRoute('adresse');
         }
 
@@ -93,9 +92,10 @@ class AdresseController extends AbstractController
             $this->entityManager->flush();
             // Message flash
             $this->addFlash(
-            'success',
-            'Votre adresse a bien été modifiée'
-        );
+                'success',
+                'Votre adresse a bien été modifiée'
+            );
+
             return $this->redirectToRoute('adresse');
         }
         return $this->render('client/ajout_adresse.html.twig', [
@@ -106,21 +106,19 @@ class AdresseController extends AbstractController
     /**
      * @Route("client/suprimer-adresse{id}", name="delete_adresse")
      */
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
         // Nous allons utiliser l'objet EntityManager de Doctrine. Il nous permet d'envoyer et d'aller chercher des objets dans la base de données
         $entityManager = $this->getDoctrine()->getManager();
         // On recherche l'ID de l'adresse
         $adresse= $entityManager->getRepository(Adresse::class)->find($id);
-        // On supprime l'adresse
-        $entityManager->remove($adresse);
-        // On met à jour la BDD
-        $entityManager->flush();
-        // Message flash
-        $this->addFlash(
-            'success',
-            'Votre adresse a bien été supprimée'
-        );
+        // Si l'adresse existe et que je suis bien l'utilisateur de celle-ci
+        if ($adresse && $adresse->getAdrCliId() == $this->getUser()) {
+            // On supprime l'adresse
+            $entityManager->remove($adresse);
+            // On met à jour la BDD
+            $entityManager->flush();
+        }
 
         return $this->redirectToRoute('home');
     }

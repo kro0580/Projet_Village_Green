@@ -25,8 +25,11 @@ Mes adresses
                 {% endset %}
                 {{ adresse|replace({'[br]' : "<br/>"})|raw }}
                 </p>
-                <div id="liens">
-                <a href="{{ path('edit_adresse', {'id': adresse.id}) }}" class="btn btn-info">MODIFIER</a> | <a href="{{ path('delete_adresse', {'id': adresse.id}) }}" class="btn btn-danger">SUPPRIMER</a>
+                <div id="liens1">
+                <a href="{{ path('edit_adresse', {'id': adresse.id}) }}" class="btn btn-info">MODIFIER</a> |
+                </div>
+                <div id="liens2">
+                <a>{{ include('client/_delete_adresse.html.twig') }}</a>
                 </div>
             </div>
         </div>
