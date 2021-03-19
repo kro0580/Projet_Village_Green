@@ -63,7 +63,7 @@ class Adresse
     }
 
     public function __toString(){
-        return $this->getAdrNumRue().'[br]'.$this->getAdrCp().'[br]'.$this->getAdrVille().'-'.$this->getAdrPays();
+        return $this->getAdrNumRue().'[br]'.$this->getAdrCp().'[br]'.$this->getAdrVille().' - '.$this->getAdrPays();
     }
 
     public function getAdrNumRue(): ?string

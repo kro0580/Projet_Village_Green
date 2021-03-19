@@ -27,7 +27,14 @@ class OrderController extends AbstractController
      */
     public function index(Cart $cart, Request $request): Response
     {
+        // Si le client n'a pas encore renseigné d'adresses, alors je le redirige vers le formulaire de création d'adresses
+        if(!$this->getUser()->getCliAdresses()->getValues())
+        {
+            return $this->redirectToRoute('add_adresse');
+        }
+        // J'initialise mon formulaire
         $form=$this->createForm(OrderType::class, null, [
+            // Paramètre pour afficher les adresses de l'utilisateur en cours
             'user'=>$this->getUser()
         ]);
         return $this->render('order/index.html.twig', [

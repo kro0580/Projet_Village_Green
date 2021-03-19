@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
+use App\Classe\Cart;
 use App\Entity\Adresse;
 use App\Form\AdresseType;
-use Doctrine\ORM\EntityManagerInterface;
 use http\Client\Curl\User;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdresseController extends AbstractController
 {
@@ -34,7 +35,7 @@ class AdresseController extends AbstractController
     /**
      * @Route("client/ajouter-une-adresse", name="add_adresse")
      */
-    public function add(Request $request): Response
+    public function add(Cart $cart, Request $request): Response
     {
         // On instancie l'entité Adresse
         $adresse = new Adresse();
@@ -59,7 +60,17 @@ class AdresseController extends AbstractController
             // Message flash
             $this->addFlash('success','Votre adresse a bien été ajoutée');
 
-            return $this->redirectToRoute('adresse');
+            // Si j'ai des produits dans mon panier, il y a une redirection vers la commande
+            if($cart->get())
+            {
+                return $this->redirectToRoute('order');
+            }
+            // Sinon on redirige vers la page d'affichage des adresses
+            else
+            {
+                return $this->redirectToRoute('adresse');
+            }
+            
         }
         return $this->render('client/ajout_adresse.html.twig', [
             'form'=>$form->createView()
