@@ -52,7 +52,7 @@ class Adresse
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="cli_adresses")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(nullable=false, name="adr_cli_id", referencedColumnName="cli_id")
+     * @ORM\JoinColumn(nullable=false, name="adr_cli_id", referencedColumnName="cli_id")
      * })
      */
     private $adr_cli_id;

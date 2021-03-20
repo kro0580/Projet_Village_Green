@@ -17,27 +17,28 @@ class OrderType extends AbstractType
         $user=$options['user'];
         $builder
             ->add('adresseLiv', EntityType::class, [
-                'label'=>'Mon adresse de livraison',
+                'label'=>'Choisissez votre adresse de livraison',
                 'required'=>true,
                 'multiple'=>false,
                 'class'=>Adresse::class,
+                // Si c'est true, la valeur des boutons radios sera envoyée
                 'expanded'=>true,
-                'choices'=>$user->getCliAdresses()
+                'choices'=>$user->getCliAdresses(),
             ])
             ->add('adresseFact', EntityType::class, [
-                'label'=>'Mon adresse de facturation',
+                'label'=>'Choisissez votre adresse de facturation',
                 'required'=>true,
                 'multiple'=>false,
                 'class'=>Adresse::class,
                 'expanded'=>true,
-                'choices'=>$user->getCliAdresses()
+                'choices'=>$user->getCliAdresses(),
             ])
             ->add('livreur', EntityType::class, [
-                'label'=>'Choisir mon transporteur',
+                'label'=>'Choisissez votre transporteur',
                 'required'=>true,
                 'multiple'=>false,
                 'class'=>Livreur::class,
-                'expanded'=>true
+                'expanded'=>true,
             ])
             ->add('submit', SubmitType::class, [
                 'label'=>'VALIDER MA COMMANDE',

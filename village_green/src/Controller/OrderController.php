@@ -33,12 +33,15 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('add_adresse');
         }
         // J'initialise mon formulaire
+        // La méthode createform attend en deuxième paramètre une instance de la classe qui est liée au formulaire or ici nous sommes sur un formulaire qui n'est pas lié spécialement à une classe
+        // En troisième paramètre, je passe un tableau ou l'on spécifie l'utilisateur en cours
         $form=$this->createForm(OrderType::class, null, [
-            // Paramètre pour afficher les adresses de l'utilisateur en cours
+            // Permet d'afficher les adresses de l'utilisateur en cours. Ce paramètre sera appelé dans OrderType.php pour récupérer les données souhaitées de l'utilisateur en options
             'user'=>$this->getUser()
         ]);
         return $this->render('order/index.html.twig', [
             'form'=>$form->createView(),
+            // On récupère ce qu'il y a dans le panier pour l'injecter dans la vue ORDER/INDEX.HTML.TWIG
             'cart'=>$cart->getFull()
         ]);
     }

@@ -70,7 +70,7 @@ class AdresseType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label'=>'VALIDER MON ADRESSE',
                 'attr'=>[
-                    'class'=>'btn btn-info'
+                    'class'=>'btn btn-success'
                 ]
             ])
         ;

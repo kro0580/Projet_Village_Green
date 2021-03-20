@@ -518,6 +518,23 @@ legend
     font-weight: bold;
   }
 
+  .form-check
+  {
+    background-color: #f4f8ff;
+    padding: 20px 55px;
+    margin-top: 7px;
+    font-size: 14px;
+  }
+
+  .order-summary
+  {
+    background-color: #f4f8ff;
+    padding: 20px 35px;
+    margin-top: 7px;
+    margin-right: 10px;
+    font-size: 14px;
+  }
+
 /**** BUNDLE/ERROR403.HTML ****/
 
 #error403 a
@@ -864,6 +881,11 @@ Mobile
         margin-left: 0 auto;
     }
 
+    .order-summary
+    {
+      margin-bottom: 10px;
+    }
+
     /**** CART/INDEX.HTML ****/
     #supprimer_mon_panier
     {
@@ -1026,6 +1048,11 @@ Mobile
         margin-left: 0 auto;
     }
 
+    .order-summary
+    {
+      margin-bottom: 10px;
+    }
+
     /**** CART/INDEX.HTML ****/
     #supprimer_mon_panier
     {
@@ -1174,6 +1201,11 @@ Mobile
     #order_submit
     {
         margin-left: 0 auto;
+    }
+
+    .order-summary
+    {
+      margin-bottom: 10px;
     }
 
     /**** CART/INDEX.HTML ****/
