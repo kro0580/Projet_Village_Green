@@ -8,11 +8,11 @@
         {% for produit in produits %}
             <div class="card text-center mb-2 ml-2 mr-2 {{ produit.proSRub }}">
                 <div class="card-header bg-white {{ produit.proSRub }}">
-                <img src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="photo_produit">
+                    <img id="card_img" src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="photo_produit">
                 </div>
                 <div class="card-body {{ produit.proSRub }}">
                     <h5 class="card-title">{{ produit.proLib }}</h5>
-                        <p class="card-text">{{ produit.proPrixAchat }}&nbsp;&euro;</p>
+                    <p class="card-text">{{ produit.proPrixAchat }}&nbsp;&euro;</p>
                 </div>
                 <div class="card-footer {{ produit.proSRub }}">
                     <a href="{{ path('produit_show', {'proId' : produit.proId}) }}" type="button" class="btn btn-info">Détails</a>
