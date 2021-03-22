@@ -1363,7 +1363,7 @@ Mobile
     }
   }
 
-  /* TAILLE ECRAN DE MON ORDINATER PORTABLE */
+  /* TAILLE ECRAN DE MON ORDINATEUR PORTABLE */
   @media only screen and (min-width: 1024px) and (max-width: 1439px)
   {
     /**** ACCUEIL ****/
@@ -1471,12 +1471,13 @@ Mobile
     }
   }
 
+  /* TAILLE ECRAN DE MON SECOND MONITEUR */
   @media only screen and (min-width: 1440px) and (max-width: 2559px)
   {
     /**** PRODUIT/INDEX.HTML ****/
     .card
     {
-      height: 600px;
+      height: 500px;
     }
   }
 
