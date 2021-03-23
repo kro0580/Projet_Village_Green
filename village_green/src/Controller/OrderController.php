@@ -15,11 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
+    // On construit l'entityManager dans le constructeur. De cette façon, on pourra l'utiliser dans les fonctions où l'on en aura besoin 
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->entityManager =$entityManager;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -46,6 +47,7 @@ class OrderController extends AbstractController
         ]);
     }
 
+    // Par sécurité on définit une méthode POST qui permet d'afficher le récapitulatif de la commande uniquement si le formulaire de commande est soumis en POST
     /**
      * @Route("/commande/recapitulatif", name="order_recap", methods={"POST"})
      * @param Cart $cart
@@ -61,12 +63,15 @@ class OrderController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $date=new DateTime;
+            // On récupère les données indiquées dans le OrderType.php pour l'adresse de facturation, de livraison et les coordonnées du livreur
             $adresseFact=$form->get("adresseFact")->getData();
             $adresseLiv=$form->get("adresseLiv")->getData();
             $livreur=$form->get("livreur")->getData();
             // Enregistrement dans Commande()
             $commande = new Commande();
+            // On indique la référence de la commande composée de la date de passage de la commande et d'un ID unique
             $reference = $date->format('dmy').'-'.uniqid();
+            // On stocke les données dont on a besoin
             $commande->setCmdReference($reference);
             $commande->setCmdDate($date);
             $commande->setCmdCliAdresseFact($adresseFact->getAdrNumRue());
@@ -76,25 +81,34 @@ class OrderController extends AbstractController
             $commande->setCmdCliCpLiv($adresseLiv->getAdrCp());
             $commande->setCmdCliVilleLiv($adresseLiv->getAdrVille());
             $commande->setCmdCliCoeff($adresseLiv->getAdrCliId()->getCliCoeff());
+            // On définit par défaut le statut de la commande à 0 car à ce stade elle n'est pas encore payée
             $commande->setCmdPayer(0);
             $commande->setCmdLivNom($livreur->getLivNom());
             $commande->setCmdLivPrix($livreur->getLivPrix());
+            // J'envoie les données
             $this->entityManager->persist($commande);
 
             //Enregistrement dans DetailCommande()
+            // Je récupère mon panier et je boucle sur chaque produit
             foreach ($cart->getFull() as $produit){
                 $detailCmd = new DetailCommande();
                 $detailCmd->setDetCmdCmdId($commande);
+                // Je récupére le libéllé du produit dans l'entrée produit du panier
                 $detailCmd->setDetCmdProduit($produit["produit"]->getProLib());
+                // Je récupére le prix d'achat du produit dans l'entrée produit du panier
                 $detailCmd->setDetCmdProPrix($produit["produit"]->getProPrixAchat());
+                // Je récupére la quantité du produit dans l'entrée quantité du panier
                 $detailCmd->setDetCmdProQte($produit["quantite"]);
+                // Je calcul le prix total de la commande
                 $detailCmd->setDetCmdTotal($produit["quantite"] * $produit["produit"]->getProPrixAchat());
+                // J'envoie les données
                 $this->entityManager->persist($detailCmd);
 
             }
 
             $this->entityManager->flush();
 
+            // On met le return dans le if par sécurité. De cette façon on n'accède au récapitulatif de la commande que si le formulaire a été soumis. Si quelqu'un saisit la route dans l'url, le formulaire n'est pas soumis et il est redirigé vers le panier
             return $this->render('order/add.html.twig', [
                 'cart'=>$cart->getFull(),
                 'livreur'=>$livreur,

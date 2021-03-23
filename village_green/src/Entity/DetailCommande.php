@@ -20,7 +20,7 @@ class DetailCommande
     /**
      * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="cmd_det_cmd_id")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(nullable=false, name="det_cmd_cmd_id", referencedColumnName="cmd_id")
+     * @ORM\JoinColumn(nullable=false, name="det_cmd_cmd_id", referencedColumnName="cmd_id")
      * })
      */
     private $det_cmd_cmd_id;

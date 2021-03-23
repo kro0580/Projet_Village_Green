@@ -48,7 +48,7 @@ class Livreur
     }
 
     public function __toString(){
-        return $this->getLivNom().'[br]'.$this->getLivDescription().'[br]'.number_format($this->getLivPrix()/100, 2,',', ',').' €';
+        return $this->getLivNom().'[br]'.$this->getLivDescription().'[br]'.number_format($this->getLivPrix()/100, 2,',', ',').'€';
     }
 
     public function getLivNom(): ?string

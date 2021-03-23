@@ -39,8 +39,12 @@
                                 <div class="col-2">
                                     {{ (produit.produit.proPrixAchat * produit.quantite)|number_format(2) }}€
                                 </div>
+                            {% set total= total +  (produit.produit.proPrixAchat * produit.quantite)%}
                         </div>
                         {% endfor %} 
+                </div>
+                <div class="text-right" style="margin-top: 10px; margin-right: 10px;">
+                <strong>Total de mon panier :</strong> {{ (total)|number_format(2) }}€ <br>
                 </div>
             </div>
         </div>

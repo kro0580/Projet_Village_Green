@@ -504,7 +504,18 @@ h2
 #checkout-button
 {
     margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: -6px;
 }
+
+#add_adresse_liv, #add_adresse_transp, #add_adresse_fact
+  {
+    background-color: #f4f8ff;
+    padding: 20px 55px;
+    padding-left: 10px;
+    margin-top: 7px;
+    font-size: 14px;
+  }
 
 /**** ORDER/INDEX.HTML ****/
 
@@ -601,6 +612,43 @@ legend
 {
     width:1000px; 
     height:600px;
+}
+
+/**** BUNDLE/ERROR405.HTML ****/
+
+#error405 a
+{
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 19.5%;
+    margin-right: 0.625%;
+    text-align: center;
+    line-height: 3;
+    color: white;
+}
+
+#error405 a:link, #error405 a:visited, #error405 a:focus 
+{
+    background: #2F3749;
+    border-radius: 5px;
+}
+
+#error405 a:hover
+{
+    background: orange;
+}
+
+#error405 a:active
+{
+    background: red;
+    color: white;
+}
+
+#img_error405
+{
+    width:800px; 
+    height:400px;
 }
 
 /**** MEDIA QUERIES INDEX.HTML ET BASE.HTML (Responsive à tester sur http://ami.responsivedesign.is/) ****/
@@ -1413,22 +1461,22 @@ Mobile
     #guitare
     {
       padding-bottom: 20px;
-      margin-left: -30px;
+      margin-left: -18px;
     }
 
     #banniere_droite
     {
-      margin-left: -20px;
+      margin-left: 15px;
     }
 
     #titre_partenaires
     {
-      margin-left: 40px;
+      margin-left: 62px;
     }
 
     #img_partenaires
     {
-      margin-left: 45px;
+      margin-left: 65px;
       width: 80%;
       padding-top: 10px;
       padding-bottom: 10px;

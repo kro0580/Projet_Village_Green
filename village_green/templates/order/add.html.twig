@@ -12,43 +12,63 @@
         <div class="row">
             <div class="col-md-6">
                 <p><strong>Mon adresse de livraison</strong></p>
+                <div id="add_adresse_liv">
                 {{ adresseLiv.adrNumRue }}<br>
-                {{ adresseLiv.adrCp }}, {{ adresseLiv.adrVille }} - {{ adresseLiv.adrPays }}<br>
+                {{ adresseLiv.adrCp }}<br>
+                {{ adresseLiv.adrVille }} - {{ adresseLiv.adrPays }}
+                </div>
+                <hr>
+                <p><strong>Mon adresse de facturation</strong></p>
+                <div id="add_adresse_fact">
+                {{ adresseFac.adrNumRue }}<br>
+                {{ adresseFac.adrCp }}<br>
+                {{ adresseFac.adrVille }} - {{ adresseFac.adrPays }}
+                </div>
                 <hr>
                 <p><strong>Mon transporteur</strong></p>
+                <div id="add_adresse_transp">
                 {{ livreur.livNom }}<br>
                 {{ livreur.livDescription }}<br>
-                {{ (livreur.livPrix/100)|number_format(2) }} €
-
+                {{ (livreur.livPrix/100)|number_format(2) }}€
+                </div>
             </div>
             <div class="col-md-6">
                 <p><strong>Ma commande</strong></p>
-                <div class="table-responsive-md">
-                    <table class="table table-hover text-center">
-                        {% set sousTotal= null %}
-                        {% for produit in cart %}
-                            <tr >
-                                <th><img style="height: 200px;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" height="20%"></th>
-                                <td>{{ produit.produit.proLib }} </td>
-                                <td>x {{ produit.quantite }}</td>
-                                <td>{{ produit.produit.proPrixAchat }}€</td>
-                                <td>{{ (produit.produit.proPrixAchat * produit.quantite)|number_format(2)}}€</td>
-                            </tr>
+                <div class="order-summary">
+                    {% set sousTotal= null %}
+                    {% for key,produit in cart %}
+                        <div class="row {% if key > 0 %}mt-3{% endif %}">
+                            <div class="col-3">
+                                <img style="width: 100%;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}">
+                            </div>
+                            <div class="col-3">
+                                {{ produit.produit.proLib }}
+                            </div>
+                            <div class="col-2">
+                                x {{ produit.quantite }}
+                            </div>
+                            <div class="col-2">
+                                {{ produit.produit.proPrixAchat }}€
+                            </div>
+                            <div class="col-2">
+                                {{ (produit.produit.proPrixAchat * produit.quantite)|number_format(2) }}€
+                            </div>
                             {% set sousTotal= sousTotal +  (produit.produit.proPrixAchat * produit.quantite)%}
-                        {% endfor %}
-                    </table>
+                        </div>
+                    {% endfor %}
                 </div>
                 <div>
                     <hr>
-                    <strong>Sous total :</strong> {{ (sousTotal)|number_format(2) }} € <br>
-                    <strong>Livraison :</strong> {{ (livreur.livPrix/100)|number_format(2) }} €<br>
+                    <strong>Sous total :</strong> {{ (sousTotal)|number_format(2) }}€ <br>
+                    <strong>Livraison :</strong> {{ (livreur.livPrix/100)|number_format(2) }}€<br>
                     <hr>
-                    <strong>Total :</strong> {{ (sousTotal + livreur.livPrix/100)|number_format(2) }} €<br>
+                    <strong>Total :</strong> {{ (sousTotal + livreur.livPrix/100)|number_format(2) }}€<br>
                 </div>
+                <a id="checkout-button" class="btn btn-block btn-success" >Payer | {{ (sousTotal + livreur.livPrix/100)|number_format(2)}}€</a>
             </div>
         </div>
     </div>
-    <a id="checkout-button" class="btn btn-block btn-success" >Payer | {{ (sousTotal + livreur.livPrix/100)|number_format(2)}} €</a>
+    
 {% endblock %}
 {% block strip %}
     <script type="text/javascript">

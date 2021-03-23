@@ -32,14 +32,14 @@ class CommandeCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('cmd_id', 'Id'),
+            //IdField::new('cmd_id', 'Id'),
             DateTimeField::new('cmd_date', 'Date de Commande'),
-            PercentField::new('cmd_reduc', 'Reduction'),
+            //PercentField::new('cmd_reduc', 'Reduction'),
             TextField::new('cmd_cli_adresse_liv', 'Adresse de livraison'),
             TextField::new('cmd_cli_cp_liv', 'CP de livraison'),
             TextField::new('cmd_cli_ville_liv', 'Ville de livraison'),
             NumberField::new('cmd_cli_coeff', 'Coefficient du Client'),
-            BooleanField::new('cmd_payer', 'Payer ?'),
+            BooleanField::new('cmd_payer', 'Commande payée ?'),
             TextField::new('cmd_liv_nom', 'Livreur'),
             MoneyField::new('cmd_liv_prix', 'Prix de livraison')->setCurrency('EUR')
         ];
