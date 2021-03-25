@@ -320,6 +320,11 @@ h2
     font-size: 10px;
 }
 
+#btn_inscription
+{
+    padding-bottom: 20px;
+}
+
 /**** CLIENT/EDIT.HTML ****/
 
 #img_inscription2
@@ -331,6 +336,11 @@ h2
 #mail2, #nom2, #prenom2, #adresse2, #cp2, #ville2
 {
     margin-left: -8px;
+}
+
+#btn_edit_profil
+{
+  padding-bottom: 20px;
 }
 
 /**** CLIENT/SHOW.HTML ****/
@@ -649,6 +659,24 @@ legend
 {
     width:800px; 
     height:400px;
+}
+
+/**** COMMANDE_CANCEL/INDEX.HTML ****/
+
+#titre_erreur_paiement
+{
+  margin-bottom: 50px;
+}
+
+#img_erreur_paiement
+{
+  width: 50%;
+  margin-bottom: 50px;
+}
+
+#btn_erreur_paiement
+{
+  margin-bottom: 20px;
 }
 
 /**** MEDIA QUERIES INDEX.HTML ET BASE.HTML (Responsive à tester sur http://ami.responsivedesign.is/) ****/

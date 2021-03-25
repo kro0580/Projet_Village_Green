@@ -9,7 +9,7 @@
         <img id="img_inscription" src=" {{ asset('img/BODY/ESPACE CLIENT/register2.jpg') }}" alt="img inscription">
     </div>
 
-    {# Le novalidate est important pour permettrer l'affichage des messages d'erreur personnalisées (NotBlanck par exemple) #}
+    {# Le novalidate est important pour permettre l'affichage des messages d'erreur personnalisées (NotBlank par exemple) #}
     {{ form_start(form, {'attr' : { 'novalidate': 'novalidate'}}) }}
     
         <div class="col-12">
@@ -118,11 +118,13 @@
             {{ form_help(form.cliVille) }}
         </div> 
 
-        <div class="col-12 text-right">
+        <div id="btn_inscription" class="col-12 text-right">
             <input class="btn btn-danger" type="reset" value="ANNULER">
             <a class="btn btn-secondary" href="{{ path('home') }}">RETOUR</a>
             <button class="btn btn-success">{{ button_label|default('JE M\'INSCRIS') }}</button>
         </div>
+    
+    </div>
 
     {{ form_end(form) }}
 

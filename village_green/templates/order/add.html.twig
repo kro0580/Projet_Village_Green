@@ -82,8 +82,10 @@
                     return response.json();
                 })
                 .then(function (session) {
+                    // Si on a une session error et qu'elle est égale à commande, on fait une redirection parcequ'elle n'a pas été créée correctement
                     if (session.error == 'commande'){
                         window.location.replace('{{ path('order') }}')
+                    // Sinon on redirige vers le paiement
                     }else {
                         return stripe.redirectToCheckout({ sessionId: session.id });
                     }

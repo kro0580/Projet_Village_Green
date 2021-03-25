@@ -4,12 +4,15 @@
 
 {% block body %}
     <div class="container-fluid">
-        <h2>Erreur de paiement</h2>
-        <p>Bonjour <strong>{{ app.user.cliPrenom }} {{ app.user.cliNom }}</strong><br>
-            Il semblerait que le paiement de votre commande n°: <strong>{{ commande.cmdReference }}</strong> ait échoué.<br>
-            Une confirmation de l'erreur vient de vous être envoyée par email à l'adresse {{ app.user.cliEmail }}
+        <h2 id="titre_erreur_paiement">Erreur de paiement</h2>
+        <div class="col-12 mt-4 text-center">
+            <img id="img_erreur_paiement" src="{{ asset('img/ERRORS/erreur_paiement.jpg') }}" class="col-12" alt="Erreur paiement" title="Erreur paiement">
+        </div>
+        <p>Bonjour <strong>{{ app.user.cliPrenom }} {{ app.user.cliNom }}</strong>,<br>
+           Il semblerait que le paiement de votre commande n°: <strong>{{ commande.cmdReference }}</strong> ait échoué.<br>
+           Vous pouvez essayer à nouveau en cliquant sur le bouton ci-dessous.
         </p>
         <hr>
-        <a href="{{ path('order') }}" class="btn btn-success">Réessayer le paiement</a>
+        <a id="btn_erreur_paiement" href="{{ path('order') }}" class="btn btn-success">RESSAYER LE PAIEMENT</a>
     </div>
 {% endblock %}

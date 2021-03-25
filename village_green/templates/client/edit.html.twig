@@ -12,19 +12,20 @@
     {{ form_start(form, {'attr' : { 'novalidate': 'novalidate'}}) }}
     
         <div class="col-12">
-            <div class="form-group id="mail2">
-                    {{ form_label(form.cliEmail, 'Votre e-mail :') }}
-            </div>
-
-        <div class="col-12">
-            <div class="form-group">
-                    {{ form_widget(form.cliEmail) }}
-                    {{ form_help(form.cliEmail) }}
+            <div class="form-group" id="mail2">
+                {{ form_label(form.cliEmail, 'Votre e-mail :') }}
             </div>
         </div>
 
-                    {{ form_widget(form.cliPassword, {'value': recup, 'type': 'hidden'}) }}
-                    {{ form_widget(form.cliConfPassword, {'value': recup, 'type': 'hidden'}) }}
+        <div class="col-12">
+            <div class="form-group">
+                {{ form_widget(form.cliEmail) }}
+                {{ form_help(form.cliEmail) }}
+            </div>
+        </div>
+
+                {{ form_widget(form.cliPassword, {'value': recup, 'type': 'hidden'}) }}
+                {{ form_widget(form.cliConfPassword, {'value': recup, 'type': 'hidden'}) }}
     
     <div class="col-12 mt-5 mb-5">
         <h2><i class="fas fa-users" id="identifiants"></i>Vos identifiants</h2>
@@ -76,11 +77,12 @@
             {{ form_help(form.cliVille) }}
         </div> 
 
-        <div class="col-12 text-right">
+        <div id="btn_edit_profil" class="col-12 text-right">
             <input class="btn btn-danger" type="reset" value="ANNULER">
             <a class="btn btn-secondary" href="{{ path('client_show', {'cliId': app.user.cliId}) }}">RETOUR</a>
             <button class="btn btn-success">{{ button_label|default('VALIDER') }}</button>
         </div>
+    </div>
 
     {{ form_end(form) }}
 
