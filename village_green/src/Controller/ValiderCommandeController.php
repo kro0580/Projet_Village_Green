@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ValiderCommandeController extends AbstractController
 {
+    // Pour interroger Doctrine
     private $entityManager;
     public function __construct(EntityManagerInterface $entityManager){
         $this->entityManager = $entityManager;
@@ -27,14 +28,16 @@ class ValiderCommandeController extends AbstractController
     public function index($stripSessionId, Cart $cart, MailerInterface $mailer): Response
     {
         $commande= $this->entityManager->getRepository(Commande::class)->findOneBycmd_strip_id_session($stripSessionId);
+        // Si la commande n'est pas trouvée, on redirige vers la page d'accueil
         if (!$commande){
             return $this->redirectToRoute('home');
         }
 
+        // Si ma commande est en statut non payée
         if (!$commande->getCmdPayer()){
             //Vider le panier
             $cart->remove();
-            //Modification du statut de cmdPayer a true
+            //Modification du statut de cmdPayer a true donc on bascule de 0 à 1
             $commande->setCmdPayer(1);
             //La livraison
             $livraison = new Livraison();

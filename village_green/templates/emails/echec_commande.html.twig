@@ -1,0 +1,15 @@
+<img src="{{ email.image('@images/logo_village.png') }}" alt="Logo">
+
+<h1>Bienvenue {{ username }} !</h1>
+
+<p>
+    Vous avez passé une commande avec l'adresse email suivante : <code>{{ email.to[0].address }}</code>
+</p>
+
+<p>
+    Cette commande sous le numéro <strong>{{ reference }}</strong> n'a malheureusement pas pu aboutir suite à une erreur survenue lors du paiement.
+</p>
+
+<p>
+    Nous vous invitons à renouveller votre commande en <a style="color:blue;" href="https://127.0.0.1:8000/commande/erreur/cs_test_b1gncpgQW8cB7EHKJpAp26j4LC8RnmxThFU5MRgalwAkssy0ZO0Llfh4pq">cliquant sur ce lien</a>.
+</p>

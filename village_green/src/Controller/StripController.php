@@ -72,9 +72,11 @@ class StripController extends AbstractController
             'line_items' => [$produitStrip],
             'mode' => 'payment',
             // Redirection vers les vues correspondantes en cas de succès ou d'échec de la commande
+            // Dans le controleur on va pouvoir retrouver la commande avec le CHECKOUT_SESSION_ID
             'success_url' => $YOUR_DOMAIN . '/commande/merci/{CHECKOUT_SESSION_ID}',
             'cancel_url' => $YOUR_DOMAIN . '/commande/erreur/{CHECKOUT_SESSION_ID}',
         ]);
+        // Pour enregistrer le numéro de la commande en BDD
         $commande->setCmdStripIdSession($checkout_session->id);
         $entityManager->flush();
         $response = new JsonResponse(['id' => $checkout_session->id]);

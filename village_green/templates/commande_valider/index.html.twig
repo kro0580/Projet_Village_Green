@@ -10,11 +10,13 @@
     <p>Bonjour <strong>{{ app.user.cliPrenom }} {{ app.user.cliNom }}</strong><br>
       Merci, nous avons bien reçu votre commande n° : <strong>{{ commande.cmdReference }}</strong><br>
       Une email de confirmation de commande vous a été envoyé.<br>
-      Veuillez consulter votre messagerie ({{ app.user.cliEmail }}) pour obtenir les informations de votre commande et les détails de la livraison. <br>
+      Veuillez consulter votre messagerie <strong>({{ app.user.cliEmail }})</strong> pour obtenir les informations de votre commande et les détails de la livraison.<br>
     </p>
     <hr>
     <p id="p_conf_commande">
-      Votre commande vous sera livrée par {{ commande.cmdLivNom}} à l'adresse suivante : <strong>{{ commande.cmdCliAdresseLiv }}, {{ commande.cmdCliCpLiv }} - {{ commande.cmdCliVilleLiv }}</strong>
+      Votre commande vous sera livrée par <strong>{{ commande.cmdLivNom}}</strong> à l'adresse suivante :<br> 
+      <strong>{{ commande.cmdCliAdresseLiv }}</strong><br>
+      <strong>{{ commande.cmdCliCpLiv }} - {{ commande.cmdCliVilleLiv }}</strong><br>
     </p>
   </div>
   

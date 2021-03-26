@@ -527,6 +527,11 @@ h2
     font-size: 14px;
   }
 
+#recap_commande
+{
+  padding-bottom: 20px;
+}
+
 /**** ORDER/INDEX.HTML ****/
 
 #lien_adresse
