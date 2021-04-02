@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Commande;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -27,7 +26,6 @@ class CommandeCrudController extends AbstractCrudController
         return $actions
         ->add('index', 'detail');
     }
-
 
     public function configureFields(string $pageName): iterable
     {

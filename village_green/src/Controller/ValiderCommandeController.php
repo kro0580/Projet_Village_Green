@@ -35,7 +35,7 @@ class ValiderCommandeController extends AbstractController
 
         // Si ma commande est en statut non payée
         if (!$commande->getCmdPayer()){
-            //Vider le panier
+            //Vider le panier après achat. La fonction remove() fait appel à celle définit dans classe/Cart.php
             $cart->remove();
             //Modification du statut de cmdPayer a true donc on bascule de 0 à 1
             $commande->setCmdPayer(1);

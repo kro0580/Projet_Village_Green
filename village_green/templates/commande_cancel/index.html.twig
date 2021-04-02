@@ -10,9 +10,10 @@
         </div>
         <p>Bonjour <strong>{{ app.user.cliPrenom }} {{ app.user.cliNom }}</strong>,<br>
            Il semblerait que le paiement de votre commande n°: <strong>{{ commande.cmdReference }}</strong> ait échoué.<br>
+           Une confimation de l'erreur vient de vous être envoyée par mail à l'adresse : <strong>({{ app.user.cliEmail }})</strong>
            Vous pouvez essayer à nouveau en cliquant sur le bouton ci-dessous.
         </p>
         <hr>
-        <a id="btn_erreur_paiement" href="{{ path('order') }}" class="btn btn-success">RESSAYER LE PAIEMENT</a>
+        <a id="btn_erreur_paiement" href="{{ path('order') }}" class="btn btn-success">REESSAYER LE PAIEMENT</a>
     </div>
 {% endblock %}
