@@ -49,6 +49,7 @@ var pass = document.getElementById("password")
     }
 
 // Pour dévoiler le mot de passe que l'on tape
+// Dans formulaire d'inscription
 
 $(document).ready(function () {
     $("#afficher_mdp").click(function () {
@@ -66,6 +67,19 @@ $(document).ready(function () {
             $("#conf_password").attr("type", "text");
         } else {
             $("#conf_password").attr("type", "password");
+        }
+    });
+});
+
+// Pour dévoiler le mot de passe que l'on tape
+// Dans formulaire de connexion
+
+$(document).ready(function () {
+    $("#afficher_login_mdp").click(function () {
+        if ($("#mdp").attr("type") === "password") {
+            $("#mdp").attr("type", "text");
+        } else {
+            $("#mdp").attr("type", "password");
         }
     });
 });

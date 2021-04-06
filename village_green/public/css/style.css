@@ -305,7 +305,6 @@ h2
 #afficher_mdp 
 {
     background-color: #E8E9EA;
-    border: none;
     margin-top: 7px;
     float: right;
     font-size: 10px;
@@ -314,7 +313,6 @@ h2
 #afficher_conf_mdp
 {
     background-color: #E8E9EA;
-    border: none;
     margin-top: 7px;
     float: right;
     font-size: 10px;
@@ -389,6 +387,13 @@ h2
     font-size: 13px;
     margin-bottom: 25px;
     margin-top: -5px;
+}
+
+#afficher_login_mdp
+{
+    background-color: #E8E9EA;
+    float: right;
+    font-size: 10px;
 }
 
 /**** SECURITY/FORGOTTEN_PASSWORD.HTML ****/

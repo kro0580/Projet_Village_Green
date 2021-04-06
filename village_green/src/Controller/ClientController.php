@@ -59,12 +59,9 @@ class ClientController extends AbstractController
             $client->setCliRegl('A définir');
             $client->setCliCateg('A définir');
             $client->setCliCoeff('1');
-            $client->setCliPassword(
-                $passwordEncoder->encodePassword(
-                    $client,
-                    $form->get('cliPassword')->getData()
-                )
-            );
+            // Encodage du mot de passe
+            $password_hash = $passwordEncoder->encodePassword($client, $client->getCliPassword());
+            $client->setCliPassword($password_hash);
 
             // Si le formulaire est soumis et valide, alors nous allons utiliser l'objet EntityManager de Doctrine. Il nous permet d'envoyer et d'aller chercher des objets dans la base de données
             $entityManager = $this->getDoctrine()->getManager();
@@ -201,6 +198,6 @@ class ClientController extends AbstractController
         $session = new Session();
         $session->invalidate();
 
-        return $this->redirectToRoute('client_index');
+        return $this->redirectToRoute('home');
     }
 }

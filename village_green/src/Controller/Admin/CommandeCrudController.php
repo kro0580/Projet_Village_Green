@@ -12,7 +12,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\PercentField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use function Sodium\add;
 
 class CommandeCrudController extends AbstractCrudController
 {
@@ -36,7 +35,7 @@ class CommandeCrudController extends AbstractCrudController
             TextField::new('cmd_cli_adresse_liv', 'Adresse de livraison'),
             TextField::new('cmd_cli_cp_liv', 'CP de livraison'),
             TextField::new('cmd_cli_ville_liv', 'Ville de livraison'),
-            NumberField::new('cmd_cli_coeff', 'Coefficient du Client'),
+            //NumberField::new('cmd_cli_coeff', 'Coefficient du Client'),
             BooleanField::new('cmd_payer', 'Commande payée ?'),
             TextField::new('cmd_liv_nom', 'Livreur'),
             MoneyField::new('cmd_liv_prix', 'Prix de livraison')->setCurrency('EUR')

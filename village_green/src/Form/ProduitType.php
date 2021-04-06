@@ -33,11 +33,11 @@ class ProduitType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
-                           'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
-                      'message' => 'Caratère(s) non valide(s)'
-                  ]),
-              ]
-          ])
+                        'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
+                        'message' => 'Caratère(s) non valide(s)'
+                    ]),
+                ]
+            ])
             ->add('proDescr', TextareaType::class,[
                 'label' => 'Description du produit',
                 'help' => 'Veuillez renseigner une description pour le produit',
@@ -47,7 +47,7 @@ class ProduitType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),
                     new Regex([
-                        'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\_\'\-\s]+$/',
+                        'pattern' => '/^[A-Za-z0-9\/éèàçâêûîôäëüïö\:\"\_\'\-\s]+$/',
                         'message' => 'Caratère(s) non valide(s)'
                     ]),
                 ]

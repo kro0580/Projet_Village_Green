@@ -19,7 +19,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
+            anonymous: true
             logout:
                 path: /logout
                 target: /
@@ -41,13 +41,14 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/produit/new, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_USER }
          - { path: ^/commande, roles: ROLE_USER }
+         # - { path: ^/profile, roles: ROLE_USER }
     # https://symfony.com/doc/current/security.html#hierarchical-roles     
-    # Paramétrage des rôles pour que l'admin possède les mêmes droit que l'utilisateur, notamment pour valider le panier
+    # Paramétrage des rôles pour que l'admin possède les mêmes droits que l'utilisateur, notamment pour valider le panier
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
     # Il faut renseigner l'encoder utilisé pour le hash du mot de passe
+    # bcrypt étant la méthode utilisée pour le hash du mot de passe et cost le logarithme binaire du nombre d'itérations choisi
     encoders:
         App\Entity\Client:
             algorithm: bcrypt
