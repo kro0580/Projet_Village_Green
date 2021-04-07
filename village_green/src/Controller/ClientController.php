@@ -99,7 +99,6 @@ class ClientController extends AbstractController
 
         // Affichage de la page d'inscription où on envoie les valeurs dans la vue
         return $this->render('client/new.html.twig', [
-            'client' => $client,
             'form' => $form->createView(),
         ]);
     }
@@ -111,7 +110,7 @@ class ClientController extends AbstractController
      */
     public function show(Client $client): Response
     {
-        //Pour empêcher l'accès à un autre profil que celui de la personne connectée
+        // Pour empêcher l'accès à un autre profil que celui de la personne connectée
         $this->denyAccessUnlessGranted('show', $client, 'Vous ne pouvez pas accéder à ce profil !');
 
         return $this->render('client/show.html.twig', [
@@ -139,8 +138,10 @@ class ClientController extends AbstractController
         $recup_password = $client->getCliPassword();
         // On vérifie si le formulaire a été envoyé et si les données sont valides
         if ($form->isSubmitted() && $form->isValid()) {
+            // Si le formulaire est soumis et valide, alors nous allons utiliser l'objet EntityManager de Doctrine. Il nous permet d'envoyer et d'aller chercher des objets dans la base de données
+            $entityManager = $this->getDoctrine()->getManager();
             // On écrit dans la BDD
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager->flush();
             // Message flash
             $this->addFlash(
                 'success',
@@ -150,7 +151,6 @@ class ClientController extends AbstractController
         }
         // Affichage de la page de modification
         return $this->render('client/edit.html.twig', [
-            'client' => $client,
             'form' => $form->createView(),
             'recup' => $recup_password,
         ]);
@@ -170,7 +170,7 @@ class ClientController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         // On récupère l'ID et les adresses enregistrées par le client
         if ($this->isCsrfTokenValid('delete'.$client->getCliId(), $request->request->get('_token')) && $adressesNombre == 0) {
-            // Destrucyion de la session
+            // Destruction de la session
             session_destroy();
             // On supprime le client
             $entityManager->remove($client);

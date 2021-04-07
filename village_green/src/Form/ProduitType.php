@@ -90,7 +90,7 @@ class ProduitType extends AbstractType
                 'label' => 'Quantité en stock',
                 'help' => 'Veuillez renseigner la quantité en stock',
                 'attr' => [
-                    'placeholder' => 'Description du produit',
+                    'placeholder' => 'Quantité en stock',
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez remplir ce champ']),

@@ -5,7 +5,7 @@
 {% block body %}
   
   <div class="container-fluid">
-  <img id="img_conf_commande" src=" {{ asset('img/BODY/ESPACE CLIENT/conf_commande.png') }}" id="conf_commande" alt="confirmation commande">
+  <img id="img_conf_commande" src=" {{ asset('img/BODY/ESPACE CLIENT/conf_commande.png') }}" id="conf_commande" alt="confirmation commande" title="confirmation commande" />
     <h2 id="titre_conf_commande">Confirmation de commande</h2>
     <p>Bonjour <strong>{{ app.user.cliPrenom }} {{ app.user.cliNom }}</strong><br>
       Merci, nous avons bien reçu votre commande n° : <strong>{{ commande.cmdReference }}</strong><br>

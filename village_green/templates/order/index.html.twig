@@ -25,7 +25,7 @@
                         {% for key,produit in cart %}
                         <div class="row {% if key > 0 %}mt-3{% endif %}">
                                 <div class="col-3">
-                                    <img style="width: 100%;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}">
+                                    <img style="width: 100%;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" title="{{ produit.produit.proLib }}" />
                                 </div>
                                 <div class="col-3">
                                     {{ produit.produit.proLib }}

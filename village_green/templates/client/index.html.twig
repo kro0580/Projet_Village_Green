@@ -6,14 +6,14 @@
     <h1 class="text-center mb-5">Liste des clients</h1>
 
     <div class="col-12 mt-4 text-center">
-        <img id="img_clients" src=" {{ asset('img/BODY/ESPACE CLIENT/clients.png') }}" alt="img clients">
+        <img id="img_clients" src=" {{ asset('img/BODY/ESPACE CLIENT/clients.png') }}" alt="img clients" title="img client" />
     </div>
 
     {% if is_granted('ROLE_ADMIN') %}
 
     <div class="container">
 
-        <table id="table_client" class="table table-striped table-hover table-responsive">
+        <table class="table table-striped table-hover table-responsive">
             <thead>
             <tr class="text-center">
                 <!--<th>CliId</th>-->

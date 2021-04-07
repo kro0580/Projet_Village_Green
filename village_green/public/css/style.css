@@ -272,11 +272,6 @@ h2
     margin-bottom: 20px;
 }
 
-#table_client
-{
-    margin-left: 8px;
-}
-
 /***** CLIENT/NEW.HTML ****/
 
 #img_inscription
@@ -1165,6 +1160,7 @@ Mobile
     }
   }
 
+  /* TAILLE QUAND FENETRE REDUITE AU MINIMUM */
   @media only screen and (min-width: 425px) and (max-width: 767px)
   {
     /**** ACCUEIL ****/
@@ -1205,7 +1201,7 @@ Mobile
 
     #banniere_droite
     {
-      margin-left: 40px;
+      margin-left: 70px;
     }
 
     #imgguit, #imgbat, #imgpia, #imgmic, #img_sono, #img_case, #img_cable, #img_saxo
@@ -1258,6 +1254,18 @@ Mobile
     #bouton_deconnexion
     {
         display: none;
+    }
+
+    /**** CLIENT/INDEX.HTML ****/
+    #btn_voir
+    {
+        margin-top: -2px;
+        margin-bottom: 5px;
+    }
+
+    #btn_modif
+    {
+        margin-bottom: -3px;
     }
 
     /**** CLIENT/ADRESSE.HTML ****/
@@ -1316,7 +1324,13 @@ Mobile
     /**** PRODUIT/INDEX.HTML ****/
     .card
     {
-      height: 600px;
+        height: 450px;
+        width: 350px;
+    }
+
+    #card_img
+    {
+      height: 250px;
     }
   }
 
@@ -1445,7 +1459,13 @@ Mobile
     /**** PRODUIT/INDEX.HTML ****/
     .card
     {
-      height: 600px;
+        height: 450px;
+        width: 350px;
+    }
+
+    #card_img
+    {
+      height: 250px;
     }
   }
 

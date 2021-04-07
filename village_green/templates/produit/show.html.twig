@@ -6,18 +6,10 @@
     <div class="container">
     <h1 class="text-center">{{ produit.proLib }}</h1>
 
-        <img id="img_show" class="text-center" src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" alt="photo_detail">
+        <img id="img_show" class="text-center" src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" alt="photo_detail" title="photo_detail" />
 
     <table class="table mt-3 table-striped table-hover table-responsive">
         <tbody>
-{#            <tr>#}
-{#                <th>ProId</th>#}
-{#                <td>{{ produit.proId }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>ProLib</th>#}
-{#                <td>{{ produit.proLib }}</td>#}
-{#            </tr>#}
             <tr>
                 <th>Description</th>
                 <td class="col-lg">{{ produit.proDescr }}</td>
@@ -26,18 +18,6 @@
                 <th>Prix</th>
                 <td class="col-lg">{{ produit.proPrixAchat }}&nbsp;&euro;</td>
             </tr>
-{#            <tr>#}
-{#                <th>ProPhoto</th>#}
-{#                <td>{{ produit.proPhoto }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>ProStock</th>#}
-{#                <td>{{ produit.proStock }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>ProActif</th>#}
-{#                <td>{{ produit.proActif ? 'Yes' : 'No' }}</td>#}
-{#            </tr>#}
         </tbody>
     </table>
 

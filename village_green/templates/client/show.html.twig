@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="col-12 mt-4 text-center">
-        <img id="img_profil" src=" {{ asset('img/BODY/ESPACE CLIENT/profil7.png') }}" alt="img profil">
+        <img id="img_profil" src=" {{ asset('img/BODY/ESPACE CLIENT/profil7.png') }}" alt="img profil" title="img profil" />
     </div>
 
     <h2 id="fiche_client" class="text-center mb-5">{{ client.cliPrenom }} {{ client.cliNom }}</h2>
@@ -14,10 +14,6 @@
 
         <table class="table table-striped col-12">
             <tbody>
-            {#<tr>
-                <th>CliId</th>
-                <td>{{ client.cliId }}</td>
-            </tr>#}
             <tr>
                 <th>Nom :</th>
                 <td style="text-align: left;">{{ client.cliNom }}</td>

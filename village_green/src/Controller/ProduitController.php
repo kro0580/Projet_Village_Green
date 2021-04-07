@@ -71,7 +71,7 @@ class ProduitController extends AbstractController
                 $produit->setProPhoto($newFilename);
                 try
                 {
-                    // Déplacement du fichier vers le répertoire de destination sur le serveur
+                    // Déplacement du fichier vers le répertoire de destination sur le serveur (services.yaml)
                     $pictureFile->move(
                         $this->getParameter('photo_directory'),
                         $newFilename
@@ -79,6 +79,10 @@ class ProduitController extends AbstractController
                 } catch (FileException $e)
                 {
                     // Gestion de l'erreur si le déplacement ne s'est pas effectué
+                    $this->addFlash(
+                        'warning',
+                        'Problème lors du déplacement de la photo !!'
+                    );
                 }
             }
             // Si le formulaire est soumis et valide, alors nous allons utiliser l'objet EntityManager de Doctrine. Il nous permet d'envoyer et d'aller chercher des objets dans la base de données
@@ -99,7 +103,6 @@ class ProduitController extends AbstractController
         }
 
         return $this->render('produit/new.html.twig', [
-            'produit' => $produit,
             'form' => $form->createView(),
         ]);
     }
@@ -152,6 +155,10 @@ class ProduitController extends AbstractController
                             } catch (FileException $e)
                             {
                                 // Gestion de l'erreur si le déplacement ne s'est pas effectué
+                                $this->addFlash(
+                                    'warning',
+                                    'Problème lors du déplacement de la photo !!'
+                                );
                             }
                     }
             }
@@ -172,6 +179,7 @@ class ProduitController extends AbstractController
         }
 
         return $this->render('produit/edit.html.twig', [
+            // Variable 'produit' nécessaire car on y fait appel dans le form delete indiqué dans edit.html.twig
             'produit' => $produit,
             'form' => $form->createView(),
         ]);

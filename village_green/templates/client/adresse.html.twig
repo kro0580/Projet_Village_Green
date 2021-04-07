@@ -7,7 +7,7 @@ Mes adresses
   <h1 id="adresse_client">Mes adresses</h1>
   <a href="{{ path('cart') }}" id="adresse_panier" class="btn btn-outline-primary float-right">MON PANIER</a>
   <a href="{{ path('add_adresse') }}" class="btn btn-outline-primary float-right">AJOUTER UNE ADRESSE</a>
-  <img src=" {{ asset('img/BODY/ESPACE CLIENT/adresse.png') }}" id="img_adresse" alt="img adresse">
+  <img src=" {{ asset('img/BODY/ESPACE CLIENT/adresse.png') }}" id="img_adresse" alt="img adresse" title="img adresse" />
   <hr>
     {% if app.user.cliAdresses|length == 0 %}
     <p id="adresse_vide" class="text-center">Vous n'avez pas encore renseigné d'adresse. Pour en ajouter une, <a href="{{ path('add_adresse') }}">cliquer ici ou sur le bouton "AJOUTER UNE ADRESSE"</a> </p>

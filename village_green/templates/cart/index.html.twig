@@ -25,7 +25,7 @@
                     {% for produit in cart %} <!-- produit est appelé dans la public function getFull() dans Cart.php -->
                         <tr>
                             <th scope="row">{{ ligne }}</th>
-                            <th><img style="height: 200px;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}"></th>
+                            <th><img style="height: 200px;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" title="{{ produit.produit.proLib }}"></th>
                             <td>{{ produit.produit.proLib }} </td>
                             <td>
                                 <a href="{{ path('reduir_to_cart', {'id': produit.produit.proId}) }}">
@@ -61,7 +61,7 @@
             </div>
         {% else %}
             <p><b>Votre panier est vide</b></p>
-            <img id="img_panier" src="{{ asset('img/ICONS/panier_vide.png') }}" alt="Panier vide">
+            <img id="img_panier" src="{{ asset('img/ICONS/panier_vide.png') }}" alt="Panier vide" />
             <div style="padding-bottom: 20px;"><a href="{{ path('produit_index') }}" class="btn btn-primary">AJOUTER DES PRODUITS</a></div>
         {% endif %}
     </div>
