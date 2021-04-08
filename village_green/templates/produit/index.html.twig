@@ -6,15 +6,15 @@
     <h1 class="text-center mb-5">Notre catalogue</h1>
     <div class="row d-flex justify-content-center grid">
         {% for produit in produits %}
-            <div class="card text-center mb-2 ml-2 mr-2">
+            <div class="card text-center mb-2 ml-2 mr-2 {{ produit.proSRub }}"> <!-- On précise la sous-rubrique pour rendre le data filter fonctionnel -->
                 <div class="card-header bg-white">
                     <img id="card_img" src="{{ asset('img/PRODUITS/')}}{{ produit.proPhoto }}" class="card-img-top" alt="photo_produit" title="photo_produit" />
                 </div>
-                <div class="card-body">
+                <div class="card-body {{ produit.proSRub }}"> <!-- On précise la sous-rubrique pour rendre le data filter fonctionnel -->
                     <h5 class="card-title">{{ produit.proLib }}</h5>
                     <p class="card-text">{{ produit.proPrixAchat }}&nbsp;&euro;</p>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer {{ produit.proSRub }}"> <!-- On précise la sous-rubrique pour rendre le data filter fonctionnel -->
                     <a href="{{ path('produit_show', {'proId' : produit.proId}) }}" type="button" class="btn btn-info">Détails</a>
                     <a href="{{ path('add_to_cart', {'id' : produit.proId}) }}" type="button" class="btn btn-success">Ajouter au panier</a>
                 </div>

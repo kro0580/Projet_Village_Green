@@ -152,6 +152,12 @@ class Produit
         return $this;
     }
 
+    // Pour affichage correct des prix dans le Dashboard easy admin des produits
+    public function getPrixAchat()
+    {
+        return $this->proPrixAchat*100;
+    }
+
     public function getProPrixAchat(): ?string
     {
         return $this->proPrixAchat;

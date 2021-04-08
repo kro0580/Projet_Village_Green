@@ -86,6 +86,12 @@ class DetailCommande
         return $this;
     }
 
+    // Pour affichage correct des prix dans le Dashboard easy admin du détail de la commande
+    public function getPrix()
+    {
+        return $this->det_cmd_pro_prix*100;
+    }
+
     public function getDetCmdProPrix(): ?float
     {
         return $this->det_cmd_pro_prix;
@@ -96,6 +102,12 @@ class DetailCommande
         $this->det_cmd_pro_prix = $det_cmd_pro_prix;
 
         return $this;
+    }
+
+    // Pour affichage correct des prix dans le Dashboard easy admin du détail de la commande
+    public function getPrixTotal()
+    {
+        return $this->det_cmd_total*100;
     }
 
     public function getDetCmdTotal(): ?float

@@ -69,7 +69,7 @@ class ProduitType extends AbstractType
             ->add('proPhoto', FileType::class, [
                 'label' => 'Photo du produit',
                 'help' => 'Sélectionner une photo du produit',
-                // unmapped => fichier non associé à aucune propriété d'entité, validation impossible avec les annotations
+                // 'unmapped' => fichier non associé à aucune propriété d'entité, validation impossible avec les annotations
                 // 'mapped' => false : permet de dire que ce champ n'est pas lié à la base de données
                 'mapped' => false,
                 // Pour éviter de recharger la photo lors de l'édition du profil
