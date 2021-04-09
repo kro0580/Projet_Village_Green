@@ -10,7 +10,7 @@
                 <table class="table table-hover text-center">
                     <thead>
                     <tr class="table-active">
-                        <th scope="col">ID</th>
+                        {#<th scope="col">ID</th>#}
                         <th scope="col">Produit</th>
                         <th scope="col">Libellé</th>
                         <th scope="col">Quantité</th>
@@ -20,11 +20,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% set total= null %} <!-- Je déclare une nouvelle variable pour le calcul du total et elle sera égales à nulle -->
-                    {% set ligne= 1 %}
+                    {% set total= null %} <!-- Je déclare une nouvelle variable pour le calcul du total et elle sera égale à nulle -->
+                    {#{% set ligne= 1 %}#}
                     {% for produit in cart %} <!-- produit est appelé dans la public function getFull() dans Cart.php -->
                         <tr>
-                            <th scope="row">{{ ligne }}</th>
+                            {#<th scope="row">{{ ligne }}</th>#}
                             <th><img style="height: 200px;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" title="{{ produit.produit.proLib }}"></th>
                             <td>{{ produit.produit.proLib }} </td>
                             <td>
@@ -44,8 +44,8 @@
                                 </a>
                             </td>
                         </tr>
-                        {% set total= total +  (produit.produit.proPrixAchat * produit.quantite)%} <!-- A chaque fois pour chaque ligne, on reprend le total et on ajoute le nouveau produit -->
-                        {% set ligne= ligne + 1 %}
+                        {% set total= total + (produit.produit.proPrixAchat * produit.quantite) %} <!-- A chaque fois pour chaque ligne, on reprend le total et on ajoute le nouveau produit -->
+                        {#{% set ligne= ligne + 1 %}#}
                     {% endfor %}
                     </tbody>
                 </table>

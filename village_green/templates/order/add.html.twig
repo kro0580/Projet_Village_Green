@@ -36,8 +36,8 @@
                 <p><strong>Ma commande</strong></p>
                 <div class="order-summary">
                     {% set sousTotal= null %}
-                    {% for key,produit in cart %}
-                        <div class="row {% if key > 0 %}mt-3{% endif %}">
+                    {% for key,produit in cart %} {# key nous permet de compter les produits #}
+                        <div class="row {% if key > 0 %}mt-3{% endif %}"> {# si key > 0 donc nous avons un produit et on indique un mt-3 avec le produit suivant #}
                             <div class="col-3">
                                 <img style="width: 100%;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" title="{{ produit.produit.proLib }}" />
                             </div>
@@ -75,6 +75,7 @@
         var stripe = Stripe("pk_test_51I8F6OGTYhnXIhU2XSLKCr1Z8taJ1sAs6cG0MMhs6xXlFpVK74G4JTpi8GiAZQ1J4msjS2AScSWRP6mcSWAcsOCA00WRkL1Zzs");
         var checkoutButton = document.getElementById("checkout-button");
         checkoutButton.addEventListener("click", function () {
+            // La fonction déclenche la création d'une session parmamétrée dans StripController.php
             fetch("/commande/create-session/{{ reference }}", {
                 method: "POST",
             })

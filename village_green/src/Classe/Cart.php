@@ -30,7 +30,7 @@ class Cart
             // Si ce n'est pas le cas tu ajoutes 1 à la quantité
             $cart[$id]=1;
         }
-        // On set une session qui s'appelle cart et lui associer un tableau où l'on retrouve les produits du panier
+        // On set une session qui s'appelle cart et on lui associe un tableau où l'on retrouve les produits du panier
         $this->session->set('cart', $cart);
     }
 

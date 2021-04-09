@@ -22,8 +22,8 @@
                 <p style="margin-top: -30px;">Retrouvez la liste de vos produits</p>
                 <div class="order-summary">
                         {% set total= null %}
-                        {% for key,produit in cart %}
-                        <div class="row {% if key > 0 %}mt-3{% endif %}">
+                        {% for key,produit in cart %} {# key nous permet de compter les produits #}
+                        <div class="row {% if key > 0 %}mt-3{% endif %}"> {# si key > 0 donc nous avons un produit et on indique un mt-3 avec le produit suivant #}
                                 <div class="col-3">
                                     <img style="width: 100%;" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.proPhoto }}" alt="{{ produit.produit.proLib }}" title="{{ produit.produit.proLib }}" />
                                 </div>

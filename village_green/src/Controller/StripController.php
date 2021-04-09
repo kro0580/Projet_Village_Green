@@ -77,6 +77,7 @@ class StripController extends AbstractController
             'cancel_url' => $YOUR_DOMAIN . '/commande/erreur/{CHECKOUT_SESSION_ID}',
         ]);
         // Pour enregistrer le numéro de la commande en BDD
+        // Ce numéro permet d'identifier les clients qui ont mis des articles dans leur panier et ont abandonné de ceux qui ont réellement été jusqu'au paiement
         $commande->setCmdStripIdSession($checkout_session->id);
         $entityManager->flush();
         $response = new JsonResponse(['id' => $checkout_session->id]);

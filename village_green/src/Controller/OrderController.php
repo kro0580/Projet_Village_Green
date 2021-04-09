@@ -48,6 +48,7 @@ class OrderController extends AbstractController
     }
 
     // Par sécurité on définit une méthode POST qui permet d'afficher le récapitulatif de la commande uniquement si le formulaire de commande est soumis en POST
+    // Cela interdit donc la saisie de l'adresse dans l'url
     /**
      * @Route("/commande/recapitulatif", name="order_recap", methods={"POST"})
      * @param Cart $cart
@@ -67,7 +68,8 @@ class OrderController extends AbstractController
             $adresseFact=$form->get("adresseFact")->getData();
             $adresseLiv=$form->get("adresseLiv")->getData();
             $livreur=$form->get("livreur")->getData();
-            // Enregistrement dans Commande()
+            // Enregistrement dans Commande
+            // Je définis une nouvelle commande
             $commande = new Commande();
             // On indique la référence de la commande composée de la date de passage de la commande et d'un ID unique
             $reference = $date->format('dmy').'-'.uniqid();
@@ -88,9 +90,10 @@ class OrderController extends AbstractController
             // J'envoie les données
             $this->entityManager->persist($commande);
 
-            //Enregistrement dans DetailCommande()
+            //Enregistrement dans DetailCommande
             // Je récupère mon panier et je boucle sur chaque produit
             foreach ($cart->getFull() as $produit){
+                // Je définis une nouveau détail pour la commande
                 $detailCmd = new DetailCommande();
                 $detailCmd->setDetCmdCmdId($commande);
                 // Je récupére le libéllé du produit dans l'entrée produit du panier

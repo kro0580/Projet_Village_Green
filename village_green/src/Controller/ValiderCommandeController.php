@@ -35,16 +35,17 @@ class ValiderCommandeController extends AbstractController
 
         // Si ma commande est en statut non payée
         if (!$commande->getCmdPayer()){
-            //Vider le panier après achat. La fonction remove() fait appel à celle définit dans classe/Cart.php
+            // Vider le panier après achat. La fonction remove() fait appel à celle définit dans classe/Cart.php
             $cart->remove();
-            //Modification du statut de cmdPayer a true donc on bascule de 0 à 1
+            // Modification du statut de cmdPayer a true donc on bascule de 0 à 1
             $commande->setCmdPayer(1);
-            //La livraison
+            // La livraison
             $livraison = new Livraison();
             $livraison->setLivCmd($commande);
             $diffHours = new DateInterval('PT24H');
             $livraison->setLivDate($commande->getCmdDate()->add($diffHours));
             $livraison->setLivEtat("En cours de preparation");
+            // Liaison entre la commande et le client avec la table passe
             $passe = new passe();
             $passe->setPasseCliId($this->getUser());
             $passe->setPasseCmdId($commande->getCmdId());
