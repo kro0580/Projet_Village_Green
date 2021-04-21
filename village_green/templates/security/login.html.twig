@@ -24,9 +24,15 @@
                         </div>
                     {% endif %}#}
                     <label for="email">Adresse Mail</label>
-                        <input type="text" id="email" name="_username" class="form-control mb-4" value="{{ last_username }}">
+                    <div class="input-container">
+                    <i class="fa fa-user icon"></i>
+                        <input type="text" placeholder="Votre adresse mail" id="email" name="_username" class="form-control mb-4" value="{{ last_username }}">
+                    </div>
                     <label for="mdp">Mot de passe</label>
-                        <input type="password" id="mdp" name="_password" class="form-control mb-2">
+                    <div class="input-container">
+                    <i class="fa fa-lock icon"></i>
+                        <input type="password" placeholder="Votre mot de passe" id="mdp" name="_password" class="form-control mb-2">
+                    </div>  
                         <button type="button" id="afficher_login_mdp" title="Avez-vous entré votre mot de passe correctement ?" 
                             onmousedown="mdp.type='text';" 
                             onmouseup="mdp.type='password';" 

@@ -254,9 +254,9 @@ h2
 }
 
 #btn_voir
-    {
-        margin-top: -20px;
-    }
+{
+    margin-top: -20px;
+}
 
 #bouton_create
 {
@@ -381,7 +381,7 @@ h2
 {
     font-size: 13px;
     margin-bottom: 25px;
-    margin-top: -5px;
+    margin-top: -15px;
 }
 
 #afficher_login_mdp
@@ -389,6 +389,24 @@ h2
     background-color: #E8E9EA;
     float: right;
     font-size: 10px;
+    margin-top: -18px;
+}
+
+/* Icone FontAwesome */
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Icone FontAwesome */
+.icon {
+  padding-top: 10px;
+  height: 38px;
+  background: #007BFF;
+  color: white;
+  min-width: 50px;
+  text-align: center;
 }
 
 /**** SECURITY/FORGOTTEN_PASSWORD.HTML ****/
@@ -1254,6 +1272,12 @@ Mobile
     #bouton_deconnexion
     {
         display: none;
+    }
+
+    /**** SECURITY/LOGIN.HTML ****/
+    #img_connexion
+    {
+        width: 50%;
     }
 
     /**** CLIENT/INDEX.HTML ****/
